@@ -1,14 +1,12 @@
 // Import document classes.
-import { engrenagesActor } from "./documents/actor.mjs";
-import { engrenagesItem } from "./documents/item.mjs";
+import { EngrenagesActor } from "./documents/actor.mjs";
+import { EngrenagesItem } from "./documents/item.mjs";
 // Import sheet classes.
-import { engrenagesActorSheet } from "./sheets/actor-sheet.mjs";
-import { engrenagesItemSheet } from "./sheets/item-sheet.mjs";
+import { EngrenagesActorSheet } from "./sheets/actor-sheet.mjs";
+import { EngrenagesItemSheet } from "./sheets/item-sheet.mjs";
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
-import { engrenages } from "./helpers/config.mjs";
-// Handle Vue.
-import { engrenagesActorSheetVue } from "./sheets/actor-sheet.vue.mjs";
+import { ENGRENAGES } from "./helpers/config.mjs";
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -19,13 +17,13 @@ Hooks.once('init', async function() {
   // Add utility classes to the global game object so that they're more easily
   // accessible in global contexts.
   game.engrenages = {
-    engrenagesActor,
-    engrenagesItem,
+    EngrenagesActor,
+    EngrenagesItem,
     rollItemMacro
   };
 
   // Add custom constants for configuration.
-  CONFIG.engrenages = engrenages;
+  CONFIG.ENGRENAGES = ENGRENAGES;
 
   /**
    * Set an initiative formula for the system
@@ -37,18 +35,17 @@ Hooks.once('init', async function() {
   };
 
   // Define custom Document classes
-  CONFIG.Actor.documentClass = engrenagesActor;
-  CONFIG.Item.documentClass = engrenagesItem;
+  CONFIG.Actor.documentClass = EngrenagesActor;
+  CONFIG.Item.documentClass = EngrenagesItem;
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("engrenages", engrenagesActorSheet, { label: 'Handlebars', makeDefault: false });
-  Actors.registerSheet("engrenages", engrenagesActorSheetVue, { label: 'Vue', makeDefault: true });
+  Actors.registerSheet("engrenages", EngrenagesActorSheet, { makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("engrenages", engrenagesItemSheet, { makeDefault: true });
+  Items.registerSheet("engrenages", EngrenagesItemSheet, { makeDefault: true });
 
   // Preload Handlebars templates.
-  preloadHandlebarsTemplates();
+  return preloadHandlebarsTemplates();
 });
 
 /* -------------------------------------------- */
@@ -91,12 +88,16 @@ Hooks.once("ready", async function() {
  * @returns {Promise}
  */
 async function createItemMacro(data, slot) {
+  // First, determine if this is a valid owned item.
   if (data.type !== "Item") return;
-  if (!("data" in data)) return ui.notifications.warn("You can only create macro buttons for owned Items");
-  const item = data.data;
+  if (!data.uuid.includes('Actor.') && !data.uuid.includes('Token.')) {
+    return ui.notifications.warn("You can only create macro buttons for owned Items");
+  }
+  // If it is, retrieve it based on the uuid.
+  const item = await Item.fromDropData(data);
 
-  // Create the macro command
-  const command = `game.engrenages.rollItemMacro("${item.name}");`;
+  // Create the macro command using the uuid.
+  const command = `game.engrenages.rollItemMacro("${data.uuid}");`;
   let macro = game.macros.find(m => (m.name === item.name) && (m.command === command));
   if (!macro) {
     macro = await Macro.create({
@@ -114,17 +115,23 @@ async function createItemMacro(data, slot) {
 /**
  * Create a Macro from an Item drop.
  * Get an existing item macro if one exists, otherwise create a new one.
- * @param {string} itemName
- * @return {Promise}
+ * @param {string} itemUuid
  */
-function rollItemMacro(itemName) {
-  const speaker = ChatMessage.getSpeaker();
-  let actor;
-  if (speaker.token) actor = game.actors.tokens[speaker.token];
-  if (!actor) actor = game.actors.get(speaker.actor);
-  const item = actor ? actor.items.find(i => i.name === itemName) : null;
-  if (!item) return ui.notifications.warn(`Your controlled Actor does not have an item named ${itemName}`);
+function rollItemMacro(itemUuid) {
+  // Reconstruct the drop data so that we can load the item.
+  const dropData = {
+    type: 'Item',
+    uuid: itemUuid
+  };
+  // Load the item from the uuid.
+  Item.fromDropData(dropData).then(item => {
+    // Determine if the item loaded and if it's an owned item.
+    if (!item || !item.parent) {
+      const itemName = item?.name ?? itemUuid;
+      return ui.notifications.warn(`Could not find item ${itemName}. You may need to delete and recreate this macro.`);
+    }
 
-  // Trigger the item roll
-  return item.roll();
+    // Trigger the item roll
+    item.roll();
+  });
 }

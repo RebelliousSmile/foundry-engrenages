@@ -1,16 +1,18 @@
 {
-  "name": "engrenages",
-  "title": "engrenages",
-  "description": "The engrenages system for FoundryVTT!",
-  "version": "1.0.0",
-  "minimumCoreVersion": "0.8.6",
-  "compatibleCoreVersion": "9",
-  "author": "Asacolips",
+  "id": "engrenages",
+  "title": "Engrenages",
+  "description": "The Engrenages system for FoundryVTT!",
+  "version": "1.2.0",
+  "compatibility": {
+    "minimum": 10,
+    "verified": "10.287",
+    "maximum": 10
+  },
+  "authors": [{
+    "name": "Asacolips"
+  }],
   "esmodules": ["module/engrenages.mjs"],
-  "styles": [
-    "css/engrenages.css",
-    "dist/styles.vue.css"
-  ],
+  "styles": ["css/engrenages.css"],
   "scripts": [],
   "packs": [],
   "languages": [
@@ -27,5 +29,6 @@
   "url": "",
   "manifest": "",
   "download": "",
-  "license": "LICENSE.txt"
+  "license": "LICENSE.txt",
+  "changelog": "CHANGELOG.md"
 }

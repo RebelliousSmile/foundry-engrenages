@@ -1,29 +1,23 @@
-export const engrenages = {};
-
-// Define constants here, such as:
-engrenages.foobar = {
-  'bas': 'engrenages.bas',
-  'bar': 'engrenages.bar'
-};
+export const ENGRENAGES = {};
 
 /**
  * The set of Ability Scores used within the sytem.
  * @type {Object}
  */
- engrenages.abilities = {
-  "str": "engrenages.AbilityStr",
-  "dex": "engrenages.AbilityDex",
-  "con": "engrenages.AbilityCon",
-  "int": "engrenages.AbilityInt",
-  "wis": "engrenages.AbilityWis",
-  "cha": "engrenages.AbilityCha"
+ ENGRENAGES.abilities = {
+  "str": "ENGRENAGES.AbilityStr",
+  "dex": "ENGRENAGES.AbilityDex",
+  "con": "ENGRENAGES.AbilityCon",
+  "int": "ENGRENAGES.AbilityInt",
+  "wis": "ENGRENAGES.AbilityWis",
+  "cha": "ENGRENAGES.AbilityCha"
 };
 
-engrenages.abilityAbbreviations = {
-  "str": "engrenages.AbilityStrAbbr",
-  "dex": "engrenages.AbilityDexAbbr",
-  "con": "engrenages.AbilityConAbbr",
-  "int": "engrenages.AbilityIntAbbr",
-  "wis": "engrenages.AbilityWisAbbr",
-  "cha": "engrenages.AbilityChaAbbr"
+ENGRENAGES.abilityAbbreviations = {
+  "str": "ENGRENAGES.AbilityStrAbbr",
+  "dex": "ENGRENAGES.AbilityDexAbbr",
+  "con": "ENGRENAGES.AbilityConAbbr",
+  "int": "ENGRENAGES.AbilityIntAbbr",
+  "wis": "ENGRENAGES.AbilityWisAbbr",
+  "cha": "ENGRENAGES.AbilityChaAbbr"
 };

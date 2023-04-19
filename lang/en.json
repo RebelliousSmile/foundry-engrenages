@@ -1,22 +1,22 @@
 {
-  "engrenages.AbilityStr": "Strength",
-  "engrenages.AbilityCon": "Constitution",
-  "engrenages.AbilityDex": "Dexterity",
-  "engrenages.AbilityInt": "Intelligence",
-  "engrenages.AbilityWis": "Wisdom",
-  "engrenages.AbilityCha": "Charisma",
+  "ENGRENAGES.AbilityStr": "Strength",
+  "ENGRENAGES.AbilityCon": "Constitution",
+  "ENGRENAGES.AbilityDex": "Dexterity",
+  "ENGRENAGES.AbilityInt": "Intelligence",
+  "ENGRENAGES.AbilityWis": "Wisdom",
+  "ENGRENAGES.AbilityCha": "Charisma",
 
-  "engrenages.AbilityStrAbbr": "str",
-  "engrenages.AbilityConAbbr": "con",
-  "engrenages.AbilityDexAbbr": "dex",
-  "engrenages.AbilityIntAbbr": "int",
-  "engrenages.AbilityWisAbbr": "wis",
-  "engrenages.AbilityChaAbbr": "cha",
+  "ENGRENAGES.AbilityStrAbbr": "str",
+  "ENGRENAGES.AbilityConAbbr": "con",
+  "ENGRENAGES.AbilityDexAbbr": "dex",
+  "ENGRENAGES.AbilityIntAbbr": "int",
+  "ENGRENAGES.AbilityWisAbbr": "wis",
+  "ENGRENAGES.AbilityChaAbbr": "cha",
 
-  "engrenages.EffectCreate": "Create Effect",
-  "engrenages.EffectToggle": "Toggle Effect",
-  "engrenages.EffectEdit": "Edit Effect",
-  "engrenages.EffectDelete": "Delete Effect",
+  "ENGRENAGES.EffectCreate": "Create Effect",
+  "ENGRENAGES.EffectToggle": "Toggle Effect",
+  "ENGRENAGES.EffectEdit": "Edit Effect",
+  "ENGRENAGES.EffectDelete": "Delete Effect",
 
-  "engrenages.Add": "Add"
+  "ENGRENAGES.Add": "Add"
 }
