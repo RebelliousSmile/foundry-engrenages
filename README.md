@@ -1,92 +1,191 @@
-# engrenages
+# Vue3boilerplate
 
+![Foundry v9](https://img.shields.io/badge/foundry-v9-green) | ![Vue 3](https://img.shields.io/badge/vue-3-blue)
 
+This is a variant of the [Boilerplate system](https://gitlab.com/asacolips-projects/foundry-mods/boilerplate) that's configured to support Vue 3 for its character sheet template!
 
-## Getting started
+## Install dependencies
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://gitlab.com/init-status/fvtt_systems/engrenages.git
-git branch -M main
-git push -uf origin main
+```bash
+npm install
 ```
 
-## Integrate with your tools
+## Build the scss
 
-- [ ] [Set up project integrations](https://gitlab.com/init-status/fvtt_systems/engrenages/-/settings/integrations)
+The base scss used by both the Handlebars and Vue sheets are compiled with gulp.
 
-## Collaborate with your team
+```bash
+# Single build
+npm run build
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+# Watch for changes
+npm run watch
+```
 
-## Test and Deploy
+## Build the Vue components
 
-Use the built-in continuous integration in GitLab.
+The vue components under `src/*` can be built with Vite.
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+```bash
+# Single build
+npm run vite:build
 
-***
+# Watch for changes
+npm run vite:watch
+```
 
-# Editing this README
+## Vue structure.
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+### The **_src/*_** directory
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+The Vue components are kept in `src/*`. This is further broken up into the following structure:
 
-## Name
-Choose a self-explaining name for your project.
+- `assets` - File/media assets that can be referenced by components.
+- `components` - Vue components.
+    - `index.js` - Main entrypoint used to determine which components should be exported during the compile (and made available to be imported by Foundry). Not every component needs to be listed here; you'll typically only export your main application component and a handful of utility/helper components (such as Tabs or a TinyMCE Editor).
+    - `CharacterSheet.vue` - Main component for the vue character sheet. **Must** be exported.
+    - `methods/` - Directory with exported methods that can be imported by components. For example, event handlers and text formatters that are useful in a wide number of components.
+    - `parts/` - Sub-components referenced by other components, some of which are re-usable. For example, `Tabs`, `Editor`, and so forth.
+    - `tabs/` - Content components that make up each of the tabs on the main character sheet component.
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+## Load vue.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+The ES module version of Vue is stored in this repo at `module/lib/vue.esm-browser.js`. You'll typically only have to do this in character sheets or other applications utilizing Vue. To use it, you'll typically need to include the following in your file referencing it:
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+```js
+import { createApp } from './module/lib/vue.esm-browser.js';
+```
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+## Load your components
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+The compiled components are in the `dist/` directory.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+### CSS
+To import their CSS, add `dist/style.css` to the style's section of your `system.json` manifest file.
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+### JS
+To import the component ES modules, you'll do something like the following:
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+```js
+import { MyComponent } from './dist/components.vue.es.js';
+```
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+Adjust the relative path as needed, such as prepending `../../` if imported in a file in `module/sheets/`.
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+## The sheet class
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+This module includes both a Handlebars sheet and a Vue sheet. With that in mind, it has both a `actor-sheet.mjs` file for Handlebars, and `actor-sheet.vue.mjs` for Vue, which extends the Handlebars version. That file is kept fairly lightweight, with the most important changes happening in:
 
-## License
-For open source projects, say how it is licensed.
+- `getData()` - A few small changes from what's already happening in the regular sheet's getData(). In particular, active effects are converted from their document classes to plain objects.
+- `render()` - Overrides the render() method to prevent it from constantly destroying and re-rendering the Vue application on form changes. This version will either a) create the Vue application if one doesn't exist, or b) update its main data property otherwise. You have to be careful when updating objects: if you replace the object the reactivity will be destroyed, so you instead have to replace the object keys.
+- `close()` - Unmount and destroy the Vue app if the sheet is closed.
+- `activateVueListeners()` - Most of our interactivity should be handled within the components `<script>` tags via methods. However, this can be used for some event listeners that are easier to implement in the sheet instance, such as activating TinyMCE editors.
+- `activateListeners()` - We do **NOT** want Foundry's default sheet listeners to run on the Vue sheet. This is mainly used to disable them.
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+## Initializing the Vue app
+
+Let's step through what's happening to actually enable the Vue app on our character sheet. In our `actor-sheet.vue.mjs` file:
+
+### Import required classes
+
+```js
+import { CharacterSheet } from "../../dist/components.vue.es.js";
+import { createApp } from "../lib/vue.esm-browser.js";
+```
+
+### Create the Vue app
+
+In our render method, we need to initialize the Vue app:
+
+```js
+const context = this.getData();
+// Render the vue application after loading. We'll need to destroy this
+// later in the this.close() method for the sheet.
+if (!this.vueApp) {
+  // Create the app.
+  this.vueApp = createApp({
+    // Set our main data prop for the context object returned by this.getData().
+    data() {
+      return {
+        context: context,
+      }
+    },
+    // Allow our sheet component to be used.
+    components: {
+      'character-sheet': CharacterSheet
+    },
+    // Create a method that can be used to update the context prop later.
+    methods: {
+      updateContext(newContext) {
+        // We can't just replace the object outright without destroying the
+        // reactivity, so this instead updates the keys individually.
+        for (let key of Object.keys(this.context)) {
+          this.context[key] = newContext[key];
+        }
+      }
+    }
+  });
+}
+```
+
+However, when changes are made to the sheet, we don't need to re-render it, we just need to update its data props. After the above if statement, we have an else to cover that:
+
+```js
+// Otherwise, perform update routines on the app.
+else {
+  // Pass new values from this.getData() into the app.
+  this.vueRoot.updateContext(context);
+  this.activateVueListeners($(this.form), true);
+  return;
+}
+```
+
+> - `this.vueApp` is the Vue application.
+> - `this.vueRoot` is the mounted version of the Vue application.
+
+Once we have an updated Vue app, we can execute Foundry's render:
+
+```js
+this._render(force, options).catch(err => {
+  err.message = `An error occurred while rendering ${this.constructor.name} ${this.appId}: ${err.message}`;
+  console.error(err);
+  this._state = Application.RENDER_STATES.ERROR;
+})
+// Run Vue's render, assign it to our prop for tracking.
+.then(rendered => {
+  this.vueRoot = this.vueApp.mount(`[data-appid="${this.appId}"] .v3boilerplate-vue`);
+  this.activateVueListeners($(this.form), false);
+});
+
+this.object.apps[this.appId] = this;
+return this;
+```
+
+Finally, we need to destroy the Vue app if the sheet is closed. In our `close()` method:
+
+```js
+this.vueApp.unmount();
+this.vueApp = null;
+this.vueRoot = null;
+return super.close(options);
+```
+
+### Build a character sheet mount point
+
+While most of our template work will be in Vue, we do still need a mount point written in Handlebars for it to attach to. In our `templates/actor/actor-character-sheet.vue.html` file, we have the following:
+
+```handlebars
+<form class="{{cssClass}} {{actor.type}} v3boilerplate-vue flexcol" autocomplete="off">
+  <character-sheet :context="context" :actor="context.actor">Failed to render Vue component.</character-sheet>
+</form>
+```
+
+That gives us our standard form structure expected by sheets, and our `<character-sheet>` component that was mapped to `CharacterSheet` when we created our Vue application. We're passing in a pair of props related to the context and actor, and we have some fallback text in case the component fails to render.
+
+## What about listeners?
+
+As mentioned earlier, `activateListeners()` is generally incompatible with Vue sheets due to it firing too often for our needs. It's recommended that you instead apply any interactivity you need directly in the Vue components using methods and events such as `@click="myClickEventMethod"`. Several of the components in this repo include examples of that, such as `Tabs`, `ActorFeatures`, and everything under the `src/components/tabs/` directory.
+
+## Suggest improvements!
+
+If you have any recommendations or suggested improvements, feel free to open an issue or submit a new merge request!
