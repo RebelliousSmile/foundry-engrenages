@@ -51,7 +51,7 @@ export default {
 
 <style lang="scss" scoped>
   // Styles defined here will be scoped to this component only.
-  // .v3boilerplate .items-list {
+  // .engrenages .items-list {
   //   .item-name {
   //     color: red;
   //   }

@@ -215,7 +215,7 @@ const _sfc_main$8 = {
   },
   methods: {}
 };
-const _withScopeId$1 = (n) => (pushScopeId("data-v-2c3dce11"), n = n(), popScopeId(), n);
+const _withScopeId$1 = (n) => (pushScopeId("data-v-3e6c8dce"), n = n(), popScopeId(), n);
 const _hoisted_1$7 = { class: "items-list" };
 const _hoisted_2$5 = { class: "item flexrow items-header" };
 const _hoisted_3$5 = /* @__PURE__ */ _withScopeId$1(() => /* @__PURE__ */ createElementVNode("div", { class: "item-name" }, "Name", -1));
@@ -293,7 +293,7 @@ function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
     }), 128))
   ]);
 }
-var ActorFeatures = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$8], ["__scopeId", "data-v-2c3dce11"]]);
+var ActorFeatures = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$8], ["__scopeId", "data-v-3e6c8dce"]]);
 const _sfc_main$7 = {
   name: "Tab",
   props: ["context", "actor", "tab", "group"],

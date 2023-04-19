@@ -1,9 +1,9 @@
-import { v3boilerplateActorSheet } from "./actor-sheet.mjs";
+import { engrenagesActorSheet } from "./actor-sheet.mjs";
 import { CharacterSheet } from "../../dist/components.vue.es.js";
 import { createApp } from "../lib/vue.esm-browser.js";
 import { prepareActiveEffectCategories } from "../helpers/effects.mjs";
 
-export class v3boilerplateActorSheetVue extends v3boilerplateActorSheet {
+export class engrenagesActorSheetVue extends engrenagesActorSheet {
 
   constructor(...args) {
     super(...args);
@@ -15,8 +15,8 @@ export class v3boilerplateActorSheetVue extends v3boilerplateActorSheet {
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
-      classes: ["v3boilerplate", "sheet", "actor"],
-      template: "systems/v3boilerplate/templates/actor/actor-sheet.vue.html",
+      classes: ["engrenages", "sheet", "actor"],
+      template: "systems/engrenages/templates/actor/actor-sheet.vue.html",
       width: 600,
       height: 600,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
@@ -25,7 +25,7 @@ export class v3boilerplateActorSheetVue extends v3boilerplateActorSheet {
 
   /** @override */
   get template() {
-    return `systems/v3boilerplate/templates/actor/actor-${this.actor.data.type}-sheet.vue.html`;
+    return `systems/engrenages/templates/actor/actor-${this.actor.data.type}-sheet.vue.html`;
   }
 
   /* -------------------------------------------- */
@@ -82,7 +82,7 @@ export class v3boilerplateActorSheetVue extends v3boilerplateActorSheet {
     })
     // Run Vue's render, assign it to our prop for tracking.
     .then(rendered => {
-      this.vueRoot = this.vueApp.mount(`[data-appid="${this.appId}"] .v3boilerplate-vue`);
+      this.vueRoot = this.vueApp.mount(`[data-appid="${this.appId}"] .engrenages-vue`);
       this.activateVueListeners($(this.form), false);
     });
 

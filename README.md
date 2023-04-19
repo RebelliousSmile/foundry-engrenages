@@ -153,7 +153,7 @@ this._render(force, options).catch(err => {
 })
 // Run Vue's render, assign it to our prop for tracking.
 .then(rendered => {
-  this.vueRoot = this.vueApp.mount(`[data-appid="${this.appId}"] .v3boilerplate-vue`);
+  this.vueRoot = this.vueApp.mount(`[data-appid="${this.appId}"] .engrenages-vue`);
   this.activateVueListeners($(this.form), false);
 });
 
@@ -175,7 +175,7 @@ return super.close(options);
 While most of our template work will be in Vue, we do still need a mount point written in Handlebars for it to attach to. In our `templates/actor/actor-character-sheet.vue.html` file, we have the following:
 
 ```handlebars
-<form class="{{cssClass}} {{actor.type}} v3boilerplate-vue flexcol" autocomplete="off">
+<form class="{{cssClass}} {{actor.type}} engrenages-vue flexcol" autocomplete="off">
   <character-sheet :context="context" :actor="context.actor">Failed to render Vue component.</character-sheet>
 </form>
 ```

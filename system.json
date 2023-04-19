@@ -1,14 +1,14 @@
 {
-  "name": "v3boilerplate",
-  "title": "v3boilerplate",
-  "description": "The v3boilerplate system for FoundryVTT!",
+  "name": "engrenages",
+  "title": "engrenages",
+  "description": "The engrenages system for FoundryVTT!",
   "version": "1.0.0",
   "minimumCoreVersion": "0.8.6",
   "compatibleCoreVersion": "9",
   "author": "Asacolips",
-  "esmodules": ["module/v3boilerplate.mjs"],
+  "esmodules": ["module/engrenages.mjs"],
   "styles": [
-    "css/v3boilerplate.css",
+    "css/engrenages.css",
     "dist/styles.vue.css"
   ],
   "scripts": [],

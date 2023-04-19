@@ -223,12 +223,12 @@
   text-align: center;
 }
 
-/* Styles limited to v3boilerplate sheets */
-.v3boilerplate .item-form {
+/* Styles limited to engrenages sheets */
+.engrenages .item-form {
   font-family: "Roboto", sans-serif;
 }
 
-.v3boilerplate .sheet-header {
+.engrenages .sheet-header {
   -webkit-box-flex: 0;
   -ms-flex: 0 auto;
   flex: 0 auto;
@@ -248,7 +248,7 @@
   margin-bottom: 10px;
 }
 
-.v3boilerplate .sheet-header .profile-img {
+.engrenages .sheet-header .profile-img {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 100px;
   flex: 0 0 100px;
@@ -256,50 +256,50 @@
   margin-right: 10px;
 }
 
-.v3boilerplate .sheet-header .header-fields {
+.engrenages .sheet-header .header-fields {
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
 
-.v3boilerplate .sheet-header h1.charname {
+.engrenages .sheet-header h1.charname {
   height: 50px;
   padding: 0px;
   margin: 5px 0;
   border-bottom: 0;
 }
 
-.v3boilerplate .sheet-header h1.charname input {
+.engrenages .sheet-header h1.charname input {
   width: 100%;
   height: 100%;
   margin: 0;
 }
 
-.v3boilerplate .sheet-tabs {
+.engrenages .sheet-tabs {
   -webkit-box-flex: 0;
   -ms-flex: 0;
   flex: 0;
 }
 
-.v3boilerplate .sheet-body,
-.v3boilerplate .sheet-body .tab,
-.v3boilerplate .sheet-body .tab .editor {
+.engrenages .sheet-body,
+.engrenages .sheet-body .tab,
+.engrenages .sheet-body .tab .editor {
   height: 100%;
 }
 
-.v3boilerplate .tox .tox-editor-container {
+.engrenages .tox .tox-editor-container {
   background: #fff;
 }
 
-.v3boilerplate .tox .tox-edit-area {
+.engrenages .tox .tox-edit-area {
   padding: 0 8px;
 }
 
-.v3boilerplate .resource-label {
+.engrenages .resource-label {
   font-weight: bold;
 }
 
-.v3boilerplate .items-header {
+.engrenages .items-header {
   height: 28px;
   margin: 2px 0;
   padding: 0;
@@ -311,12 +311,12 @@
   font-weight: bold;
 }
 
-.v3boilerplate .items-header > * {
+.engrenages .items-header > * {
   font-size: 14px;
   text-align: center;
 }
 
-.v3boilerplate .items-header .item-name {
+.engrenages .items-header .item-name {
   font-weight: bold;
   padding-left: 5px;
   text-align: left;
@@ -325,7 +325,7 @@
   display: flex;
 }
 
-.v3boilerplate .items-list {
+.engrenages .items-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -334,13 +334,13 @@
   color: #444;
 }
 
-.v3boilerplate .items-list .item-list {
+.engrenages .items-list .item-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.v3boilerplate .items-list .item-name {
+.engrenages .items-list .item-name {
   -webkit-box-flex: 2;
   -ms-flex: 2;
   flex: 2;
@@ -356,13 +356,13 @@
   display: flex;
 }
 
-.v3boilerplate .items-list .item-name h3, .v3boilerplate .items-list .item-name h4 {
+.engrenages .items-list .item-name h3, .engrenages .items-list .item-name h4 {
   margin: 0;
   white-space: nowrap;
   overflow-x: hidden;
 }
 
-.v3boilerplate .items-list .item-controls {
+.engrenages .items-list .item-controls {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -374,13 +374,13 @@
   justify-content: flex-end;
 }
 
-.v3boilerplate .items-list .item-controls a {
+.engrenages .items-list .item-controls a {
   font-size: 12px;
   text-align: center;
   margin: 0 6px;
 }
 
-.v3boilerplate .items-list .item {
+.engrenages .items-list .item {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -388,15 +388,15 @@
   border-bottom: 1px solid #c9c7b8;
 }
 
-.v3boilerplate .items-list .item:last-child {
+.engrenages .items-list .item:last-child {
   border-bottom: none;
 }
 
-.v3boilerplate .items-list .item .item-name {
+.engrenages .items-list .item .item-name {
   color: #191813;
 }
 
-.v3boilerplate .items-list .item .item-name .item-image {
+.engrenages .items-list .item .item-name .item-image {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 30px;
   flex: 0 0 30px;
@@ -406,14 +406,14 @@
   margin-right: 5px;
 }
 
-.v3boilerplate .items-list .item-prop {
+.engrenages .items-list .item-prop {
   text-align: center;
   border-left: 1px solid #c9c7b8;
   border-right: 1px solid #c9c7b8;
   font-size: 12px;
 }
 
-.v3boilerplate .items-list .items-header {
+.engrenages .items-list .items-header {
   height: 28px;
   margin: 2px 0;
   padding: 0;
@@ -425,32 +425,32 @@
   font-weight: bold;
 }
 
-.v3boilerplate .items-list .items-header > * {
+.engrenages .items-list .items-header > * {
   font-size: 12px;
   text-align: center;
 }
 
-.v3boilerplate .items-list .items-header .item-name {
+.engrenages .items-list .items-header .item-name {
   padding-left: 5px;
   text-align: left;
 }
 
-.v3boilerplate .item-formula {
+.engrenages .item-formula {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 200px;
   flex: 0 0 200px;
   padding: 0 8px;
 }
 
-.v3boilerplate .effects .item .effect-source,
-.v3boilerplate .effects .item .effect-duration,
-.v3boilerplate .effects .item .effect-controls {
+.engrenages .effects .item .effect-source,
+.engrenages .effects .item .effect-duration,
+.engrenages .effects .item .effect-controls {
   text-align: center;
   border-left: 1px solid #c9c7b8;
   border-right: 1px solid #c9c7b8;
   font-size: 12px;
 }
 
-.v3boilerplate .effects .item .effect-controls {
+.engrenages .effects .item .effect-controls {
   border: none;
 }

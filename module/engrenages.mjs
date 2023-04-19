@@ -1,14 +1,14 @@
 // Import document classes.
-import { v3boilerplateActor } from "./documents/actor.mjs";
-import { v3boilerplateItem } from "./documents/item.mjs";
+import { engrenagesActor } from "./documents/actor.mjs";
+import { engrenagesItem } from "./documents/item.mjs";
 // Import sheet classes.
-import { v3boilerplateActorSheet } from "./sheets/actor-sheet.mjs";
-import { v3boilerplateItemSheet } from "./sheets/item-sheet.mjs";
+import { engrenagesActorSheet } from "./sheets/actor-sheet.mjs";
+import { engrenagesItemSheet } from "./sheets/item-sheet.mjs";
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
-import { V3BOILERPLATE } from "./helpers/config.mjs";
+import { engrenages } from "./helpers/config.mjs";
 // Handle Vue.
-import { v3boilerplateActorSheetVue } from "./sheets/actor-sheet.vue.mjs";
+import { engrenagesActorSheetVue } from "./sheets/actor-sheet.vue.mjs";
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -18,14 +18,14 @@ Hooks.once('init', async function() {
 
   // Add utility classes to the global game object so that they're more easily
   // accessible in global contexts.
-  game.v3boilerplate = {
-    v3boilerplateActor,
-    v3boilerplateItem,
+  game.engrenages = {
+    engrenagesActor,
+    engrenagesItem,
     rollItemMacro
   };
 
   // Add custom constants for configuration.
-  CONFIG.V3BOILERPLATE = V3BOILERPLATE;
+  CONFIG.engrenages = engrenages;
 
   /**
    * Set an initiative formula for the system
@@ -37,15 +37,15 @@ Hooks.once('init', async function() {
   };
 
   // Define custom Document classes
-  CONFIG.Actor.documentClass = v3boilerplateActor;
-  CONFIG.Item.documentClass = v3boilerplateItem;
+  CONFIG.Actor.documentClass = engrenagesActor;
+  CONFIG.Item.documentClass = engrenagesItem;
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("v3boilerplate", v3boilerplateActorSheet, { label: 'Handlebars', makeDefault: false });
-  Actors.registerSheet("v3boilerplate", v3boilerplateActorSheetVue, { label: 'Vue', makeDefault: true });
+  Actors.registerSheet("engrenages", engrenagesActorSheet, { label: 'Handlebars', makeDefault: false });
+  Actors.registerSheet("engrenages", engrenagesActorSheetVue, { label: 'Vue', makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("v3boilerplate", v3boilerplateItemSheet, { makeDefault: true });
+  Items.registerSheet("engrenages", engrenagesItemSheet, { makeDefault: true });
 
   // Preload Handlebars templates.
   preloadHandlebarsTemplates();
@@ -96,7 +96,7 @@ async function createItemMacro(data, slot) {
   const item = data.data;
 
   // Create the macro command
-  const command = `game.v3boilerplate.rollItemMacro("${item.name}");`;
+  const command = `game.engrenages.rollItemMacro("${item.name}");`;
   let macro = game.macros.find(m => (m.name === item.name) && (m.command === command));
   if (!macro) {
     macro = await Macro.create({
@@ -104,7 +104,7 @@ async function createItemMacro(data, slot) {
       type: "script",
       img: item.img,
       command: command,
-      flags: { "v3boilerplate.itemMacro": true }
+      flags: { "engrenages.itemMacro": true }
     });
   }
   game.user.assignHotbarMacro(macro, slot);
