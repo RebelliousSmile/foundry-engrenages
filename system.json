@@ -1,0 +1,46 @@
+{
+  "id": "engrenages",
+  "title": "Engrenages",
+  "description": "Engrenages porté sur FoundryVTT",
+  "authors": [
+    {
+      "name": "François-Xavier Guillois",
+      "discord": "vltima verba"
+    }
+  ],
+  "url": "https://github.com/tnntwister/foundry-engrenages",
+  "license": "LICENSE.txt",
+  "readme": "README.md",
+  "changelog": "CHANGELOG.md",
+  "media": [
+    {
+      "type": "setup",
+      "url": "systems/engrenages/assets/anvil-impact.png",
+      "thumbnail": "systems/engrenages/assets/anvil-impact.png"
+    }
+  ],
+  "version": "1.3.0",
+  "compatibility": {
+    "minimum": 11,
+    "verified": "11.315"
+  },
+  "esmodules": ["module/engrenages.mjs"],
+  "styles": ["css/engrenages.css"],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "packs": [],
+  "packFolders": [],
+  "socket": false,
+  "manifest": "https://raw.githubusercontent.com/tnntwister/foundry-engrenages/main/system.json",
+  "download": "https://github.com/tnntwister/foundry-engrenages/archive/refs/heads/main.zip",
+  "background": "systems/engrenages/assets/engrenages-logo.png",
+  "gridDistance": 5,
+  "gridUnits": "ft",
+  "primaryTokenAttribute": "health",
+  "secondaryTokenAttribute": "power"
+}
