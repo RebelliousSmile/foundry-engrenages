@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "ENGRENAGES": {
     "Ability": {
       "Str": { "long": "Strength", "abbr": "str" },
@@ -39,3 +40,26 @@
     }
   }
 }
+=======
+  "ENGRENAGES.AbilityStr": "Strength",
+  "ENGRENAGES.AbilityCon": "Constitution",
+  "ENGRENAGES.AbilityDex": "Dexterity",
+  "ENGRENAGES.AbilityInt": "Intelligence",
+  "ENGRENAGES.AbilityWis": "Wisdom",
+  "ENGRENAGES.AbilityCha": "Charisma",
+
+  "ENGRENAGES.AbilityStrAbbr": "str",
+  "ENGRENAGES.AbilityConAbbr": "con",
+  "ENGRENAGES.AbilityDexAbbr": "dex",
+  "ENGRENAGES.AbilityIntAbbr": "int",
+  "ENGRENAGES.AbilityWisAbbr": "wis",
+  "ENGRENAGES.AbilityChaAbbr": "cha",
+
+  "ENGRENAGES.EffectCreate": "Create Effect",
+  "ENGRENAGES.EffectToggle": "Toggle Effect",
+  "ENGRENAGES.EffectEdit": "Edit Effect",
+  "ENGRENAGES.EffectDelete": "Delete Effect",
+
+  "ENGRENAGES.Add": "Add"
+}
+>>>>>>> 51f826022f8c72c4b31684387e3f244f5469105f
