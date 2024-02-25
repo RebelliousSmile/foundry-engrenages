@@ -1,5 +1,39 @@
 {
-<<<<<<< HEAD
+  "SETTINGS": {
+    "world": {
+      "game_module": {
+        "name":"Choix du module de jeu",
+        "hint":"Téléchargez et activez le module Engrenages lié à votre univers de jeu. Il devrait ensuite apparaître dans cette liste. Sélectionnez-le pour personnaliser votre système Engrenages aux couleurs de cet univers."
+      },
+      "first_run": {
+        "name":"Désactiver le tour d'accueil",
+        "hint":"Le tour d'accueil aide les débutantEs à bien commencer avec le système Engrenages dans FoundryVTT. Cochez cette case si vous souhaitez ne plus le voir (ou décochez-là si vous voulez le voir à nouveau)."
+      },
+      "menace_die": {
+        "name":"Activer le dé de tension",
+        "hint":"Le dé de tension est une règle optionnelle d'Engrenages. Reportez-vous aux règles pour en apprendre plus."
+      },
+      "occult": {
+        "name":"Activer la gestion de l'occulte",
+        "hint":"Affiche les panneaux liés à la gestion des pouvoirs dans Engrenages."
+      },
+      "morale_management": {
+        "name":"Règles de motivation pour les PJs",
+        "hint":"Selon le degré d'implication que vous souhaitez pour les PJs, choisissez l'option de règle qui correspond (cf. règles pour plus d'informations).",
+        "none": "Aucune",
+        "motivation": "Motivation",
+        "destiny": "Attaches et Destinée"
+      },
+      "specialties": {
+        "name":"Appliquer les spécialisations de compétence",
+        "hint":"Permet de choisir la gestion des spécialisations pour les personnages."
+      },
+      "confrontation": {
+        "name":"Appliquer les règles de confrontation",
+        "hint":"Permet de lancer 4 dés au lieu de 2, et les répartir selon le résultat escompté."
+      }
+    }
+  },
   "ENGRENAGES": {
     "Ability": {
       "Str": { "long": "Strength", "abbr": "str" },
@@ -40,26 +74,3 @@
     }
   }
 }
-=======
-  "ENGRENAGES.AbilityStr": "Strength",
-  "ENGRENAGES.AbilityCon": "Constitution",
-  "ENGRENAGES.AbilityDex": "Dexterity",
-  "ENGRENAGES.AbilityInt": "Intelligence",
-  "ENGRENAGES.AbilityWis": "Wisdom",
-  "ENGRENAGES.AbilityCha": "Charisma",
-
-  "ENGRENAGES.AbilityStrAbbr": "str",
-  "ENGRENAGES.AbilityConAbbr": "con",
-  "ENGRENAGES.AbilityDexAbbr": "dex",
-  "ENGRENAGES.AbilityIntAbbr": "int",
-  "ENGRENAGES.AbilityWisAbbr": "wis",
-  "ENGRENAGES.AbilityChaAbbr": "cha",
-
-  "ENGRENAGES.EffectCreate": "Create Effect",
-  "ENGRENAGES.EffectToggle": "Toggle Effect",
-  "ENGRENAGES.EffectEdit": "Edit Effect",
-  "ENGRENAGES.EffectDelete": "Delete Effect",
-
-  "ENGRENAGES.Add": "Add"
-}
->>>>>>> 51f826022f8c72c4b31684387e3f244f5469105f

@@ -3,17 +3,44 @@
     "types": ["character", "npc", "group"],
     "templates": {
       "base": {
-        "health": {
+        "physical": {
+          "value": 10,
+          "min": 0,
+          "max": 10
+        },
+        "mental": {
+          "value": 10,
+          "min": 0,
+          "max": 10
+        },
+        "social": {
           "value": 10,
           "min": 0,
           "max": 10
         },
         "power": {
-          "value": 5,
+          "value": 10,
           "min": 0,
-          "max": 5
+          "max": 10
         },
-        "biography": ""
+        "biography": "",
+        "origin":"",
+        "job":"",
+        "sexe":"homme",
+        "reroll": {
+          "achievement": {
+            "label": "COGS.Achievement",
+            "value": 7,
+            "min": 1,
+            "max": 16
+          },
+          "conservation": {
+            "label": "COGS.Conservation",
+            "value": 7,
+            "min": 1,
+            "max": 16
+          }
+        }
       }
     },
     "character": {
@@ -94,7 +121,7 @@
     }
   },
   "Item": {
-    "types": ["item", "feature", "spell"],
+    "types": ["item", "trait", "weapon", "impact", "scar", "specialization", "contact"],
     "templates": {
       "base": {
         "description": ""
@@ -106,12 +133,37 @@
       "weight": 0,
       "formula": "d20 + @str.mod + ceil(@lvl / 2)"
     },
-    "feature": {
-      "templates": ["base"]
-    },
-    "spell": {
+    "trait": {
       "templates": ["base"],
-      "spellLevel": 1
+      "category": "custom",
+      "value": 1,
+      "min": -2,
+      "max": 3
+    },
+    "weapon": {
+      "templates": ["base"],
+      "effectLevel": 1
+    },
+    "specialization": {
+      "templates": ["base"],
+      "skill": ""
+    },
+    "impact": {
+      "templates": ["base"],
+      "skillType": "physical",
+      "impactType": "mild",
+      "value": 0
+    },
+    "scar": {
+      "templates": ["base"],
+      "skillType": "physical",
+      "scarLevel": 1
+    },
+    "contact": {
+      "templates": ["base"],
+      "attitude": "neutral",
+      "organization": "",
+      "location":""
     }
   }
 }

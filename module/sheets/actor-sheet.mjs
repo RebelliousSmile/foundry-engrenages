@@ -2,6 +2,7 @@ import {
   onManageActiveEffect,
   prepareActiveEffectCategories,
 } from '../helpers/effects.mjs';
+import { MODULE_ID } from "../engrenages.mjs";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -11,7 +12,7 @@ export class EngrenagesActorSheet extends ActorSheet {
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: ['engrenages', 'sheet', 'actor'],
+      classes: [MODULE_ID, 'sheet', 'actor'],
       width: 600,
       height: 600,
       tabs: [
@@ -45,6 +46,8 @@ export class EngrenagesActorSheet extends ActorSheet {
     // Add the actor's data to context.data for easier access, as well as flags.
     context.system = actorData.system;
     context.flags = actorData.flags;
+
+    console.log('Engrenages | ActorSheet flags', actorData.flags);
 
     // Prepare character data and items.
     if (actorData.type == 'character') {

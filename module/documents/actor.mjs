@@ -1,3 +1,4 @@
+import { MODULE_ID } from "../engrenages.mjs";
 /**
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
@@ -10,6 +11,14 @@ export class EngrenagesActor extends Actor {
     // prepareBaseData(), prepareEmbeddedDocuments() (including active effects),
     // prepareDerivedData().
     super.prepareData();
+    
+    this.setFlag(MODULE_ID, "game-module",  game.settings.get(MODULE_ID, "game_module") || "default");
+    this.setFlag(MODULE_ID, "menace-die", game.settings.get(MODULE_ID, "menace_die"));
+    this.setFlag(MODULE_ID, "occult", game.settings.get(MODULE_ID, "occult"));
+    this.setFlag(MODULE_ID, "morale-management", game.settings.get(MODULE_ID, "morale_management"));
+    this.setFlag(MODULE_ID, "specialties", game.settings.get(MODULE_ID, "specialties"));
+    this.setFlag(MODULE_ID, "confrontation", game.settings.get(MODULE_ID, "confrontation"));
+
   }
 
   /** @override */
@@ -27,10 +36,13 @@ export class EngrenagesActor extends Actor {
    * available both inside and outside of character sheets (such as if an actor
    * is queried and has a roll executed directly from it).
    */
+
   prepareDerivedData() {
     const actorData = this;
     const systemData = actorData.system;
-    const flags = actorData.flags.engrenages || {};
+
+
+    const flags = actorData.flags[MODULE_ID] || {};
 
     // Make separate methods for each Actor type (character, npc, etc.) to keep
     // things organized.
