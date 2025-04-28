@@ -1,0 +1,18 @@
+# Règles Windsurf pour le projet Engrenages
+
+# Exécuter les tests automatiquement après chaque modification de données
+[hooks]
+on_data_change = "node tests/run-all-tests.js"
+
+# Configuration du projet
+[project]
+name = "Engrenages"
+type = "foundry-system"
+language = "french"
+
+# Chemins importants
+[paths]
+source = "./module"
+templates = "./templates"
+tests = "./tests"
+documentation = "./documentation"

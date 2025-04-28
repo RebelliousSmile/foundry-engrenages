@@ -1,0 +1,46 @@
+{{!-- Dialogue de résultat de jet de dés --}}
+<div class="roll-result">
+    <h2 class="result-title">{{title}}</h2>
+    
+    <div class="result-details">
+        <div class="result-formula">
+            <span class="formula-label">{{localize "ENGRENAGES.Roll.Formula"}}:</span>
+            <span class="formula-value">{{formula}}</span>
+        </div>
+        
+        <div class="result-total">
+            <span class="total-label">{{localize "ENGRENAGES.Roll.Total"}}:</span>
+            <span class="total-value">{{total}}</span>
+        </div>
+        
+        {{#if flavor}}
+        <div class="result-flavor">
+            <span class="flavor-text">{{flavor}}</span>
+        </div>
+        {{/if}}
+    </div>
+    
+    <div class="result-interpretation">
+        {{#if success}}
+        <div class="result-success">
+            <i class="fas fa-check-circle"></i> {{localize "ENGRENAGES.Roll.Success"}}
+        </div>
+        {{else}}
+        <div class="result-failure">
+            <i class="fas fa-times-circle"></i> {{localize "ENGRENAGES.Roll.Failure"}}
+        </div>
+        {{/if}}
+        
+        {{#if criticalSuccess}}
+        <div class="result-critical-success">
+            <i class="fas fa-star"></i> {{localize "ENGRENAGES.Roll.CriticalSuccess"}}
+        </div>
+        {{/if}}
+        
+        {{#if criticalFailure}}
+        <div class="result-critical-failure">
+            <i class="fas fa-skull"></i> {{localize "ENGRENAGES.Roll.CriticalFailure"}}
+        </div>
+        {{/if}}
+    </div>
+</div>

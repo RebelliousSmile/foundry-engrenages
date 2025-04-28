@@ -1,0 +1,52 @@
+{{!-- Dialogue de configuration des paramètres --}}
+<form class="settings-config">
+    <h2 class="config-title">{{localize "ENGRENAGES.Settings.Title"}}</h2>
+    
+    <div class="settings-list">
+        {{#each settings as |setting key|}}
+        <div class="setting-item" data-setting-key="{{key}}">
+            <label class="setting-label">{{setting.name}}</label>
+            
+            {{#if (eq setting.type "checkbox")}}
+            <input type="checkbox" name="{{key}}" {{checked setting.value}}/>
+            {{/if}}
+            
+            {{#if (eq setting.type "select")}}
+            <select name="{{key}}">
+                {{#select setting.value}}
+                {{#each setting.choices as |choice choiceKey|}}
+                <option value="{{choiceKey}}">{{choice}}</option>
+                {{/each}}
+                {{/select}}
+            </select>
+            {{/if}}
+            
+            {{#if (eq setting.type "range")}}
+            <div class="range-container">
+                <input type="range" name="{{key}}" value="{{setting.value}}" min="{{setting.min}}" max="{{setting.max}}" step="{{setting.step}}"/>
+                <span class="range-value">{{setting.value}}</span>
+            </div>
+            {{/if}}
+            
+            {{#if (eq setting.type "text")}}
+            <input type="text" name="{{key}}" value="{{setting.value}}"/>
+            {{/if}}
+            
+            {{#if (eq setting.type "number")}}
+            <input type="number" name="{{key}}" value="{{setting.value}}" min="{{setting.min}}" max="{{setting.max}}" step="{{setting.step}}"/>
+            {{/if}}
+            
+            <p class="setting-hint">{{setting.hint}}</p>
+        </div>
+        {{/each}}
+    </div>
+    
+    <div class="form-buttons">
+        <button type="submit" class="save-settings">
+            <i class="fas fa-save"></i> {{localize "ENGRENAGES.Settings.Save"}}
+        </button>
+        <button type="button" class="reset-settings">
+            <i class="fas fa-undo"></i> {{localize "ENGRENAGES.Settings.Reset"}}
+        </button>
+    </div>
+</form>

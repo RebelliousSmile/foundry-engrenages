@@ -41,8 +41,29 @@ export function localize(key) {
  * Enregistrement des modèles de données
  */
 function registerDataModels() {
-    CONFIG.Actor.dataModels = ACTOR_MODELS;
-    CONFIG.Item.dataModels = ITEM_MODELS;
+    try {
+        // Création d'un objet simple pour éviter les erreurs de localisation
+        const actorModels = {};
+        for (const [key, model] of Object.entries(ACTOR_MODELS.Actor)) {
+            actorModels[key] = model;
+        }
+        
+        // Enregistrement des modèles d'acteur
+        CONFIG.Actor.dataModels = actorModels;
+        
+        // Création d'un objet simple pour éviter les erreurs de localisation
+        const itemModels = {};
+        itemModels.equipment = ITEM_MODELS.equipment;
+        itemModels.skill = ITEM_MODELS.skill;
+        itemModels.trait = ITEM_MODELS.trait;
+        
+        // Enregistrement des modèles d'objet
+        CONFIG.Item.dataModels = itemModels;
+        
+        console.log("Engrenages: Modèles de données enregistrés avec succès");
+    } catch (error) {
+        console.error("Engrenages: Erreur lors de l'enregistrement des modèles de données", error);
+    }
 }
 
 /* -------------------------------------------- */

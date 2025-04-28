@@ -1,4 +1,17 @@
 {
+  "TYPES": {
+    "Actor": {
+      "character": "Personnage",
+      "npc": "PNJ",
+      "vehicle": "Véhicule",
+      "organization": "Organisation"
+    },
+    "Item": {
+      "equipment": "Équipement",
+      "skill": "Compétence",
+      "trait": "Trait"
+    }
+  },
   "ENGRENAGES": {
     "Name": "Engrenages",
     "SheetCharacter": "Feuille de Personnage",
@@ -267,20 +280,6 @@
       "Lodge": "Membre de Loge ou renégat",
       "City": "Connu dans la cité",
       "Beyond": "Connu au-delà de la cité"
-    }
-  },
-
-  "TYPES": {
-    "Actor": {
-      "character": "Personnage",
-      "npc": "PNJ",
-      "vehicle": "Véhicule",
-      "organization": "Organisation"
-    },
-    "Item": {
-      "equipment": "Équipement",
-      "skill": "Compétence",
-      "trait": "Trait"
     }
   }
 }
