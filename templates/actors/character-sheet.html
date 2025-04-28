@@ -6,6 +6,13 @@
         </div>
     </header>
     
+    {{!-- Onglets de navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="competences">{{localize "ENGRENAGES.Tabs.Competences"}}</a>
+        <a class="item" data-tab="traits">{{localize "ENGRENAGES.Tabs.Traits"}}</a>
+        <a class="item" data-tab="equipement">{{localize "ENGRENAGES.Tabs.Equipement"}}</a>
+    </nav>
+    
     <section class="sheet-body">
         {{!-- Section Informations --}}
         <div class="section info-section">
@@ -29,6 +36,7 @@
         </div>
         
         {{!-- Section Compétences --}}
+        <div class="tab" data-group="primary" data-tab="competences">
         <div class="competences-container">
             {{!-- Compétences Physiques --}}
             <div class="competence-category">
@@ -449,8 +457,15 @@
                 </div>
             </div>
         </div>
+        </div>
+        
+        {{!-- Section Traits --}}
+        <div class="tab" data-group="primary" data-tab="traits">
+            {{> "systems/engrenages/templates/actors/parts/actor-traits.html"}}
+        </div>
         
         {{!-- Section Équipement --}}
+        <div class="tab" data-group="primary" data-tab="equipement">
         <div class="equipment-section">
             <h2 class="section-title">
                 <i class="fas fa-cog"></i> Équipement
@@ -493,6 +508,7 @@
                     <input type="text" name="system.equipment.slot9" value="{{system.equipment.slot9}}" placeholder="Équipement 9"/>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 </form>

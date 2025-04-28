@@ -168,32 +168,39 @@ const TraitModel = {
     traitType: {
         type: String,
         default: "personality",
-        choices: ["personality", "background", "goal", "flaw", "bond"]
+        choices: ["personality", "background", "physical", "social", "flaw", "bond"]
     },
     
-    // Effet mécanique du trait
+    // Valeur du trait (1, 2 ou 3 selon son importance)
+    value: {
+        type: Number,
+        default: 1,
+        min: 1,
+        max: 3
+    },
+    
+    // Effet mécanique du trait (description des bonus/malus potentiels)
     effect: {
         type: String,
         default: ""
     },
     
-    // Utilisations
-    uses: {
-        type: Object,
-        default: {},
-        value: {
-            type: Number,
-            default: 1
-        },
-        max: {
-            type: Number,
-            default: 1
-        },
-        per: {
-            type: String,
-            default: "session",
-            choices: ["encounter", "session", "story", "never"]
-        }
+    // Exemples de situations où le trait apporte un bonus
+    bonusExamples: {
+        type: String,
+        default: ""
+    },
+    
+    // Exemples de situations où le trait apporte un malus
+    malusExamples: {
+        type: String,
+        default: ""
+    },
+    
+    // Notes additionnelles
+    notes: {
+        type: String,
+        default: ""
     }
 };
 

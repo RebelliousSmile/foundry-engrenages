@@ -3,6 +3,7 @@
  * @extends {ActorSheet}
  */
 import { EngrenagesRoll } from "../../dice/roll.js";
+import { GestionnaireTraits } from "../../traits/traitManager.js";
 
 export class EngrenagesCharacterSheet extends ActorSheet {
     /** @override */
@@ -72,6 +73,13 @@ export class EngrenagesCharacterSheet extends ActorSheet {
         html.find('.add-specialisation').click(this._onAddSpecialisation.bind(this));
         html.find('.specialisation-delete').click(this._onDeleteSpecialisation.bind(this));
         html.find('.specialisation-name').on('blur', this._onSpecialisationNameChange.bind(this));
+        
+        // Gestion des traits
+        html.find('.ajouter-trait').click(this._onAddTrait.bind(this));
+        html.find('.editer-trait').click(this._onEditTrait.bind(this));
+        html.find('.supprimer-trait').click(this._onDeleteTrait.bind(this));
+        html.find('.appliquer-bonus').click(this._onApplyTraitBonus.bind(this));
+        html.find('.appliquer-malus').click(this._onApplyTraitMalus.bind(this));
     }
 
     /**
@@ -311,5 +319,127 @@ export class EngrenagesCharacterSheet extends ActorSheet {
         
         // Mise à jour de l'acteur
         await this.actor.update(updateData);
+    }
+
+    /**
+     * Gère l'ajout d'un nouveau trait
+     * @param {Event} evenement - L'événement de clic
+     * @private
+     */
+    async _onAddTrait(evenement) {
+        evenement.preventDefault();
+        
+        // Création d'un nouveau trait
+        const itemData = {
+            name: game.i18n.localize("ENGRENAGES.Trait.New"),
+            type: "trait",
+            system: {
+                description: "",
+                traitType: "personality",
+                value: 1,
+                effect: "",
+                bonusExamples: "",
+                malusExamples: "",
+                notes: ""
+            }
+        };
+        
+        // Ajout du trait à l'acteur
+        await this.actor.createEmbeddedDocuments("Item", [itemData]);
+    }
+    
+    /**
+     * Gère l'édition d'un trait existant
+     * @param {Event} evenement - L'événement de clic
+     * @private
+     */
+    async _onEditTrait(evenement) {
+        evenement.preventDefault();
+        
+        // Récupération de l'ID du trait
+        const elementTrait = evenement.currentTarget.closest(".element-trait");
+        const traitId = elementTrait.dataset.itemId;
+        
+        if (!traitId) return;
+        
+        // Récupération du trait
+        const trait = this.actor.items.get(traitId);
+        if (!trait) return;
+        
+        // Ouverture de la feuille du trait
+        trait.sheet.render(true);
+    }
+    
+    /**
+     * Gère la suppression d'un trait
+     * @param {Event} evenement - L'événement de clic
+     * @private
+     */
+    async _onDeleteTrait(evenement) {
+        evenement.preventDefault();
+        
+        // Récupération de l'ID du trait
+        const elementTrait = evenement.currentTarget.closest(".element-trait");
+        const traitId = elementTrait.dataset.itemId;
+        
+        if (!traitId) return;
+        
+        // Confirmation de la suppression
+        const confirmDelete = await Dialog.confirm({
+            title: game.i18n.localize("ENGRENAGES.Trait.Delete"),
+            content: `<p>${game.i18n.localize("ENGRENAGES.Trait.DeleteConfirm")}</p>`,
+            yes: () => true,
+            no: () => false,
+            defaultYes: false
+        });
+        
+        if (!confirmDelete) return;
+        
+        // Suppression du trait
+        await this.actor.deleteEmbeddedDocuments("Item", [traitId]);
+    }
+    
+    /**
+     * Gère l'application d'un bonus de trait
+     * @param {Event} evenement - L'événement de clic
+     * @private
+     */
+    async _onApplyTraitBonus(evenement) {
+        evenement.preventDefault();
+        
+        // Récupération de l'ID du trait
+        const elementTrait = evenement.currentTarget.closest(".element-trait");
+        const traitId = elementTrait.dataset.itemId;
+        
+        if (!traitId) return;
+        
+        // Récupération du trait
+        const trait = this.actor.items.get(traitId);
+        if (!trait) return;
+        
+        // Application du bonus
+        await GestionnaireTraits.appliquerTraitPourJet(this.actor, trait, true);
+    }
+    
+    /**
+     * Gère l'application d'un malus de trait
+     * @param {Event} evenement - L'événement de clic
+     * @private
+     */
+    async _onApplyTraitMalus(evenement) {
+        evenement.preventDefault();
+        
+        // Récupération de l'ID du trait
+        const elementTrait = evenement.currentTarget.closest(".element-trait");
+        const traitId = elementTrait.dataset.itemId;
+        
+        if (!traitId) return;
+        
+        // Récupération du trait
+        const trait = this.actor.items.get(traitId);
+        if (!trait) return;
+        
+        // Application du malus
+        await GestionnaireTraits.appliquerTraitPourJet(this.actor, trait, false);
     }
 }

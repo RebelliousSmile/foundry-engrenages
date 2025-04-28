@@ -36,6 +36,7 @@
 
 /* Importation des feuilles de style spécifiques */
 @import url("character-sheet.css");
+@import url("trait-sheet.css");
 
 /* ------------------------------------ */
 /* Styles généraux                      */

@@ -1,0 +1,76 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Nom du trait"/></h1>
+            <div class="trait-type">
+                <select name="system.traitType">
+                    {{#select system.traitType}}
+                    <option value="personality">{{localize "ENGRENAGES.Trait.Type.Personality"}}</option>
+                    <option value="background">{{localize "ENGRENAGES.Trait.Type.Background"}}</option>
+                    <option value="goal">{{localize "ENGRENAGES.Trait.Type.Goal"}}</option>
+                    <option value="flaw">{{localize "ENGRENAGES.Trait.Type.Flaw"}}</option>
+                    <option value="bond">{{localize "ENGRENAGES.Trait.Type.Bond"}}</option>
+                    {{/select}}
+                </select>
+            </div>
+        </div>
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="description">{{localize "ENGRENAGES.Description"}}</a>
+        <a class="item" data-tab="effects">{{localize "ENGRENAGES.Effects"}}</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        {{!-- Description Tab --}}
+        <div class="tab" data-group="primary" data-tab="description">
+            <div class="trait-description">
+                <div class="form-group">
+                    <label>{{localize "ENGRENAGES.Description"}}</label>
+                    <textarea name="system.description">{{system.description}}</textarea>
+                </div>
+            </div>
+        </div>
+
+        {{!-- Effects Tab --}}
+        <div class="tab" data-group="primary" data-tab="effects">
+            <div class="trait-effects">
+                <div class="form-group">
+                    <label>{{localize "ENGRENAGES.Trait.Value"}}</label>
+                    <div class="trait-value-selector">
+                        <select name="system.value">
+                            {{#select system.value}}
+                            <option value="1">1 - {{localize "ENGRENAGES.Trait.Value.Minor"}}</option>
+                            <option value="2">2 - {{localize "ENGRENAGES.Trait.Value.Moderate"}}</option>
+                            <option value="3">3 - {{localize "ENGRENAGES.Trait.Value.Major"}}</option>
+                            {{/select}}
+                        </select>
+                    </div>
+                    <p class="notes">{{localize "ENGRENAGES.Trait.ValueHint"}}</p>
+                </div>
+                <div class="form-group">
+                    <label>{{localize "ENGRENAGES.Trait.Effect"}}</label>
+                    <textarea name="system.effect">{{system.effect}}</textarea>
+                    <p class="notes">{{localize "ENGRENAGES.Trait.EffectHint"}}</p>
+                </div>
+                <div class="form-group">
+                    <label>{{localize "ENGRENAGES.Trait.BonusExamples"}}</label>
+                    <textarea name="system.bonusExamples">{{system.bonusExamples}}</textarea>
+                    <p class="notes">{{localize "ENGRENAGES.Trait.BonusExamplesHint"}}</p>
+                </div>
+                <div class="form-group">
+                    <label>{{localize "ENGRENAGES.Trait.MalusExamples"}}</label>
+                    <textarea name="system.malusExamples">{{system.malusExamples}}</textarea>
+                    <p class="notes">{{localize "ENGRENAGES.Trait.MalusExamplesHint"}}</p>
+                </div>
+                <div class="form-group">
+                    <label>{{localize "ENGRENAGES.Trait.Notes"}}</label>
+                    <textarea name="system.notes">{{system.notes}}</textarea>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>

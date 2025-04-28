@@ -22,6 +22,7 @@ import { preloadHandlebarsTemplates } from "./utils/templates.js";
 import { EngrenagesHelpers } from "./utils/helpers.js";
 import { EngrenagesHooks } from "./utils/hooks.js";
 import { EngrenagesRoll } from "./dice/roll.js";
+import { GestionnaireTraits } from "./traits/traitManager.js";
 
 /* -------------------------------------------- */
 /*  Initialisation de Foundry VTT               */
@@ -134,6 +135,9 @@ Hooks.once("init", async function() {
     
     // Initialisation des hooks
     EngrenagesHooks.init();
+    
+    // Initialisation du gestionnaire de traits
+    GestionnaireTraits.init();
     
     // Filtrage des types d'acteurs disponibles en fonction des options activées
     Hooks.on("renderDialog", (dialog, html, data) => {

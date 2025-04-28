@@ -1,0 +1,157 @@
+/* Styles pour les traits dans Engrenages */
+
+/* Feuille de trait */
+.engrenages.sheet.item.trait .trait-type {
+    margin-top: 5px;
+}
+
+.engrenages.sheet.item.trait .trait-type select {
+    width: 100%;
+    background: var(--engrenages-light);
+    border: 1px solid var(--engrenages-tertiary);
+    border-radius: var(--engrenages-border-radius);
+    padding: 3px 5px;
+}
+
+.engrenages.sheet.item.trait .trait-value-selector {
+    display: flex;
+    align-items: center;
+}
+
+.engrenages.sheet.item.trait .trait-value-selector select {
+    flex: 1;
+    background: var(--engrenages-light);
+    border: 1px solid var(--engrenages-tertiary);
+    border-radius: var(--engrenages-border-radius);
+    padding: 3px 5px;
+}
+
+.engrenages.sheet.item.trait .notes {
+    font-size: 0.9em;
+    font-style: italic;
+    color: var(--engrenages-secondary);
+    margin-top: 3px;
+}
+
+/* Liste des traits dans la feuille de personnage */
+.engrenages .traits-section {
+    margin-bottom: 15px;
+}
+
+.engrenages .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    border-bottom: 1px solid var(--engrenages-tertiary);
+}
+
+.engrenages .section-header h2 {
+    margin: 0;
+    font-size: 1.2em;
+    color: var(--engrenages-primary);
+}
+
+.engrenages .section-header .controls {
+    display: flex;
+    gap: 5px;
+}
+
+.engrenages .section-header .controls a {
+    color: var(--engrenages-secondary);
+    cursor: pointer;
+}
+
+.engrenages .section-header .controls a:hover {
+    color: var(--engrenages-primary);
+}
+
+.engrenages .liste-traits {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.engrenages .element-trait {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--engrenages-tertiary);
+    border-radius: var(--engrenages-border-radius);
+    padding: 8px;
+}
+
+.engrenages .trait-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.engrenages .nom-trait {
+    font-weight: bold;
+    flex: 1;
+}
+
+.engrenages .valeur-trait {
+    display: flex;
+    gap: 2px;
+    color: var(--engrenages-tertiary);
+}
+
+.engrenages .controles-trait {
+    display: flex;
+    gap: 5px;
+    margin-left: 5px;
+}
+
+.engrenages .controles-trait a {
+    color: var(--engrenages-secondary);
+    cursor: pointer;
+}
+
+.engrenages .controles-trait a:hover {
+    color: var(--engrenages-primary);
+}
+
+.engrenages .description-trait {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.engrenages .effet-trait {
+    font-size: 0.9em;
+    font-style: italic;
+    color: var(--engrenages-secondary);
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+    padding-top: 5px;
+    margin-bottom: 5px;
+}
+
+.engrenages .exemples-trait {
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.engrenages .bonus-exemples {
+    color: var(--engrenages-success);
+    margin-bottom: 3px;
+}
+
+.engrenages .bonus-exemples i {
+    color: var(--engrenages-success);
+}
+
+.engrenages .malus-exemples {
+    color: var(--engrenages-failure);
+}
+
+.engrenages .malus-exemples i {
+    color: var(--engrenages-failure);
+}
+
+.engrenages .appliquer-bonus {
+    color: var(--engrenages-success) !important;
+}
+
+.engrenages .appliquer-malus {
+    color: var(--engrenages-failure) !important;
+}

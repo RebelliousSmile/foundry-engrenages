@@ -1,0 +1,55 @@
+<div class="traits-section">
+    <div class="section-header">
+        <h2>{{localize "ENGRENAGES.Traits"}}</h2>
+        {{#if owner}}
+        <div class="controls">
+            <a class="ajouter-trait" title="{{localize "ENGRENAGES.Trait.Add"}}"><i class="fas fa-plus"></i></a>
+        </div>
+        {{/if}}
+    </div>
+
+    <div class="liste-traits">
+        {{#each actor.items as |item id|}}
+            {{#if (eq item.type "trait")}}
+            <div class="element-trait" data-item-id="{{item._id}}">
+                <div class="trait-header">
+                    <div class="nom-trait">{{item.name}}</div>
+                    <div class="valeur-trait">
+                        {{#for 1 item.system.value}}
+                            <i class="fas fa-star"></i>
+                        {{/for}}
+                    </div>
+                    {{#if ../owner}}
+                    <div class="controles-trait">
+                        <a class="editer-trait" title="{{localize "ENGRENAGES.Edit"}}"><i class="fas fa-edit"></i></a>
+                        <a class="appliquer-bonus" title="{{localize "ENGRENAGES.Trait.ApplyBonus"}}"><i class="fas fa-plus-circle"></i></a>
+                        <a class="appliquer-malus" title="{{localize "ENGRENAGES.Trait.ApplyMalus"}}"><i class="fas fa-minus-circle"></i></a>
+                        <a class="supprimer-trait" title="{{localize "ENGRENAGES.Delete"}}"><i class="fas fa-trash"></i></a>
+                    </div>
+                    {{/if}}
+                </div>
+                <div class="description-trait">
+                    {{{item.system.description}}}
+                </div>
+                {{#if item.system.effect}}
+                <div class="effet-trait">
+                    <strong>{{localize "ENGRENAGES.Trait.Effect"}}:</strong> {{{item.system.effect}}}
+                </div>
+                {{/if}}
+                <div class="exemples-trait">
+                    {{#if item.system.bonusExamples}}
+                    <div class="bonus-exemples">
+                        <strong><i class="fas fa-plus-circle"></i> {{localize "ENGRENAGES.Trait.BonusExamples"}}:</strong> {{{item.system.bonusExamples}}}
+                    </div>
+                    {{/if}}
+                    {{#if item.system.malusExamples}}
+                    <div class="malus-exemples">
+                        <strong><i class="fas fa-minus-circle"></i> {{localize "ENGRENAGES.Trait.MalusExamples"}}:</strong> {{{item.system.malusExamples}}}
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+            {{/if}}
+        {{/each}}
+    </div>
+</div>
