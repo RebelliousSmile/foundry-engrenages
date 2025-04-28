@@ -1,0 +1,103 @@
+{{!-- Feuille de véhicule Engrenages --}}
+<form class="{{cssClass}} engrenages" autocomplete="off">
+    <header class="sheet-header">
+        <div class="header-title">
+            <h1 class="title">Engrenages - Véhicule</h1>
+        </div>
+    </header>
+    
+    <section class="sheet-body">
+        {{!-- Section Informations --}}
+        <div class="section info-section">
+            <div class="info-row">
+                <div class="info-field">
+                    <label class="info-label">
+                        <i class="fas fa-car"></i> Nom
+                    </label>
+                    <input type="text" name="system.details.nom" value="{{system.details.nom}}" placeholder="Nom du véhicule"/>
+                </div>
+            </div>
+            
+            <div class="info-row">
+                <div class="info-field">
+                    <label class="info-label">
+                        <i class="fas fa-tag"></i> Type
+                    </label>
+                    <input type="text" name="system.details.type" value="{{system.details.type}}" placeholder="Type de véhicule"/>
+                </div>
+            </div>
+            
+            <div class="info-row">
+                <div class="info-field">
+                    <label class="info-label">
+                        <i class="fas fa-align-left"></i> Description
+                    </label>
+                    <textarea name="system.details.description">{{system.details.description}}</textarea>
+                </div>
+            </div>
+        </div>
+        
+        {{!-- Section Caractéristiques --}}
+        <div class="stats-section">
+            <h2 class="section-title">
+                <i class="fas fa-chart-bar"></i> Caractéristiques
+            </h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <label class="stat-label">Vitesse</label>
+                    <div class="stat-value">
+                        <input type="number" name="system.stats.vitesse" value="{{system.stats.vitesse}}" min="0" max="10" data-dtype="Number"/>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <label class="stat-label">Maniabilité</label>
+                    <div class="stat-value">
+                        <input type="number" name="system.stats.maniabilite" value="{{system.stats.maniabilite}}" min="0" max="10" data-dtype="Number"/>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <label class="stat-label">Robustesse</label>
+                    <div class="stat-value">
+                        <input type="number" name="system.stats.robustesse" value="{{system.stats.robustesse}}" min="0" max="10" data-dtype="Number"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        {{!-- Section État --}}
+        <div class="etat-section">
+            <h2 class="section-title">
+                <i class="fas fa-heartbeat"></i> État
+            </h2>
+            <div class="gauge-container">
+                <div class="gauge-label">État</div>
+                <div class="gauge-box">
+                    <input type="number" name="system.etat.value" value="{{system.etat.value}}" min="0" max="{{system.etat.max}}"/>
+                    <span class="gauge-separator">/</span>
+                    <input type="number" name="system.etat.max" value="{{system.etat.max}}" min="0"/>
+                </div>
+            </div>
+        </div>
+        
+        {{!-- Section Équipements --}}
+        <div class="equipements-section">
+            <h2 class="section-title">
+                <i class="fas fa-tools"></i> Équipements
+            </h2>
+            <div class="equipements-list">
+                {{#each system.equipements as |equipement id|}}
+                <div class="equipement-item" data-equipement-id="{{id}}">
+                    <div class="equipement-name">{{equipement.name}}</div>
+                    <div class="equipement-description">{{equipement.description}}</div>
+                    <a class="equipement-delete"><i class="fas fa-trash"></i></a>
+                </div>
+                {{/each}}
+                <div class="equipement-controls">
+                    <button type="button" class="add-equipement">
+                        <i class="fas fa-plus"></i> Ajouter un équipement
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>

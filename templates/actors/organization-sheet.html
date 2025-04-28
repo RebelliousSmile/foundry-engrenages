@@ -1,0 +1,125 @@
+{{!-- Feuille d'organisation Engrenages --}}
+<form class="{{cssClass}} engrenages" autocomplete="off">
+    <header class="sheet-header">
+        <div class="header-title">
+            <h1 class="title">Engrenages - Organisation</h1>
+        </div>
+    </header>
+    
+    <section class="sheet-body">
+        {{!-- Section Informations --}}
+        <div class="section info-section">
+            <div class="info-row">
+                <div class="info-field">
+                    <label class="info-label">
+                        <i class="fas fa-building"></i> Nom
+                    </label>
+                    <input type="text" name="system.details.nom" value="{{system.details.nom}}" placeholder="Nom de l'organisation"/>
+                </div>
+            </div>
+            
+            <div class="info-row">
+                <div class="info-field">
+                    <label class="info-label">
+                        <i class="fas fa-tag"></i> Type
+                    </label>
+                    <input type="text" name="system.details.type" value="{{system.details.type}}" placeholder="Type d'organisation"/>
+                </div>
+            </div>
+            
+            <div class="info-row">
+                <div class="info-field">
+                    <label class="info-label">
+                        <i class="fas fa-align-left"></i> Description
+                    </label>
+                    <textarea name="system.details.description">{{system.details.description}}</textarea>
+                </div>
+            </div>
+        </div>
+        
+        {{!-- Section Influence --}}
+        <div class="influence-section">
+            <h2 class="section-title">
+                <i class="fas fa-globe"></i> Influence
+            </h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <label class="stat-label">Politique</label>
+                    <div class="stat-value">
+                        <input type="number" name="system.influence.politique" value="{{system.influence.politique}}" min="0" max="10" data-dtype="Number"/>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <label class="stat-label">Économique</label>
+                    <div class="stat-value">
+                        <input type="number" name="system.influence.economique" value="{{system.influence.economique}}" min="0" max="10" data-dtype="Number"/>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <label class="stat-label">Militaire</label>
+                    <div class="stat-value">
+                        <input type="number" name="system.influence.militaire" value="{{system.influence.militaire}}" min="0" max="10" data-dtype="Number"/>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <label class="stat-label">Sociale</label>
+                    <div class="stat-value">
+                        <input type="number" name="system.influence.sociale" value="{{system.influence.sociale}}" min="0" max="10" data-dtype="Number"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        {{!-- Section Ressources --}}
+        <div class="ressources-section">
+            <h2 class="section-title">
+                <i class="fas fa-coins"></i> Ressources
+            </h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <label class="stat-label">Finances</label>
+                    <div class="stat-value">
+                        <input type="number" name="system.ressources.finances" value="{{system.ressources.finances}}" min="0" max="10" data-dtype="Number"/>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <label class="stat-label">Personnel</label>
+                    <div class="stat-value">
+                        <input type="number" name="system.ressources.personnel" value="{{system.ressources.personnel}}" min="0" max="10" data-dtype="Number"/>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <label class="stat-label">Équipement</label>
+                    <div class="stat-value">
+                        <input type="number" name="system.ressources.equipement" value="{{system.ressources.equipement}}" min="0" max="10" data-dtype="Number"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        {{!-- Section Membres --}}
+        <div class="membres-section">
+            <h2 class="section-title">
+                <i class="fas fa-users"></i> Membres importants
+            </h2>
+            <div class="membres-list">
+                {{#each system.membres as |membre i|}}
+                <div class="membre-item" data-index="{{i}}">
+                    <div class="membre-name">
+                        <input type="text" name="system.membres.{{i}}.name" value="{{membre.name}}" placeholder="Nom du membre"/>
+                    </div>
+                    <div class="membre-role">
+                        <input type="text" name="system.membres.{{i}}.role" value="{{membre.role}}" placeholder="Rôle"/>
+                    </div>
+                    <a class="membre-delete"><i class="fas fa-trash"></i></a>
+                </div>
+                {{/each}}
+                <div class="membre-controls">
+                    <button type="button" class="add-membre">
+                        <i class="fas fa-plus"></i> Ajouter un membre
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>

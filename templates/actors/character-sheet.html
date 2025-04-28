@@ -1,0 +1,369 @@
+{{!-- Feuille de personnage Engrenages --}}
+<form class="{{cssClass}} engrenages" autocomplete="off">
+    <header class="sheet-header">
+        <div class="header-title">
+            <h1 class="title">Engrenages</h1>
+        </div>
+    </header>
+    
+    <section class="sheet-body">
+        {{!-- Section Informations --}}
+        <div class="section info-section">
+            <div class="info-row">
+                <div class="info-field">
+                    <label class="info-label">
+                        <i class="fas fa-cog"></i> Nom
+                    </label>
+                    <input type="text" name="system.details.nom" value="{{system.details.nom}}" placeholder="Nom du personnage"/>
+                </div>
+            </div>
+            
+            <div class="info-row">
+                <div class="info-field">
+                    <label class="info-label">
+                        <i class="fas fa-cog"></i> Traits
+                    </label>
+                    <input type="text" name="system.details.traits" value="{{system.details.traits}}" placeholder="Traits du personnage"/>
+                </div>
+            </div>
+        </div>
+        
+        {{!-- Section Compétences --}}
+        <div class="competences-container">
+            {{!-- Compétences Physiques --}}
+            <div class="competence-category">
+                <h2 class="category-title">
+                    <i class="fas fa-cog"></i> Physique
+                </h2>
+                <div class="competence-list">
+                    {{!-- Athlétisme --}}
+                    <div class="competence-item">
+                        <div class="competence-name">Athlétisme</div>
+                        <div class="competence-trained">
+                            <input type="checkbox" name="system.physique.athletisme.trained" {{checked system.physique.athletisme.trained}}/>
+                        </div>
+                        <div class="competence-value">
+                            <input type="text" name="system.physique.athletisme.value" value="{{system.physique.athletisme.value}}" data-dtype="Number"/>
+                        </div>
+                    </div>
+                    
+                    {{!-- Conduite --}}
+                    <div class="competence-item">
+                        <div class="competence-name">Conduite</div>
+                        <div class="competence-trained">
+                            <input type="checkbox" name="system.physique.conduite.trained" {{checked system.physique.conduite.trained}}/>
+                        </div>
+                        <div class="competence-value">
+                            <input type="text" name="system.physique.conduite.value" value="{{system.physique.conduite.value}}" data-dtype="Number"/>
+                        </div>
+                    </div>
+                    
+                    {{!-- Escrime --}}
+                    <div class="competence-item">
+                        <div class="competence-name">Escrime</div>
+                        <div class="competence-trained">
+                            <input type="checkbox" name="system.physique.escrime.trained" {{checked system.physique.escrime.trained}}/>
+                        </div>
+                        <div class="competence-value">
+                            <input type="text" name="system.physique.escrime.value" value="{{system.physique.escrime.value}}" data-dtype="Number"/>
+                        </div>
+                    </div>
+                    
+                    {{!-- Pugilat --}}
+                    <div class="competence-item">
+                        <div class="competence-name">Pugilat</div>
+                        <div class="competence-trained">
+                            <input type="checkbox" name="system.physique.pugilat.trained" {{checked system.physique.pugilat.trained}}/>
+                        </div>
+                        <div class="competence-value">
+                            <input type="text" name="system.physique.pugilat.value" value="{{system.physique.pugilat.value}}" data-dtype="Number"/>
+                        </div>
+                    </div>
+                    
+                    {{!-- Tir --}}
+                    <div class="competence-item">
+                        <div class="competence-name">Tir</div>
+                        <div class="competence-trained">
+                            <input type="checkbox" name="system.physique.tir.trained" {{checked system.physique.tir.trained}}/>
+                        </div>
+                        <div class="competence-value">
+                            <input type="text" name="system.physique.tir.value" value="{{system.physique.tir.value}}" data-dtype="Number"/>
+                        </div>
+                    </div>
+                </div>
+                
+                {{!-- Jauge Physique --}}
+                <div class="gauge-container">
+                    <div class="gauge-label">Jauge</div>
+                    <div class="gauge-box">
+                        <input type="number" name="system.gauges.physique.value" value="{{system.gauges.physique.value}}" min="0" max="{{system.gauges.physique.max}}"/>
+                        <span class="gauge-separator">/</span>
+                        <input type="number" name="system.gauges.physique.max" value="{{system.gauges.physique.max}}" min="0"/>
+                    </div>
+                </div>
+                
+                {{!-- Spécialisations Physiques --}}
+                <div class="specialisations-container">
+                    <h3 class="specialisations-title">{{localize "ENGRENAGES.Specialisations.Title"}}</h3>
+                    <div class="specialisations-list">
+                        {{#each system.specialisations as |specialisation id|}}
+                            {{#if (eq specialisation.category "physique")}}
+                            <div class="specialisation-item" data-specialisation-id="{{id}}">
+                                <div class="specialisation-name">{{specialisation.name}}</div>
+                                <div class="specialisation-value">
+                                    <input type="number" name="system.specialisations.{{id}}.value" value="{{specialisation.value}}" min="0" max="10" data-dtype="Number"/>
+                                </div>
+                                <a class="specialisation-delete"><i class="fas fa-trash"></i></a>
+                            </div>
+                            {{/if}}
+                        {{/each}}
+                        <div class="specialisation-controls">
+                            <button type="button" class="add-specialisation" data-category="physique">
+                                <i class="fas fa-plus"></i> {{localize "ENGRENAGES.Specialisations.Add"}}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            {{!-- Compétences Mentales --}}
+            <div class="competence-category">
+                <h2 class="category-title">
+                    <i class="fas fa-cog"></i> Mental
+                </h2>
+                <div class="competence-list">
+                    {{!-- Citadin --}}
+                    <div class="competence-item">
+                        <div class="competence-name">Citadin</div>
+                        <div class="competence-trained">
+                            <input type="checkbox" name="system.mental.citadin.trained" {{checked system.mental.citadin.trained}}/>
+                        </div>
+                        <div class="competence-value">
+                            <input type="text" name="system.mental.citadin.value" value="{{system.mental.citadin.value}}" data-dtype="Number"/>
+                        </div>
+                    </div>
+                    
+                    {{!-- Milieu rural --}}
+                    <div class="competence-item">
+                        <div class="competence-name">Milieu rural</div>
+                        <div class="competence-trained">
+                            <input type="checkbox" name="system.mental.milieuRural.trained" {{checked system.mental.milieuRural.trained}}/>
+                        </div>
+                        <div class="competence-value">
+                            <input type="text" name="system.mental.milieuRural.value" value="{{system.mental.milieuRural.value}}" data-dtype="Number"/>
+                        </div>
+                    </div>
+                    
+                    {{!-- Sciences --}}
+                    <div class="competence-item">
+                        <div class="competence-name">Sciences</div>
+                        <div class="competence-trained">
+                            <input type="checkbox" name="system.mental.sciences.trained" {{checked system.mental.sciences.trained}}/>
+                        </div>
+                        <div class="competence-value">
+                            <input type="text" name="system.mental.sciences.value" value="{{system.mental.sciences.value}}" data-dtype="Number"/>
+                        </div>
+                    </div>
+                    
+                    {{!-- Traumatologie --}}
+                    <div class="competence-item">
+                        <div class="competence-name">Traumatologie</div>
+                        <div class="competence-trained">
+                            <input type="checkbox" name="system.mental.traumatologie.trained" {{checked system.mental.traumatologie.trained}}/>
+                        </div>
+                        <div class="competence-value">
+                            <input type="text" name="system.mental.traumatologie.value" value="{{system.mental.traumatologie.value}}" data-dtype="Number"/>
+                        </div>
+                    </div>
+                    
+                    {{!-- Compétence personnalisée --}}
+                    <div class="competence-item custom-competence">
+                        <div class="competence-name">
+                            <input type="text" name="system.mental.custom.name" value="{{system.mental.custom.name}}" placeholder="Autre compétence"/>
+                        </div>
+                        <div class="competence-trained">
+                            <input type="checkbox" name="system.mental.custom.trained" {{checked system.mental.custom.trained}}/>
+                        </div>
+                        <div class="competence-value">
+                            <input type="text" name="system.mental.custom.value" value="{{system.mental.custom.value}}" data-dtype="Number"/>
+                        </div>
+                    </div>
+                </div>
+                
+                {{!-- Jauge Mentale --}}
+                <div class="gauge-container">
+                    <div class="gauge-label">Jauge</div>
+                    <div class="gauge-box">
+                        <input type="number" name="system.gauges.mental.value" value="{{system.gauges.mental.value}}" min="0" max="{{system.gauges.mental.max}}"/>
+                        <span class="gauge-separator">/</span>
+                        <input type="number" name="system.gauges.mental.max" value="{{system.gauges.mental.max}}" min="0"/>
+                    </div>
+                </div>
+                
+                {{!-- Spécialisations Mentales --}}
+                <div class="specialisations-container">
+                    <h3 class="specialisations-title">{{localize "ENGRENAGES.Specialisations.Title"}}</h3>
+                    <div class="specialisations-list">
+                        {{#each system.specialisations as |specialisation id|}}
+                            {{#if (eq specialisation.category "mental")}}
+                            <div class="specialisation-item" data-specialisation-id="{{id}}">
+                                <div class="specialisation-name">{{specialisation.name}}</div>
+                                <div class="specialisation-value">
+                                    <input type="number" name="system.specialisations.{{id}}.value" value="{{specialisation.value}}" min="0" max="10" data-dtype="Number"/>
+                                </div>
+                                <a class="specialisation-delete"><i class="fas fa-trash"></i></a>
+                            </div>
+                            {{/if}}
+                        {{/each}}
+                        <div class="specialisation-controls">
+                            <button type="button" class="add-specialisation" data-category="mental">
+                                <i class="fas fa-plus"></i> {{localize "ENGRENAGES.Specialisations.Add"}}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            {{!-- Compétences Sociales --}}
+            <div class="competence-category">
+                <h2 class="category-title">
+                    <i class="fas fa-cog"></i> Social
+                </h2>
+                <div class="competence-list">
+                    {{!-- Argutie --}}
+                    <div class="competence-item">
+                        <div class="competence-name">Argutie</div>
+                        <div class="competence-trained">
+                            <input type="checkbox" name="system.social.argutie.trained" {{checked system.social.argutie.trained}}/>
+                        </div>
+                        <div class="competence-value">
+                            <input type="text" name="system.social.argutie.value" value="{{system.social.argutie.value}}" data-dtype="Number"/>
+                        </div>
+                    </div>
+                    
+                    {{!-- Créativité --}}
+                    <div class="competence-item">
+                        <div class="competence-name">Créativité</div>
+                        <div class="competence-trained">
+                            <input type="checkbox" name="system.social.creativite.trained" {{checked system.social.creativite.trained}}/>
+                        </div>
+                        <div class="competence-value">
+                            <input type="text" name="system.social.creativite.value" value="{{system.social.creativite.value}}" data-dtype="Number"/>
+                        </div>
+                    </div>
+                    
+                    {{!-- Faconde --}}
+                    <div class="competence-item">
+                        <div class="competence-name">Faconde</div>
+                        <div class="competence-trained">
+                            <input type="checkbox" name="system.social.faconde.trained" {{checked system.social.faconde.trained}}/>
+                        </div>
+                        <div class="competence-value">
+                            <input type="text" name="system.social.faconde.value" value="{{system.social.faconde.value}}" data-dtype="Number"/>
+                        </div>
+                    </div>
+                    
+                    {{!-- Maraude --}}
+                    <div class="competence-item">
+                        <div class="competence-name">Maraude</div>
+                        <div class="competence-trained">
+                            <input type="checkbox" name="system.social.maraude.trained" {{checked system.social.maraude.trained}}/>
+                        </div>
+                        <div class="competence-value">
+                            <input type="text" name="system.social.maraude.value" value="{{system.social.maraude.value}}" data-dtype="Number"/>
+                        </div>
+                    </div>
+                    
+                    {{!-- Représentation --}}
+                    <div class="competence-item">
+                        <div class="competence-name">Représentation</div>
+                        <div class="competence-trained">
+                            <input type="checkbox" name="system.social.representation.trained" {{checked system.social.representation.trained}}/>
+                        </div>
+                        <div class="competence-value">
+                            <input type="text" name="system.social.representation.value" value="{{system.social.representation.value}}" data-dtype="Number"/>
+                        </div>
+                    </div>
+                </div>
+                
+                {{!-- Jauge Sociale --}}
+                <div class="gauge-container">
+                    <div class="gauge-label">Jauge</div>
+                    <div class="gauge-box">
+                        <input type="number" name="system.gauges.social.value" value="{{system.gauges.social.value}}" min="0" max="{{system.gauges.social.max}}"/>
+                        <span class="gauge-separator">/</span>
+                        <input type="number" name="system.gauges.social.max" value="{{system.gauges.social.max}}" min="0"/>
+                    </div>
+                </div>
+                
+                {{!-- Spécialisations Sociales --}}
+                <div class="specialisations-container">
+                    <h3 class="specialisations-title">{{localize "ENGRENAGES.Specialisations.Title"}}</h3>
+                    <div class="specialisations-list">
+                        {{#each system.specialisations as |specialisation id|}}
+                            {{#if (eq specialisation.category "social")}}
+                            <div class="specialisation-item" data-specialisation-id="{{id}}">
+                                <div class="specialisation-name">{{specialisation.name}}</div>
+                                <div class="specialisation-value">
+                                    <input type="number" name="system.specialisations.{{id}}.value" value="{{specialisation.value}}" min="0" max="10" data-dtype="Number"/>
+                                </div>
+                                <a class="specialisation-delete"><i class="fas fa-trash"></i></a>
+                            </div>
+                            {{/if}}
+                        {{/each}}
+                        <div class="specialisation-controls">
+                            <button type="button" class="add-specialisation" data-category="social">
+                                <i class="fas fa-plus"></i> {{localize "ENGRENAGES.Specialisations.Add"}}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        {{!-- Section Équipement --}}
+        <div class="equipment-section">
+            <h2 class="section-title">
+                <i class="fas fa-cog"></i> Équipement
+            </h2>
+            <div class="equipment-grid">
+                <div class="equipment-item">
+                    <label class="equipment-number">1</label>
+                    <input type="text" name="system.equipment.slot1" value="{{system.equipment.slot1}}" placeholder="Équipement 1"/>
+                </div>
+                <div class="equipment-item">
+                    <label class="equipment-number">2</label>
+                    <input type="text" name="system.equipment.slot2" value="{{system.equipment.slot2}}" placeholder="Équipement 2"/>
+                </div>
+                <div class="equipment-item">
+                    <label class="equipment-number">3</label>
+                    <input type="text" name="system.equipment.slot3" value="{{system.equipment.slot3}}" placeholder="Équipement 3"/>
+                </div>
+                <div class="equipment-item">
+                    <label class="equipment-number">4</label>
+                    <input type="text" name="system.equipment.slot4" value="{{system.equipment.slot4}}" placeholder="Équipement 4"/>
+                </div>
+                <div class="equipment-item">
+                    <label class="equipment-number">5</label>
+                    <input type="text" name="system.equipment.slot5" value="{{system.equipment.slot5}}" placeholder="Équipement 5"/>
+                </div>
+                <div class="equipment-item">
+                    <label class="equipment-number">6</label>
+                    <input type="text" name="system.equipment.slot6" value="{{system.equipment.slot6}}" placeholder="Équipement 6"/>
+                </div>
+                <div class="equipment-item">
+                    <label class="equipment-number">7</label>
+                    <input type="text" name="system.equipment.slot7" value="{{system.equipment.slot7}}" placeholder="Équipement 7"/>
+                </div>
+                <div class="equipment-item">
+                    <label class="equipment-number">8</label>
+                    <input type="text" name="system.equipment.slot8" value="{{system.equipment.slot8}}" placeholder="Équipement 8"/>
+                </div>
+                <div class="equipment-item">
+                    <label class="equipment-number">9</label>
+                    <input type="text" name="system.equipment.slot9" value="{{system.equipment.slot9}}" placeholder="Équipement 9"/>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>

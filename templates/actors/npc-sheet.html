@@ -1,0 +1,144 @@
+{{!-- Feuille de PNJ Engrenages --}}
+<form class="{{cssClass}} engrenages" autocomplete="off">
+    <header class="sheet-header">
+        <div class="header-title">
+            <h1 class="title">Engrenages - PNJ</h1>
+        </div>
+    </header>
+    
+    <section class="sheet-body">
+        {{!-- Section Informations --}}
+        <div class="section info-section">
+            <div class="info-row">
+                <div class="info-field">
+                    <label class="info-label">
+                        <i class="fas fa-cog"></i> Nom
+                    </label>
+                    <input type="text" name="system.details.nom" value="{{system.details.nom}}" placeholder="Nom du PNJ"/>
+                </div>
+            </div>
+            
+            <div class="info-row">
+                <div class="info-field">
+                    <label class="info-label">
+                        <i class="fas fa-cog"></i> Type
+                    </label>
+                    <input type="text" name="system.details.type" value="{{system.details.type}}" placeholder="Type de PNJ"/>
+                </div>
+            </div>
+            
+            <div class="info-row">
+                <div class="info-field">
+                    <label class="info-label">
+                        <i class="fas fa-cog"></i> Description
+                    </label>
+                    <textarea name="system.details.description">{{system.details.description}}</textarea>
+                </div>
+            </div>
+        </div>
+        
+        {{!-- Section Compétences --}}
+        <div class="competences-container npc">
+            {{!-- Compétences Physiques --}}
+            <div class="competence-category">
+                <h2 class="category-title">
+                    <i class="fas fa-cog"></i> Physique
+                </h2>
+                <div class="competence-list">
+                    {{!-- Valeur générique pour physique --}}
+                    <div class="competence-item">
+                        <div class="competence-name">Valeur</div>
+                        <div class="competence-value">
+                            <input type="text" name="system.physique.value" value="{{system.physique.value}}" data-dtype="Number"/>
+                        </div>
+                    </div>
+                </div>
+                
+                {{!-- Jauge Physique --}}
+                <div class="gauge-container">
+                    <div class="gauge-label">Jauge</div>
+                    <div class="gauge-box">
+                        <input type="number" name="system.gauges.physique.value" value="{{system.gauges.physique.value}}" min="0" max="{{system.gauges.physique.max}}"/>
+                        <span class="gauge-separator">/</span>
+                        <input type="number" name="system.gauges.physique.max" value="{{system.gauges.physique.max}}" min="0"/>
+                    </div>
+                </div>
+            </div>
+            
+            {{!-- Compétences Mentales --}}
+            <div class="competence-category">
+                <h2 class="category-title">
+                    <i class="fas fa-cog"></i> Mental
+                </h2>
+                <div class="competence-list">
+                    {{!-- Valeur générique pour mental --}}
+                    <div class="competence-item">
+                        <div class="competence-name">Valeur</div>
+                        <div class="competence-value">
+                            <input type="text" name="system.mental.value" value="{{system.mental.value}}" data-dtype="Number"/>
+                        </div>
+                    </div>
+                </div>
+                
+                {{!-- Jauge Mentale --}}
+                <div class="gauge-container">
+                    <div class="gauge-label">Jauge</div>
+                    <div class="gauge-box">
+                        <input type="number" name="system.gauges.mental.value" value="{{system.gauges.mental.value}}" min="0" max="{{system.gauges.mental.max}}"/>
+                        <span class="gauge-separator">/</span>
+                        <input type="number" name="system.gauges.mental.max" value="{{system.gauges.mental.max}}" min="0"/>
+                    </div>
+                </div>
+            </div>
+            
+            {{!-- Compétences Sociales --}}
+            <div class="competence-category">
+                <h2 class="category-title">
+                    <i class="fas fa-cog"></i> Social
+                </h2>
+                <div class="competence-list">
+                    {{!-- Valeur générique pour social --}}
+                    <div class="competence-item">
+                        <div class="competence-name">Valeur</div>
+                        <div class="competence-value">
+                            <input type="text" name="system.social.value" value="{{system.social.value}}" data-dtype="Number"/>
+                        </div>
+                    </div>
+                </div>
+                
+                {{!-- Jauge Sociale --}}
+                <div class="gauge-container">
+                    <div class="gauge-label">Jauge</div>
+                    <div class="gauge-box">
+                        <input type="number" name="system.gauges.social.value" value="{{system.gauges.social.value}}" min="0" max="{{system.gauges.social.max}}"/>
+                        <span class="gauge-separator">/</span>
+                        <input type="number" name="system.gauges.social.max" value="{{system.gauges.social.max}}" min="0"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        {{!-- Section Capacités --}}
+        <div class="abilities-section">
+            <h2 class="section-title">
+                <i class="fas fa-cog"></i> Capacités
+            </h2>
+            <div class="abilities-list">
+                {{#each system.abilities}}
+                <div class="ability-item" data-ability-id="{{@key}}">
+                    <div class="ability-header">
+                        <input type="text" name="system.abilities.{{@key}}.name" value="{{this.name}}" placeholder="Nom de la capacité"/>
+                        <a class="ability-delete"><i class="fas fa-trash"></i></a>
+                    </div>
+                    <div class="ability-description">
+                        <textarea name="system.abilities.{{@key}}.description">{{this.description}}</textarea>
+                    </div>
+                </div>
+                {{/each}}
+                <div class="ability-controls">
+                    <button type="button" class="add-ability"><i class="fas fa-plus"></i> Ajouter une capacité</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>

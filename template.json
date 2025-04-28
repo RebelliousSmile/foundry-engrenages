@@ -1,169 +1,24 @@
 {
   "Actor": {
-    "types": ["character", "npc", "group"],
-    "templates": {
-      "base": {
-        "physical": {
-          "value": 10,
-          "min": 0,
-          "max": 10
-        },
-        "mental": {
-          "value": 10,
-          "min": 0,
-          "max": 10
-        },
-        "social": {
-          "value": 10,
-          "min": 0,
-          "max": 10
-        },
-        "power": {
-          "value": 10,
-          "min": 0,
-          "max": 10
-        },
-        "biography": "",
-        "origin":"",
-        "job":"",
-        "sexe":"homme",
-        "reroll": {
-          "achievement": {
-            "label": "COGS.Achievement",
-            "value": 7,
-            "min": 1,
-            "max": 16
-          },
-          "conservation": {
-            "label": "COGS.Conservation",
-            "value": 7,
-            "min": 1,
-            "max": 16
-          }
-        }
-      }
-    },
-    "character": {
-      "templates": ["base"],
-      "attributes": {
-        "level": {
-          "value": 1
-        }
-      },
-      "abilities": {
-        "str": {
-          "value": 10
-        },
-        "dex": {
-          "value": 10
-        },
-        "con": {
-          "value": 10
-        },
-        "int": {
-          "value": 10
-        },
-        "wis": {
-          "value": 10
-        },
-        "cha": {
-          "value": 10
-        }
-      }
-    },
-    "npc": {
-      "templates": ["base"],
-      "cr": 0,
-      "skillTypes": {
-        "physical": {
-          "label": "COGS.SkillTypes.physical.name",
-          "value": 0,
-          "min": 0,
-          "max": 10
-        },
-        "mental": {
-          "label": "COGS.SkillTypes.mental.name",
-          "value": 0,
-          "min": 0,
-          "max": 10
-        },
-        "social": {
-          "label": "COGS.SkillTypes.social.name",
-          "value": 0,
-          "min": 0,
-          "max": 10
-        }
-      }
-    },
-    "group": {
-      "templates": ["base"],
-      "cr": 0,
-      "skillTypes": {
-        "physical": {
-          "label": "COGS.SkillTypes.physical.name",
-          "value": 0,
-          "min": 0,
-          "max": 10
-        },
-        "mental": {
-          "label": "COGS.SkillTypes.mental.name",
-          "value": 0,
-          "min": 0,
-          "max": 10
-        },
-        "social": {
-          "label": "COGS.SkillTypes.social.name",
-          "value": 0,
-          "min": 0,
-          "max": 10
-        }
-      }
-    }
+    "htmlFields": [
+      "biography"
+    ],
+    "types": [
+      "character",
+      "npc",
+      "vehicle",
+      "organization"
+    ]
   },
   "Item": {
-    "types": ["item", "trait", "weapon", "impact", "scar", "specialization", "contact"],
-    "templates": {
-      "base": {
-        "description": ""
-      }
-    },
-    "item": {
-      "templates": ["base"],
-      "quantity": 1,
-      "weight": 0,
-      "formula": "d20 + @str.mod + ceil(@lvl / 2)"
-    },
-    "trait": {
-      "templates": ["base"],
-      "category": "custom",
-      "value": 1,
-      "min": -2,
-      "max": 3
-    },
-    "weapon": {
-      "templates": ["base"],
-      "effectLevel": 1
-    },
-    "specialization": {
-      "templates": ["base"],
-      "skill": ""
-    },
-    "impact": {
-      "templates": ["base"],
-      "skillType": "physical",
-      "impactType": "mild",
-      "value": 0
-    },
-    "scar": {
-      "templates": ["base"],
-      "skillType": "physical",
-      "scarLevel": 1
-    },
-    "contact": {
-      "templates": ["base"],
-      "attitude": "neutral",
-      "organization": "",
-      "location":""
-    }
+    "htmlFields": [
+      "description"
+    ],
+    "types": [
+      "skill",
+      "equipment",
+      "trait",
+      "gauge"
+    ]
   }
 }

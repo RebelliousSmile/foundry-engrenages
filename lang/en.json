@@ -1,76 +1,110 @@
 {
-  "SETTINGS": {
-    "world": {
-      "game_module": {
-        "name":"Choix du module de jeu",
-        "hint":"Téléchargez et activez le module Engrenages lié à votre univers de jeu. Il devrait ensuite apparaître dans cette liste. Sélectionnez-le pour personnaliser votre système Engrenages aux couleurs de cet univers."
-      },
-      "first_run": {
-        "name":"Désactiver le tour d'accueil",
-        "hint":"Le tour d'accueil aide les débutantEs à bien commencer avec le système Engrenages dans FoundryVTT. Cochez cette case si vous souhaitez ne plus le voir (ou décochez-là si vous voulez le voir à nouveau)."
-      },
-      "menace_die": {
-        "name":"Activer le dé de tension",
-        "hint":"Le dé de tension est une règle optionnelle d'Engrenages. Reportez-vous aux règles pour en apprendre plus."
-      },
-      "occult": {
-        "name":"Activer la gestion de l'occulte",
-        "hint":"Affiche les panneaux liés à la gestion des pouvoirs dans Engrenages."
-      },
-      "morale_management": {
-        "name":"Règles de motivation pour les PJs",
-        "hint":"Selon le degré d'implication que vous souhaitez pour les PJs, choisissez l'option de règle qui correspond (cf. règles pour plus d'informations).",
-        "none": "Aucune",
-        "motivation": "Motivation",
-        "destiny": "Attaches et Destinée"
-      },
-      "specialties": {
-        "name":"Appliquer les spécialisations de compétence",
-        "hint":"Permet de choisir la gestion des spécialisations pour les personnages."
-      },
-      "confrontation": {
-        "name":"Appliquer les règles de confrontation",
-        "hint":"Permet de lancer 4 dés au lieu de 2, et les répartir selon le résultat escompté."
-      }
-    }
-  },
   "ENGRENAGES": {
-    "Ability": {
-      "Str": { "long": "Strength", "abbr": "str" },
-      "Con": { "long": "Constitution", "abbr": "con" },
-      "Dex": { "long": "Dexterity", "abbr": "dex" },
-      "Int": { "long": "Intelligence", "abbr": "int" },
-      "Wis": { "long": "Wisdom", "abbr": "wis" },
-      "Cha": { "long": "Charisma", "abbr": "cha" }
+    "Name": "Engrenages",
+    "SheetCharacter": "Engrenages Character Sheet",
+    "SheetNPC": "Engrenages NPC Sheet",
+    "SheetVehicle": "Engrenages Vehicle Sheet",
+    "SheetOrganization": "Engrenages Organization Sheet",
+    
+    "Categories": {
+      "Physique": "Physical",
+      "Mental": "Mental",
+      "Social": "Social"
     },
-    "SheetLabels": {
-      "Actor": "Engrenages Actor Sheet",
-      "Item": "Engrenages Item Sheet"
+    
+    "CompetencesPhysiques": {
+      "athletisme": "Athletics",
+      "conduite": "Driving",
+      "escrime": "Fencing",
+      "pugilat": "Pugilism",
+      "tir": "Shooting"
     },
-    "Item": {
-      "Spell": {
-        "SpellLVL": "Level {level} Spells",
-        "AddLVL": "Add LVL {level}"
-      }
+    
+    "CompetencesMentales": {
+      "citadin": "Urban",
+      "milieuRural": "Rural",
+      "sciences": "Sciences",
+      "traumatologie": "Traumatology",
+      "custom": "Other"
     },
-    "Effect": {
-      "Source": "Source",
-      "Toggle": "Toggle Effect",
-      "Temporary": "Temporary Effects",
-      "Passive": "Passive Effects",
-      "Inactive": "Inactive Effects"
+    
+    "CompetencesSociales": {
+      "argutie": "Argumentation",
+      "creativite": "Creativity",
+      "faconde": "Eloquence",
+      "maraude": "Scavenging",
+      "representation": "Performance"
+    },
+    
+    "Specialisations": {
+      "Title": "Specializations",
+      "Add": "Add specialization",
+      "Delete": "Delete specialization",
+      "DeleteConfirm": "Are you sure you want to delete this specialization?",
+      "Name": "Name",
+      "Category": "Category"
+    },
+    
+    "Gauges": {
+      "Physique": "Physical Gauge",
+      "Mental": "Mental Gauge",
+      "Social": "Social Gauge"
+    },
+    
+    "Details": {
+      "Nom": "Name",
+      "Traits": "Traits",
+      "Type": "Type",
+      "Description": "Description"
+    },
+    
+    "Equipment": {
+      "Title": "Equipment",
+      "Slot": "Slot"
+    },
+    
+    "Abilities": {
+      "Title": "Abilities",
+      "New": "New ability",
+      "Add": "Add ability",
+      "Delete": "Delete ability",
+      "DeleteConfirm": "Are you sure you want to delete this ability?"
+    },
+    
+    "Dice": {
+      "Roll": "Roll",
+      "Result": "Result",
+      "Success": "Success",
+      "Partial": "Partial success",
+      "Failure": "Failure",
+      "Critical": "Critical"
+    },
+    
+    "Settings": {
+      "Title": "Engrenages Settings",
+      "UniversLabel": "Universe",
+      "UniversHint": "Choose the universe for your Engrenages game",
+      "UniversDefault": "Generic",
+      "UniversCustom": "Custom",
+      "RulesLabel": "Optional rules",
+      "RulesHint": "Enable or disable optional rules",
+      "RulesCombat": "Advanced combat",
+      "RulesMagie": "Magic",
+      "RulesDestin": "Fate points"
     }
   },
-
+  
   "TYPES": {
     "Actor": {
       "character": "Character",
-      "npc": "NPC"
+      "npc": "NPC",
+      "vehicle": "Vehicle",
+      "organization": "Organization"
     },
     "Item": {
-      "item": "Item",
-      "feature": "Feature",
-      "spell": "Spell"
+      "equipment": "Equipment",
+      "skill": "Skill",
+      "trait": "Trait"
     }
   }
 }

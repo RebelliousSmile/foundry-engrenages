@@ -1,0 +1,364 @@
+/* Styles pour la feuille de personnage Engrenages */
+
+.engrenages.sheet.actor.character {
+    min-width: 720px;
+    min-height: 680px;
+    font-family: "Roboto", sans-serif;
+}
+
+/* En-tête */
+.engrenages .sheet-header {
+    border-bottom: 2px solid #000;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.engrenages .header-title h1 {
+    font-family: "Cinzel", serif;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+    padding: 5px 0;
+    text-transform: uppercase;
+}
+
+/* Section d'informations */
+.engrenages .info-section {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.engrenages .info-row {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.engrenages .info-field {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.engrenages .info-label {
+    flex: 0 0 80px;
+    font-weight: bold;
+}
+
+.engrenages .info-field input {
+    flex: 1;
+    border-bottom: 1px solid #000;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    background: transparent;
+}
+
+/* Conteneur des compétences */
+.engrenages .competences-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.engrenages .competence-category {
+    flex: 1;
+    min-width: 200px;
+    border: 1px solid #000;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.engrenages .category-title {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    margin: 0 0 10px 0;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+/* Liste des compétences */
+.engrenages .competence-list {
+    margin-bottom: 10px;
+}
+
+.engrenages .competence-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.engrenages .competence-name {
+    flex: 1;
+    font-size: 14px;
+}
+
+.engrenages .competence-trained {
+    flex: 0 0 30px;
+    text-align: center;
+}
+
+.engrenages .competence-value {
+    flex: 0 0 40px;
+    text-align: center;
+}
+
+.engrenages .competence-value input {
+    width: 30px;
+    text-align: center;
+    border: 1px solid #000;
+    border-radius: 3px;
+    background-color: #f5f5f5;
+    cursor: pointer;
+}
+
+.engrenages .competence-value input:hover {
+    background-color: #e0e0e0;
+}
+
+.engrenages .custom-competence .competence-name input {
+    width: 100%;
+    border-bottom: 1px solid #000;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    background: transparent;
+}
+
+/* Jauges */
+.engrenages .gauge-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.engrenages .gauge-label {
+    flex: 0 0 50px;
+    font-weight: bold;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.engrenages .gauge-box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: #f5f5f5;
+}
+
+.engrenages .gauge-box input {
+    width: 40px;
+    text-align: center;
+    border: none;
+    background: transparent;
+}
+
+.engrenages .gauge-separator {
+    margin: 0 5px;
+    font-weight: bold;
+}
+
+/* Spécialisations */
+.engrenages .specialisations-container {
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px dashed #aaa;
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.engrenages .specialisations-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+    text-align: center;
+    color: #555;
+}
+
+.engrenages .specialisations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.engrenages .specialisation-item {
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.engrenages .specialisation-name {
+    flex: 1;
+    padding: 2px 5px;
+    min-height: 20px;
+    border-bottom: 1px dashed #ccc;
+}
+
+.engrenages .specialisation-name:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    cursor: text;
+}
+
+.engrenages .specialisation-value {
+    flex: 0 0 30px;
+    text-align: center;
+}
+
+.engrenages .specialisation-value input {
+    width: 25px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.engrenages .specialisation-delete {
+    flex: 0 0 20px;
+    text-align: center;
+    color: #999;
+    cursor: pointer;
+}
+
+.engrenages .specialisation-delete:hover {
+    color: #f44336;
+}
+
+.engrenages .specialisation-controls {
+    margin-top: 5px;
+    text-align: center;
+}
+
+.engrenages .add-specialisation {
+    font-size: 12px;
+    padding: 2px 5px;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.engrenages .add-specialisation:hover {
+    background-color: #d0d0d0;
+}
+
+/* Section équipement */
+.engrenages .equipment-section {
+    margin-top: 20px;
+}
+
+.engrenages .section-title {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    margin: 0 0 10px 0;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.engrenages .equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.engrenages .equipment-item {
+    display: flex;
+    align-items: center;
+}
+
+.engrenages .equipment-number {
+    flex: 0 0 20px;
+    font-weight: bold;
+    text-align: right;
+    margin-right: 5px;
+}
+
+.engrenages .equipment-item input {
+    flex: 1;
+    border-bottom: 1px solid #000;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    background: transparent;
+}
+
+/* Style des cases à cocher */
+.engrenages input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}
+
+/* Style des boutons */
+.engrenages button {
+    background-color: #4b4a44;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.engrenages button:hover {
+    background-color: #373737;
+}
+
+/* Icônes */
+.engrenages i.fas {
+    margin-right: 5px;
+}
+
+/* Styles pour les lancers de dés */
+.engrenages-roll {
+    font-family: "Roboto", sans-serif;
+}
+
+.engrenages-roll .dice-formula {
+    font-family: monospace;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 3px;
+    border-radius: 3px;
+    margin-bottom: 5px;
+}
+
+.engrenages-roll .dice-total {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.engrenages-roll .result-critical {
+    color: #9c27b0;
+    background: rgba(156, 39, 176, 0.1);
+}
+
+.engrenages-roll .result-success {
+    color: #4caf50;
+    background: rgba(76, 175, 80, 0.1);
+}
+
+.engrenages-roll .result-partial {
+    color: #ff9800;
+    background: rgba(255, 152, 0, 0.1);
+}
+
+.engrenages-roll .result-failure {
+    color: #f44336;
+    background: rgba(244, 67, 54, 0.1);
+}

@@ -1,0 +1,378 @@
+/* Système Engrenages pour FoundryVTT */
+/* Feuille de style principale */
+
+/* ------------------------------------ */
+/* Variables et thème                   */
+/* ------------------------------------ */
+
+:root {
+  /* Couleurs principales */
+  --engrenages-primary: #4b4a44;
+  --engrenages-secondary: #8a7d55;
+  --engrenages-tertiary: #c0b283;
+  --engrenages-accent: #dcd0c0;
+  --engrenages-light: #f4f4f4;
+  --engrenages-dark: #373737;
+  
+  /* Couleurs fonctionnelles */
+  --engrenages-success: #4caf50;
+  --engrenages-partial: #ff9800;
+  --engrenages-failure: #f44336;
+  --engrenages-critical: #9c27b0;
+  
+  /* Couleurs d'état */
+  --engrenages-health: #e57373;
+  --engrenages-energy: #64b5f6;
+  --engrenages-fate: #ba68c8;
+  
+  /* Typographie */
+  --engrenages-font-primary: "Roboto", sans-serif;
+  --engrenages-font-secondary: "Cinzel", serif;
+  
+  /* Bordures et ombres */
+  --engrenages-border-radius: 5px;
+  --engrenages-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Importation des feuilles de style spécifiques */
+@import url("character-sheet.css");
+
+/* ------------------------------------ */
+/* Styles généraux                      */
+/* ------------------------------------ */
+
+.engrenages {
+  font-family: var(--engrenages-font-primary);
+  color: var(--engrenages-dark);
+  background: var(--engrenages-light);
+}
+
+.engrenages h1, 
+.engrenages h2, 
+.engrenages h3, 
+.engrenages h4 {
+  font-family: var(--engrenages-font-secondary);
+  color: var(--engrenages-primary);
+  border-bottom: 1px solid var(--engrenages-tertiary);
+  margin-bottom: 0.5rem;
+}
+
+.engrenages .window-content {
+  background: var(--engrenages-light);
+}
+
+/* ------------------------------------ */
+/* Feuilles de personnage               */
+/* ------------------------------------ */
+
+.engrenages .sheet-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.engrenages .profile-img {
+  flex: 0 0 100px;
+  height: 100px;
+  margin-right: 10px;
+  border-radius: var(--engrenages-border-radius);
+  border: 2px solid var(--engrenages-tertiary);
+}
+
+.engrenages .header-details {
+  flex: 1;
+}
+
+.engrenages .resource-bar {
+  height: 20px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: var(--engrenages-border-radius);
+  margin: 5px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.engrenages .resource-bar .bar {
+  height: 100%;
+  width: 50%; /* À remplacer dynamiquement */
+  transition: width 0.3s ease;
+}
+
+.engrenages .health-bar .bar {
+  background: var(--engrenages-health);
+}
+
+.engrenages .energy-bar .bar {
+  background: var(--engrenages-energy);
+}
+
+.engrenages .fate-bar .bar {
+  background: var(--engrenages-fate);
+}
+
+.engrenages .resource-value {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--engrenages-light);
+  text-shadow: 0 0 2px var(--engrenages-dark);
+  font-weight: bold;
+}
+
+/* ------------------------------------ */
+/* Attributs et compétences             */
+/* ------------------------------------ */
+
+.engrenages .attributes-block,
+.engrenages .skills-block {
+  margin-bottom: 10px;
+}
+
+.engrenages .attribute,
+.engrenages .skill {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.engrenages .attribute:hover,
+.engrenages .skill:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.engrenages .attribute-name,
+.engrenages .skill-name {
+  flex: 1;
+  font-weight: bold;
+}
+
+.engrenages .attribute-value,
+.engrenages .skill-value {
+  flex: 0 0 40px;
+  text-align: center;
+  background: var(--engrenages-tertiary);
+  color: var(--engrenages-light);
+  border-radius: var(--engrenages-border-radius);
+  padding: 2px 5px;
+  cursor: pointer;
+}
+
+.engrenages .attribute-mod {
+  flex: 0 0 30px;
+  text-align: center;
+  font-size: 0.9em;
+  color: var(--engrenages-secondary);
+}
+
+/* ------------------------------------ */
+/* Inventaire et équipement             */
+/* ------------------------------------ */
+
+.engrenages .inventory-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.engrenages .inventory-item {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.engrenages .inventory-item:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.engrenages .item-image {
+  flex: 0 0 30px;
+  height: 30px;
+  margin-right: 5px;
+  border-radius: var(--engrenages-border-radius);
+}
+
+.engrenages .item-name {
+  flex: 1;
+  cursor: pointer;
+}
+
+.engrenages .item-controls {
+  flex: 0 0 60px;
+  text-align: right;
+}
+
+.engrenages .item-controls a {
+  margin: 0 3px;
+  color: var(--engrenages-secondary);
+}
+
+.engrenages .item-controls a:hover {
+  color: var(--engrenages-primary);
+  text-shadow: 0 0 3px var(--engrenages-tertiary);
+}
+
+/* ------------------------------------ */
+/* États de durabilité                  */
+/* ------------------------------------ */
+
+.engrenages .durability.good {
+  color: var(--engrenages-success);
+}
+
+.engrenages .durability.used {
+  color: var(--engrenages-partial);
+}
+
+.engrenages .durability.poor {
+  color: var(--engrenages-failure);
+}
+
+.engrenages .durability.broken {
+  color: var(--engrenages-failure);
+  text-decoration: line-through;
+}
+
+/* ------------------------------------ */
+/* Résultats des jets                   */
+/* ------------------------------------ */
+
+.engrenages-roll {
+  background: url("../assets/images/layout/parchment.jpg") repeat !important;
+  color: var(--engrenages-dark);
+  font-family: var(--engrenages-font-primary);
+}
+
+.engrenages-roll .dice-total {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: var(--engrenages-border-radius);
+  text-align: center;
+}
+
+.engrenages-roll .result-critical {
+  color: var(--engrenages-critical);
+  background: rgba(156, 39, 176, 0.1);
+}
+
+.engrenages-roll .result-success {
+  color: var(--engrenages-success);
+  background: rgba(76, 175, 80, 0.1);
+}
+
+.engrenages-roll .result-partial {
+  color: var(--engrenages-partial);
+  background: rgba(255, 152, 0, 0.1);
+}
+
+.engrenages-roll .result-failure {
+  color: var(--engrenages-failure);
+  background: rgba(244, 67, 54, 0.1);
+}
+
+.engrenages-roll .dice-formula {
+  font-family: monospace;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 3px;
+  border-radius: var(--engrenages-border-radius);
+  margin-bottom: 5px;
+}
+
+/* ------------------------------------ */
+/* Boutons et contrôles                 */
+/* ------------------------------------ */
+
+.engrenages .engrenages-button {
+  background: var(--engrenages-tertiary);
+  color: var(--engrenages-light);
+  border: none;
+  border-radius: var(--engrenages-border-radius);
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.engrenages .engrenages-button:hover {
+  background: var(--engrenages-secondary);
+}
+
+.engrenages .engrenages-button.primary {
+  background: var(--engrenages-primary);
+}
+
+.engrenages .engrenages-button.primary:hover {
+  background: var(--engrenages-dark);
+}
+
+/* ------------------------------------ */
+/* Onglets                              */
+/* ------------------------------------ */
+
+.engrenages .tabs {
+  display: flex;
+  border-bottom: 1px solid var(--engrenages-tertiary);
+  margin-bottom: 10px;
+}
+
+.engrenages .tabs .item {
+  padding: 5px 15px;
+  margin-right: 5px;
+  border-radius: var(--engrenages-border-radius) var(--engrenages-border-radius) 0 0;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.engrenages .tabs .item.active {
+  background: var(--engrenages-tertiary);
+  color: var(--engrenages-light);
+}
+
+.engrenages .tab-content {
+  padding: 10px 0;
+}
+
+/* ------------------------------------ */
+/* Modules optionnels                   */
+/* ------------------------------------ */
+
+/* Ces styles seront chargés dynamiquement selon les modules activés */
+/* Ils sont inclus ici comme référence */
+
+/* Module de magie */
+.engrenages.magic-enabled .magic-section {
+  display: block;
+}
+
+/* Module de combat */
+.engrenages.combat-enabled .combat-section {
+  display: block;
+}
+
+/* Module d'artisanat */
+.engrenages.crafting-enabled .crafting-section {
+  display: block;
+}
+
+/* ------------------------------------ */
+/* Responsive                           */
+/* ------------------------------------ */
+
+@media (max-width: 600px) {
+  .engrenages .sheet-header {
+    flex-direction: column;
+  }
+  
+  .engrenages .profile-img {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}

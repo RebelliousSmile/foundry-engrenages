@@ -1,0 +1,110 @@
+{
+  "ENGRENAGES": {
+    "Name": "Engrenages",
+    "SheetCharacter": "Feuille de Personnage Engrenages",
+    "SheetNPC": "Feuille de PNJ Engrenages",
+    "SheetVehicle": "Feuille de Véhicule Engrenages",
+    "SheetOrganization": "Feuille d'Organisation Engrenages",
+    
+    "Categories": {
+      "Physique": "Physique",
+      "Mental": "Mental",
+      "Social": "Social"
+    },
+    
+    "CompetencesPhysiques": {
+      "athletisme": "Athlétisme",
+      "conduite": "Conduite",
+      "escrime": "Escrime",
+      "pugilat": "Pugilat",
+      "tir": "Tir"
+    },
+    
+    "CompetencesMentales": {
+      "citadin": "Citadin",
+      "milieuRural": "Milieu rural",
+      "sciences": "Sciences",
+      "traumatologie": "Traumatologie",
+      "custom": "Autre"
+    },
+    
+    "CompetencesSociales": {
+      "argutie": "Argutie",
+      "creativite": "Créativité",
+      "faconde": "Faconde",
+      "maraude": "Maraude",
+      "representation": "Représentation"
+    },
+    
+    "Specialisations": {
+      "Title": "Spécialisations",
+      "Add": "Ajouter une spécialisation",
+      "Delete": "Supprimer la spécialisation",
+      "DeleteConfirm": "Êtes-vous sûr de vouloir supprimer cette spécialisation ?",
+      "Name": "Nom",
+      "Category": "Catégorie"
+    },
+    
+    "Gauges": {
+      "Physique": "Jauge Physique",
+      "Mental": "Jauge Mentale",
+      "Social": "Jauge Sociale"
+    },
+    
+    "Details": {
+      "Nom": "Nom",
+      "Traits": "Traits",
+      "Type": "Type",
+      "Description": "Description"
+    },
+    
+    "Equipment": {
+      "Title": "Équipement",
+      "Slot": "Emplacement"
+    },
+    
+    "Abilities": {
+      "Title": "Capacités",
+      "New": "Nouvelle capacité",
+      "Add": "Ajouter une capacité",
+      "Delete": "Supprimer la capacité",
+      "DeleteConfirm": "Êtes-vous sûr de vouloir supprimer cette capacité ?"
+    },
+    
+    "Dice": {
+      "Roll": "Lancer",
+      "Result": "Résultat",
+      "Success": "Succès",
+      "Partial": "Succès partiel",
+      "Failure": "Échec",
+      "Critical": "Critique"
+    },
+    
+    "Settings": {
+      "Title": "Paramètres Engrenages",
+      "UniversLabel": "Univers",
+      "UniversHint": "Choisissez l'univers pour votre partie Engrenages",
+      "UniversDefault": "Générique",
+      "UniversCustom": "Personnalisé",
+      "RulesLabel": "Règles optionnelles",
+      "RulesHint": "Activez ou désactivez les règles optionnelles",
+      "RulesCombat": "Combat avancé",
+      "RulesMagie": "Magie",
+      "RulesDestin": "Points de destin"
+    }
+  },
+  
+  "TYPES": {
+    "Actor": {
+      "character": "Personnage",
+      "npc": "PNJ",
+      "vehicle": "Véhicule",
+      "organization": "Organisation"
+    },
+    "Item": {
+      "equipment": "Équipement",
+      "skill": "Compétence",
+      "trait": "Trait"
+    }
+  }
+}
