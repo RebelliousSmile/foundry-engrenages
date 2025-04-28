@@ -311,7 +311,8 @@ let structureIssues = [];
 
 // Vérifier les modèles d'acteurs
 for (const [key, model] of Object.entries(ACTOR_MODELS.Actor)) {
-    const modelIssues = validateNestedObjectStructure(model, `Actor.${key}`);
+    console.log(`\nVérification détaillée de Actor.${key}:`);
+    const modelIssues = validateNestedObjectStructure(model, `Actor.${key}`, true);
     structureIssues.push(...modelIssues);
 }
 
@@ -338,9 +339,8 @@ if (ITEM_MODELS.templates) {
     }
 }
 
-// Examiner spécifiquement le modèle d'équipement pour identifier le problème
-console.log('\nExamen détaillé du modèle d\'\u00e9quipement:');
-function examineEquipmentModel(model, path = 'EquipmentModel', depth = 0) {
+// Fonction générique d'examen détaillé des modèles
+function examineModel(model, path, depth = 0) {
     const indent = '  '.repeat(depth);
     console.log(`${indent}Examen de ${path}:`);
     
@@ -372,13 +372,21 @@ function examineEquipmentModel(model, path = 'EquipmentModel', depth = 0) {
             } else if (key !== 'templates') {
                 // C'est un objet sans type défini, explorer récursivement
                 console.log(`${indent}  - ${key}: objet sans type défini`);
-                examineEquipmentModel(value, `${path}.${key}`, depth + 1);
+                examineModel(value, `${path}.${key}`, depth + 1);
             }
         }
     }
 }
 
-examineEquipmentModel(ITEM_MODELS.equipment);
+// Examiner les modèles d'acteurs
+console.log('\nExamen détaillé des modèles d\'acteurs:');
+for (const [key, model] of Object.entries(ACTOR_MODELS.Actor)) {
+    examineModel(model, `Actor.${key}`);
+}
+
+// Examiner les modèles d'objets
+console.log('\nExamen détaillé des modèles d\'objets:');
+examineModel(ITEM_MODELS.equipment, 'EquipmentModel');
 
 // Afficher les problèmes de structure
 if (structureIssues.length > 0) {

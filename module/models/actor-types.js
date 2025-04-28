@@ -701,10 +701,31 @@ export const ACTOR_MODELS = {
         traits: TraitsTemplate
     },
     Actor: {
-        character: CharacterModel,
-        npc: NpcModel,
-        vehicle: VehicleModel,
-        organization: OrganizationModel,
-        group: GroupModel
+        // Définir les modèles avec type et default pour éviter les erreurs de localisation
+        character: {
+            type: Object,
+            default: {},
+            ...CharacterModel
+        },
+        npc: {
+            type: Object,
+            default: {},
+            ...NpcModel
+        },
+        vehicle: {
+            type: Object,
+            default: {},
+            ...VehicleModel
+        },
+        organization: {
+            type: Object,
+            default: {},
+            ...OrganizationModel
+        },
+        group: {
+            type: Object,
+            default: {},
+            ...GroupModel
+        }
     }
 };
