@@ -27,6 +27,7 @@ import { EngrenagesHooks } from "./utils/hooks.js";
 import { EngrenagesRoll } from "./dice/roll.js";
 import { TraitManager } from "./traits/traitManager.js";
 import { EngrenagesTokenHUD } from "./utils/token-hud.js";
+import { GaugeManager } from "./utils/gauge-manager.js";
 
 /* -------------------------------------------- */
 /*  Initialisation de Foundry VTT               */
@@ -88,7 +89,9 @@ Hooks.once("init", async function() {
         config: EngrenagesConfig,
         configManager: ConfigurationEngrenages,
         moduleManager: ModuleManager,
-        tokenHUD: EngrenagesTokenHUD
+        tokenHUD: EngrenagesTokenHUD,
+        gaugeManager: GaugeManager,
+        dailyRecoveryRegistered: false
     };
     
     // Enregistrement des classes de documents
@@ -210,6 +213,9 @@ Hooks.once("ready", async function() {
     
     // Initialisation du HUD de token avec les 4 jauges
     EngrenagesTokenHUD.init();
+    
+    // Initialisation du gestionnaire de jauges
+    GaugeManager.init();
     
     // Vérifier les paramètres des modules optionnels
     const vehiclesEnabled = game.settings.get("engrenages", "modules.vehicles");
