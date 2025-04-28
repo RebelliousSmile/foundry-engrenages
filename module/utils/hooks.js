@@ -130,6 +130,12 @@ export class EngrenagesHooks {
     static _initOptionalModules() {
         console.log("Engrenages | Initialisation des modules optionnels");
         
+        // Vérification que la configuration est disponible
+        if (!CONFIG.engrenages || !CONFIG.engrenages.config || !CONFIG.engrenages.config.optionalModules) {
+            console.warn("Engrenages | La configuration des modules optionnels n'est pas disponible");
+            return;
+        }
+        
         // Parcours des modules optionnels
         for (const [key, module] of Object.entries(CONFIG.engrenages.config.optionalModules)) {
             // Vérification si le module est activé

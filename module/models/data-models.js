@@ -44,98 +44,116 @@ export class BaseActorDataModel extends foundry.abstract.TypeDataModel {
 
 /**
  * Modèle de données pour les compétences
+ * Cette fonction génère dynamiquement le schéma des compétences en fonction de la configuration TOML
  */
 function defineCompetencesSchema() {
-    return {
-        physique: new fields.SchemaField({
-            athletisme: new fields.SchemaField({
-                trained: new fields.BooleanField({ initial: false }),
-                value: new fields.NumberField({ initial: 0, min: 0, max: 10 })
-            }),
-            conduite: new fields.SchemaField({
-                trained: new fields.BooleanField({ initial: false }),
-                value: new fields.NumberField({ initial: 0, min: 0, max: 10 })
-            }),
-            escrime: new fields.SchemaField({
-                trained: new fields.BooleanField({ initial: false }),
-                value: new fields.NumberField({ initial: 0, min: 0, max: 10 })
-            }),
-            pugilat: new fields.SchemaField({
-                trained: new fields.BooleanField({ initial: false }),
-                value: new fields.NumberField({ initial: 0, min: 0, max: 10 })
-            }),
-            tir: new fields.SchemaField({
-                trained: new fields.BooleanField({ initial: false }),
-                value: new fields.NumberField({ initial: 0, min: 0, max: 10 })
-            })
-        }),
-        mental: new fields.SchemaField({
-            citadin: new fields.SchemaField({
-                trained: new fields.BooleanField({ initial: false }),
-                value: new fields.NumberField({ initial: 0, min: 0, max: 10 })
-            }),
-            connaissances: new fields.SchemaField({
-                trained: new fields.BooleanField({ initial: false }),
-                value: new fields.NumberField({ initial: 0, min: 0, max: 10 })
-            }),
-            investigation: new fields.SchemaField({
-                trained: new fields.BooleanField({ initial: false }),
-                value: new fields.NumberField({ initial: 0, min: 0, max: 10 })
-            }),
-            medecine: new fields.SchemaField({
-                trained: new fields.BooleanField({ initial: false }),
-                value: new fields.NumberField({ initial: 0, min: 0, max: 10 })
-            }),
-            perception: new fields.SchemaField({
-                trained: new fields.BooleanField({ initial: false }),
-                value: new fields.NumberField({ initial: 0, min: 0, max: 10 })
-            })
-        }),
-        social: new fields.SchemaField({
-            commandement: new fields.SchemaField({
-                trained: new fields.BooleanField({ initial: false }),
-                value: new fields.NumberField({ initial: 0, min: 0, max: 10 })
-            }),
-            eloquence: new fields.SchemaField({
-                trained: new fields.BooleanField({ initial: false }),
-                value: new fields.NumberField({ initial: 0, min: 0, max: 10 })
-            }),
-            etiquette: new fields.SchemaField({
-                trained: new fields.BooleanField({ initial: false }),
-                value: new fields.NumberField({ initial: 0, min: 0, max: 10 })
-            }),
-            intimidation: new fields.SchemaField({
-                trained: new fields.BooleanField({ initial: false }),
-                value: new fields.NumberField({ initial: 0, min: 0, max: 10 })
-            }),
-            subterfuge: new fields.SchemaField({
-                trained: new fields.BooleanField({ initial: false }),
-                value: new fields.NumberField({ initial: 0, min: 0, max: 10 })
-            })
-        }),
-        occulte: new fields.SchemaField({
-            arcanes: new fields.SchemaField({
-                trained: new fields.BooleanField({ initial: false }),
-                value: new fields.NumberField({ initial: 0, min: 0, max: 10 })
-            }),
-            ésotérisme: new fields.SchemaField({
-                trained: new fields.BooleanField({ initial: false }),
-                value: new fields.NumberField({ initial: 0, min: 0, max: 10 })
-            }),
-            rituels: new fields.SchemaField({
-                trained: new fields.BooleanField({ initial: false }),
-                value: new fields.NumberField({ initial: 0, min: 0, max: 10 })
-            }),
-            surnaturel: new fields.SchemaField({
-                trained: new fields.BooleanField({ initial: false }),
-                value: new fields.NumberField({ initial: 0, min: 0, max: 10 })
-            }),
-            volonté: new fields.SchemaField({
-                trained: new fields.BooleanField({ initial: false }),
-                value: new fields.NumberField({ initial: 0, min: 0, max: 10 })
-            })
-        })
+    // Fonction helper pour créer une compétence
+    const createSkill = () => ({
+        trained: new fields.BooleanField({ initial: false }),
+        value: new fields.NumberField({ initial: 0, min: 0, max: 10 })
+    });
+    
+    // Vérifier si les paramètres du système sont disponibles
+    const useSystemSettings = game && game.settings && game.settings.get;
+    
+    // Obtenir la configuration des compétences depuis les paramètres du système
+    let skillsConfig;
+    try {
+        if (useSystemSettings) {
+            // Essayer de récupérer la configuration depuis les paramètres du système
+            skillsConfig = game.settings.get("engrenages", "skills.config");
+        }
+    } catch (error) {
+        console.warn("Engrenages | Impossible de récupérer la configuration des compétences, utilisation des valeurs par défaut");
+    }
+    
+    // Configuration par défaut si aucune n'est trouvée
+    const defaultConfig = {
+        // Configuration par défaut des champs et compétences
+        fields: {
+            physique: {
+                enabled: true,
+                skills: ["athletisme", "conduite", "escrime", "pugilat", "tir"]
+            },
+            mental: {
+                enabled: true,
+                skills: ["citadin", "milieuRural", "sciences", "traumatologie", "custom"]
+            },
+            social: {
+                enabled: true,
+                skills: ["argutie", "creativite", "faconde", "maraude", "representation"]
+            },
+            occulte: {
+                enabled: true,
+                skills: ["rituel", "mystere", "artefact"]
+            }
+        },
+        enableOcculte: true
     };
+    
+    // Générer le schéma des compétences en fonction de la configuration
+    const schema = {};
+    
+    // Vérifier si nous avons une configuration TOML
+    if (useSystemSettings && game.engrenages && game.engrenages.configManager && game.engrenages.configManager.configuration) {
+        const tomlConfig = game.engrenages.configManager.configuration;
+        
+        // Convertir la configuration TOML en configuration de compétences
+        if (tomlConfig.competences && tomlConfig.competences.domaines) {
+            const newConfig = {
+                fields: {},
+                enableOcculte: tomlConfig.options && tomlConfig.options.occulteActif
+            };
+            
+            // Convertir les domaines de compétences
+            Object.entries(tomlConfig.competences.domaines).forEach(([domaineName, domaineConfig]) => {
+                newConfig.fields[domaineName] = {
+                    enabled: true,
+                    skills: domaineConfig.competences || []
+                };
+            });
+            
+            // Mettre à jour la configuration
+            skillsConfig = newConfig;
+            
+            // Enregistrer la configuration convertie pour les autres parties du système
+            if (useSystemSettings) {
+                try {
+                    game.settings.set("engrenages", "skills.config", newConfig);
+                } catch (error) {
+                    console.warn("Engrenages | Impossible d'enregistrer la configuration des compétences", error);
+                }
+            }
+        }
+    }
+    
+    // Utiliser la configuration ou les valeurs par défaut
+    const config = skillsConfig || defaultConfig;
+    
+    // Parcourir les champs de compétences
+    Object.entries(config.fields || {}).forEach(([fieldName, fieldConfig]) => {
+        // Vérifier si le champ est activé
+        if (fieldName === "occulte" && !config.enableOcculte) {
+            return; // Ignorer le champ occulte s'il est désactivé
+        }
+        
+        if (fieldConfig.enabled) {
+            // Créer un objet pour stocker les compétences de ce champ
+            const fieldSkills = {};
+            
+            // Ajouter les compétences actives pour ce champ
+            fieldConfig.skills.forEach(skillName => {
+                // Utiliser directement le nom de la compétence comme identifiant
+                // car les templates utilisent ces identifiants directement
+                fieldSkills[skillName] = new fields.SchemaField(createSkill());
+            });
+            
+            // Ajouter le champ au schéma
+            schema[fieldName] = new fields.SchemaField(fieldSkills);
+        }
+    });
+    
+    return schema;
 }
 
 /**

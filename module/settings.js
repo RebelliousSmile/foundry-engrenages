@@ -4,6 +4,7 @@
 
 import { EngrenagesConfig } from "./config.js";
 import { localize } from "./engrenages.js";
+import { FormConfigurationEngrenages } from "./applications/config-form.js";
 
 export class EngrenagesSettings {
     /**
@@ -17,6 +18,25 @@ export class EngrenagesSettings {
             config: false,
             type: String,
             default: game.system.version
+        });
+        
+        // Configuration TOML
+        game.settings.register("engrenages", "configurationToml", {
+            name: "Configuration TOML",
+            scope: "world",
+            config: false,
+            type: String,
+            default: ""
+        });
+        
+        // Bouton pour ouvrir le formulaire de configuration TOML
+        game.settings.registerMenu("engrenages", "configTomlMenu", {
+            name: "ENGRENAGES.Settings.ConfigToml.Name",
+            label: "ENGRENAGES.Settings.ConfigToml.Label",
+            hint: "ENGRENAGES.Settings.ConfigToml.Hint",
+            icon: "fas fa-cogs",
+            type: FormConfigurationEngrenages,
+            restricted: true
         });
         
         // Configuration des règles de base
@@ -47,6 +67,44 @@ export class EngrenagesSettings {
             default: EngrenagesConfig.defaultDiceFormulas.standard,
             onChange: value => {
                 console.log(`Engrenages | Formule de dés par défaut changée pour: ${value}`);
+            }
+        });
+        
+        // Configuration des compétences
+        game.settings.register("engrenages", "skills.config", {
+            name: localize("ENGRENAGES.Settings.SkillsConfig.Name"),
+            hint: localize("ENGRENAGES.Settings.SkillsConfig.Hint"),
+            scope: "world",
+            config: false, // Caché dans l'interface, sera configuré via un formulaire dédié
+            type: Object,
+            default: {
+                enableOcculte: true,
+                skillsPerField: 5,
+                fields: {
+                    physique: {
+                        enabled: true,
+                        skills: ["athletisme", "conduite", "escrime", "pugilat", "tir"]
+                    },
+                    mental: {
+                        enabled: true,
+                        skills: ["citadin", "connaissances", "investigation", "medecine", "perception"]
+                    },
+                    social: {
+                        enabled: true,
+                        skills: ["commandement", "eloquence", "etiquette", "intimidation", "subterfuge"]
+                    },
+                    occulte: {
+                        enabled: true,
+                        skills: ["arcanes", "ésotérisme", "rituels", "surnaturel", "volonté"]
+                    }
+                }
+            },
+            onChange: value => {
+                ui.notifications.info(localize("ENGRENAGES.Notifications.SkillsConfigChanged"));
+                // Recharger la page pour appliquer les changements
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1500);
             }
         });
         

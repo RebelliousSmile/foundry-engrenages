@@ -1,0 +1,67 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <nav class="tabs" data-group="primary-tabs">
+        <a class="item" data-tab="general"><i class="fas fa-cogs"></i> Général</a>
+        <a class="item" data-tab="editeur"><i class="fas fa-edit"></i> Éditeur TOML</a>
+    </nav>
+
+    <section class="tab-content">
+        <!-- Onglet Général -->
+        <div class="tab" data-tab="general">
+            <div class="form-group">
+                <h2>Configuration du Système Engrenages</h2>
+                <p>Cette page vous permet de configurer le système Engrenages selon vos besoins.</p>
+                
+                <div class="configuration-info">
+                    <h3>Informations</h3>
+                    <p><strong>Nom du système:</strong> {{config.system.name}}</p>
+                    <p><strong>Version:</strong> {{config.system.version}}</p>
+                    <p><strong>Description:</strong> {{config.system.description}}</p>
+                </div>
+                
+                <div class="competences-config">
+                    <h3>Domaines de Compétences</h3>
+                    <div class="domaines-grid">
+                        {{#each config.competences.domaines}}
+                        <div class="domaine-item">
+                            <h4>{{this.nom}}</h4>
+                            <ul class="competences-list">
+                                {{#each this.competences}}
+                                <li>{{this}}</li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+                
+                <div class="options-config">
+                    <h3>Options</h3>
+                    <p><strong>Domaine Occulte actif:</strong> {{#if config.options.occulteActif}}Oui{{else}}Non{{/if}}</p>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="importer-config"><i class="fas fa-file-import"></i> Importer</button>
+                    <button type="button" class="exporter-config"><i class="fas fa-file-export"></i> Exporter</button>
+                    <button type="button" class="reinitialiser-config"><i class="fas fa-undo"></i> Réinitialiser</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Onglet Éditeur TOML -->
+        <div class="tab" data-tab="editeur">
+            <div class="form-group">
+                <h2>Éditeur de Configuration TOML</h2>
+                <p>Modifiez directement la configuration TOML ci-dessous.</p>
+                <p class="note">Note: Les modifications ne seront appliquées qu'après avoir cliqué sur "Enregistrer".</p>
+                
+                <div class="toml-editor">
+                    <textarea name="configToml" rows="30">{{configToml}}</textarea>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="sheet-footer">
+        <button type="submit"><i class="fas fa-save"></i> Enregistrer</button>
+    </footer>
+</form>

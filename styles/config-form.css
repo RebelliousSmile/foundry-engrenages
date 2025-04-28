@@ -1,0 +1,100 @@
+/* Styles pour le formulaire de configuration Engrenages */
+
+.configuration-toml .tabs {
+  display: flex;
+  border-bottom: 1px solid #782e22;
+  margin-bottom: 10px;
+}
+
+.configuration-toml .tabs .item {
+  padding: 5px 15px;
+  margin-right: 5px;
+  border: 1px solid #782e22;
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+  background: rgba(120, 46, 34, 0.1);
+  color: #782e22;
+  cursor: pointer;
+}
+
+.configuration-toml .tabs .item.active {
+  background: #782e22;
+  color: #fff;
+}
+
+.configuration-toml .tab-content {
+  padding: 10px;
+}
+
+.configuration-toml .domaines-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.configuration-toml .domaine-item {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.configuration-toml .domaine-item h4 {
+  margin-top: 0;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+  color: #782e22;
+}
+
+.configuration-toml .competences-list {
+  list-style: disc;
+  margin-left: 20px;
+  padding-left: 0;
+}
+
+.configuration-toml .form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.configuration-toml .toml-editor {
+  margin-top: 10px;
+}
+
+.configuration-toml .toml-editor textarea {
+  width: 100%;
+  font-family: monospace;
+  resize: vertical;
+  background: #f5f5f5;
+  color: #333;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.configuration-toml .note {
+  font-style: italic;
+  color: #666;
+}
+
+.configuration-toml .sheet-footer {
+  margin-top: 20px;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+  text-align: right;
+}
+
+.configuration-toml button {
+  background: #782e22;
+  color: white;
+  border: none;
+  padding: 5px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.configuration-toml button:hover {
+  background: #8f3529;
+}

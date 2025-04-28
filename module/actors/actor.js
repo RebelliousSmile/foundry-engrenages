@@ -46,6 +46,16 @@ export class EngrenagesActor extends Actor {
             actorData.inventory.capacity.max = strength * 2;
         }
         
+        // Initialisation des ressources si elles n'existent pas
+        if (!actorData.resources) {
+            actorData.resources = {};
+        }
+        
+        // Initialisation de la santé si elle n'existe pas
+        if (!actorData.resources.health) {
+            actorData.resources.health = { value: 10, max: 10 };
+        }
+        
         // Calcul des points de vie maximum
         if (actorData.attributes?.physical?.constitution) {
             const constitution = actorData.attributes.physical.constitution;
@@ -68,6 +78,16 @@ export class EngrenagesActor extends Actor {
                     attrs[key].mod = Math.floor((attr - 10) / 2);
                 }
             }
+        }
+        
+        // Initialisation des ressources si elles n'existent pas
+        if (!actorData.resources) {
+            actorData.resources = {};
+        }
+        
+        // Initialisation de la santé si elle n'existe pas
+        if (!actorData.resources.health) {
+            actorData.resources.health = { value: 10, max: 10 };
         }
         
         // Calcul des points de vie maximum basé sur le niveau de menace

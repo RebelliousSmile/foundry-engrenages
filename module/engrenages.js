@@ -10,6 +10,10 @@ import { EngrenajesMigration } from "./migration.js";
 // Import des modèles de données modernes
 import { CharacterDataModel, NpcDataModel, VehicleDataModel, OrganizationDataModel, GroupDataModel } from "./models/data-models.js";
 import { EquipmentDataModel, SkillDataModel, TraitDataModel } from "./models/data-models.js";
+// Import du gestionnaire de configuration TOML
+import { ConfigurationEngrenages } from "./config/config-manager.js";
+// Import du gestionnaire de modules
+import { ModuleManager } from "./core/module-manager.js";
 import { EngrenagesActor } from "./actors/actor.js";
 import { EngrenagesItem } from "./items/item.js";
 import { EngrenagesCharacterSheet } from "./actors/sheets/character.js";
@@ -22,6 +26,7 @@ import { EngrenagesHelpers } from "./utils/helpers.js";
 import { EngrenagesHooks } from "./utils/hooks.js";
 import { EngrenagesRoll } from "./dice/roll.js";
 import { TraitManager } from "./traits/traitManager.js";
+import { EngrenagesTokenHUD } from "./utils/token-hud.js";
 
 /* -------------------------------------------- */
 /*  Initialisation de Foundry VTT               */
@@ -80,7 +85,10 @@ Hooks.once("init", async function() {
         EngrenagesActor,
         EngrenagesItem,
         EngrenagesRoll,
-        config: EngrenagesConfig
+        config: EngrenagesConfig,
+        configManager: ConfigurationEngrenages,
+        moduleManager: ModuleManager,
+        tokenHUD: EngrenagesTokenHUD
     };
     
     // Enregistrement des classes de documents
@@ -193,6 +201,15 @@ Hooks.once("init", async function() {
 Hooks.once("ready", async function() {
     // Vérification des migrations
     await EngrenajesMigration.checkMigration();
+    
+    // Initialisation de la configuration TOML
+    await ConfigurationEngrenages.init();
+    
+    // Initialisation du gestionnaire de modules
+    ModuleManager.init();
+    
+    // Initialisation du HUD de token avec les 4 jauges
+    EngrenagesTokenHUD.init();
     
     // Vérifier les paramètres des modules optionnels
     const vehiclesEnabled = game.settings.get("engrenages", "modules.vehicles");

@@ -129,6 +129,11 @@
       "UniversHint": "Choisissez l'univers pour votre jeu Engrenages",
       "UniversDefault": "Générique",
       "UniversCustom": "Personnalisé",
+      "ConfigToml": {
+        "Name": "Configuration TOML",
+        "Label": "Ouvrir l'éditeur de configuration",
+        "Hint": "Configurer le système Engrenages avec un fichier TOML"
+      },
       "RulesLabel": "Règles optionnelles",
       "RulesHint": "Activer ou désactiver les règles optionnelles",
       "RulesCombat": "Combat avancé"
@@ -247,7 +252,10 @@
 
     "Notifications": {
       "ModuleEnabled": "Module {module} activé",
-      "ModuleDisabled": "Module {module} désactivé"
+      "ModuleDisabled": "Module {module} désactivé",
+      "SkillsConfigChanged": "Configuration des compétences modifiée. La page va se recharger.",
+      "TomlConfigLoaded": "Configuration TOML chargée avec succès",
+      "TomlConfigError": "Erreur lors du chargement de la configuration TOML"
     },
 
     "Univers": {

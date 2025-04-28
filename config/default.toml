@@ -1,0 +1,70 @@
+# Configuration par défaut du système Engrenages
+# Ce fichier définit les paramètres de base du système
+
+[system]
+name = "Engrenages"
+version = "1.0.0"
+description = "Système de jeu Engrenages pour Foundry VTT"
+
+# Configuration des compétences
+[competences]
+# Définition des domaines de compétences
+[competences.domaines.physique]
+nom = "Physique"
+competences = [
+    "athletisme",
+    "conduite",
+    "escrime",
+    "pugilat",
+    "tir"
+]
+
+[competences.domaines.mental]
+nom = "Mental"
+competences = [
+    "citadin",
+    "milieuRural",
+    "sciences",
+    "traumatologie",
+    "custom"
+]
+
+[competences.domaines.social]
+nom = "Social"
+competences = [
+    "argutie",
+    "creativite",
+    "faconde",
+    "maraude",
+    "representation"
+]
+
+[competences.domaines.occulte]
+nom = "Occulte"
+competences = [
+    "rituel",
+    "mystere",
+    "artefact"
+]
+
+# Configuration des niveaux de compétence
+[competences.niveaux]
+0 = "Incompetent"
+1 = "Novice"
+2 = "Amateur"
+3 = "Professional"
+4 = "Specialist"
+5 = "Authority"
+
+# Configuration des descriptions de compétence
+[competences.descriptions]
+0 = "Lamentable"
+1 = "Piètre"
+2 = "Moyen"
+3 = "Bon"
+4 = "Remarquable"
+5 = "Exceptionnel"
+
+# Configuration des options du système
+[options]
+occulteActif = true
