@@ -7,8 +7,9 @@
 import { EngrenagesConfig } from "./config.js";
 import { EngrenagesSettings } from "./settings.js";
 import { EngrenajesMigration } from "./migration.js";
-import { ACTOR_MODELS } from "./models/actor-types.js";
-import { ITEM_MODELS } from "./models/item-types.js";
+// Import des modèles de données modernes
+import { CharacterDataModel, NpcDataModel, VehicleDataModel, OrganizationDataModel, GroupDataModel } from "./models/data-models.js";
+import { EquipmentDataModel, SkillDataModel, TraitDataModel } from "./models/data-models.js";
 import { EngrenagesActor } from "./actors/actor.js";
 import { EngrenagesItem } from "./items/item.js";
 import { EngrenagesCharacterSheet } from "./actors/sheets/character.js";
@@ -42,23 +43,21 @@ export function localize(key) {
  */
 function registerDataModels() {
     try {
-        // Création d'un objet simple pour éviter les erreurs de localisation
-        const actorModels = {};
-        for (const [key, model] of Object.entries(ACTOR_MODELS.Actor)) {
-            actorModels[key] = model;
-        }
+        // Enregistrement des modèles de données d'acteurs
+        CONFIG.Actor.systemDataModels = {
+            character: CharacterDataModel,
+            npc: NpcDataModel,
+            vehicle: VehicleDataModel,
+            organization: OrganizationDataModel,
+            group: GroupDataModel
+        };
         
-        // Enregistrement des modèles d'acteur
-        CONFIG.Actor.dataModels = actorModels;
-        
-        // Création d'un objet simple pour éviter les erreurs de localisation
-        const itemModels = {};
-        itemModels.equipment = ITEM_MODELS.equipment;
-        itemModels.skill = ITEM_MODELS.skill;
-        itemModels.trait = ITEM_MODELS.trait;
-        
-        // Enregistrement des modèles d'objet
-        CONFIG.Item.dataModels = itemModels;
+        // Enregistrement des modèles de données d'objets
+        CONFIG.Item.systemDataModels = {
+            equipment: EquipmentDataModel,
+            skill: SkillDataModel,
+            trait: TraitDataModel
+        };
         
         console.log("Engrenages: Modèles de données enregistrés avec succès");
     } catch (error) {
