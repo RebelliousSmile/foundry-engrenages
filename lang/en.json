@@ -6,10 +6,11 @@
     "SheetVehicle": "Engrenages Vehicle Sheet",
     "SheetOrganization": "Engrenages Organization Sheet",
     
-    "Categories": {
+    "Fields": {
       "Physique": "Physical",
       "Mental": "Mental",
-      "Social": "Social"
+      "Social": "Social",
+      "Occulte": "Occult"
     },
     
     "CompetencesPhysiques": {
@@ -29,11 +30,17 @@
     },
     
     "CompetencesSociales": {
-      "argutie": "Argumentation",
+      "argutie": "Argument",
       "creativite": "Creativity",
       "faconde": "Eloquence",
-      "maraude": "Scavenging",
+      "maraude": "Stealth",
       "representation": "Performance"
+    },
+    
+    "CompetencesOccultes": {
+      "rituel": "Ritual",
+      "mystere": "Mystery",
+      "artefact": "Artifact"
     },
     
     "Specialisations": {
@@ -48,7 +55,8 @@
     "Gauges": {
       "Physique": "Physical Gauge",
       "Mental": "Mental Gauge",
-      "Social": "Social Gauge"
+      "Social": "Social Gauge",
+      "Occulte": "Occult Gauge"
     },
     
     "Details": {
@@ -88,9 +96,130 @@
       "UniversCustom": "Custom",
       "RulesLabel": "Optional rules",
       "RulesHint": "Enable or disable optional rules",
-      "RulesCombat": "Advanced combat",
-      "RulesMagie": "Magic",
-      "RulesDestin": "Fate points"
+      "RulesCombat": "Advanced combat"
+    },
+    
+    "Optional": {
+      "Univers": {
+        "Name": "Universe",
+        "Description": "Choose the game universe"
+      },
+      "Combat": {
+        "Name": "Advanced Combat",
+        "Description": "Enables advanced combat rules"
+      },
+      "LimitCompetences": {
+        "Name": "Limit to four Skills per Field",
+        "Description": "Limits the number of skills to four per field"
+      },
+      "FieldsOnly": {
+        "Name": "Limit to Fields",
+        "Description": "Use only field values, without skills"
+      },
+      "NoCalculs": {
+        "Name": "Remove calculations",
+        "Description": "Remove the worst die then the best one when rolling"
+      },
+      "Specialisations": {
+        "Name": "Specializations",
+        "Description": "Enable specializations, equivalent to traits"
+      },
+      "Confrontations": {
+        "Name": "Confrontations",
+        "Description": "Roll 4d6 and distribute between action and caution"
+      },
+      "Initiative": {
+        "Name": "Initiative",
+        "Description": "Use Pugilism to determine initiative"
+      },
+      "OccultSciences": {
+        "Name": "Magic and occult sciences",
+        "Description": "Managed as a Confrontation"
+      },
+      "Resources": {
+        "Name": "Resources",
+        "Description": "Managed as a Confrontation"
+      },
+      "RiskTaking": {
+        "Name": "Risk taking",
+        "Description": "Simplified Confrontation - 3d6 instead of 4d6"
+      },
+      "Organizations": {
+        "Name": "Organizations",
+        "Description": "Managed like an NPC"
+      },
+      "MassCombat": {
+        "Name": "Mass combat",
+        "Description": "Managed like an NPC"
+      },
+      "Travels": {
+        "Name": "Travels",
+        "Description": "Long action/adapted minimum margin"
+      },
+      "Plans": {
+        "Name": "Plans",
+        "Description": "Long action/adapted minimum margin"
+      },
+      "Relations": {
+        "Name": "Relations and contacts",
+        "Description": "As bonuses"
+      },
+      "Vehicles": {
+        "Name": "Vehicles",
+        "Description": "Managed as bonuses"
+      },
+      "ChangeDice": {
+        "Name": "Change dice",
+        "Description": "Use other types of dice for the system"
+      },
+      "TypeDice": {
+        "Name": "Type dice",
+        "Description": "Differentiate dice to color the description"
+      },
+      "TensionDie": {
+        "Name": "Tension die",
+        "Description": "Increasing threat when the die is above its value"
+      },
+      "Attachments": {
+        "Name": "Attachments and destiny",
+        "Description": "Element allowing to raise gauges"
+      },
+      "Criticals": {
+        "Name": "Critical success and failure",
+        "Description": "On double 1 or 6"
+      },
+      "Motivations": {
+        "Name": "Motivations and bonus points",
+        "Description": "Modifies dice rolls"
+      },
+      "Roles": {
+        "Name": "Roles",
+        "Description": "Simplified NPC rule"
+      },
+      "NegativeExperience": {
+        "Name": "Negative experience",
+        "Description": "1 negative experience point per Skill > 5"
+      },
+      "SharedExperience": {
+        "Name": "Shared experience",
+        "Description": "Allows sharing experience between characters"
+      },
+      "Willpower": {
+        "Name": "Willpower",
+        "Description": "Gauge providing bonuses"
+      }
+    },
+    
+    "Notifications": {
+      "ModuleEnabled": "Module {module} enabled",
+      "ModuleDisabled": "Module {module} disabled"
+    },
+    
+    "Univers": {
+      "Generique": "Generic",
+      "Steampunk": "Steampunk",
+      "Cyberpunk": "Cyberpunk",
+      "Fantasy": "Fantasy"
     }
   },
   

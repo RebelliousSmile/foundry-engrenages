@@ -5,13 +5,14 @@
     "SheetNPC": "Feuille de PNJ Engrenages",
     "SheetVehicle": "Feuille de Véhicule Engrenages",
     "SheetOrganization": "Feuille d'Organisation Engrenages",
-    
-    "Categories": {
+
+    "Fields": {
       "Physique": "Physique",
       "Mental": "Mental",
-      "Social": "Social"
+      "Social": "Social",
+      "Occulte": "Occulte"
     },
-    
+
     "CompetencesPhysiques": {
       "athletisme": "Athlétisme",
       "conduite": "Conduite",
@@ -19,7 +20,7 @@
       "pugilat": "Pugilat",
       "tir": "Tir"
     },
-    
+
     "CompetencesMentales": {
       "citadin": "Citadin",
       "milieuRural": "Milieu rural",
@@ -27,7 +28,7 @@
       "traumatologie": "Traumatologie",
       "custom": "Autre"
     },
-    
+
     "CompetencesSociales": {
       "argutie": "Argutie",
       "creativite": "Créativité",
@@ -35,7 +36,13 @@
       "maraude": "Maraude",
       "representation": "Représentation"
     },
-    
+
+    "CompetencesOccultes": {
+      "rituel": "Rituel",
+      "mystere": "Mystère",
+      "artefact": "Artefact"
+    },
+
     "Specialisations": {
       "Title": "Spécialisations",
       "Add": "Ajouter une spécialisation",
@@ -44,56 +51,156 @@
       "Name": "Nom",
       "Category": "Catégorie"
     },
-    
+
     "Gauges": {
       "Physique": "Jauge Physique",
       "Mental": "Jauge Mentale",
-      "Social": "Jauge Sociale"
+      "Social": "Jauge Sociale",
+      "Occulte": "Jauge Occulte"
     },
-    
+
     "Details": {
       "Nom": "Nom",
       "Traits": "Traits",
       "Type": "Type",
       "Description": "Description"
     },
-    
-    "Equipment": {
-      "Title": "Équipement",
-      "Slot": "Emplacement"
-    },
-    
-    "Abilities": {
-      "Title": "Capacités",
-      "New": "Nouvelle capacité",
-      "Add": "Ajouter une capacité",
-      "Delete": "Supprimer la capacité",
-      "DeleteConfirm": "Êtes-vous sûr de vouloir supprimer cette capacité ?"
-    },
-    
-    "Dice": {
-      "Roll": "Lancer",
-      "Result": "Résultat",
-      "Success": "Succès",
-      "Partial": "Succès partiel",
-      "Failure": "Échec",
-      "Critical": "Critique"
-    },
-    
+
     "Settings": {
-      "Title": "Paramètres Engrenages",
+      "Title": "Paramètres d'Engrenages",
       "UniversLabel": "Univers",
-      "UniversHint": "Choisissez l'univers pour votre partie Engrenages",
+      "UniversHint": "Choisissez l'univers pour votre jeu Engrenages",
       "UniversDefault": "Générique",
       "UniversCustom": "Personnalisé",
       "RulesLabel": "Règles optionnelles",
-      "RulesHint": "Activez ou désactivez les règles optionnelles",
-      "RulesCombat": "Combat avancé",
-      "RulesMagie": "Magie",
-      "RulesDestin": "Points de destin"
+      "RulesHint": "Activer ou désactiver les règles optionnelles",
+      "RulesCombat": "Combat avancé"
+    },
+
+    "Optional": {
+      "Univers": {
+        "Name": "Univers",
+        "Description": "Choisissez l'univers de jeu"
+      },
+      "Combat": {
+        "Name": "Combat avancé",
+        "Description": "Active les règles de combat avancées"
+      },
+      "LimitCompetences": {
+        "Name": "Limiter à quatre Compétences par Champs",
+        "Description": "Limite le nombre de compétences à quatre par champ"
+      },
+      "FieldsOnly": {
+        "Name": "Se limiter aux Champs",
+        "Description": "Utiliser uniquement les valeurs des champs, sans compétences"
+      },
+      "NoCalculs": {
+        "Name": "Supprimer les calculs",
+        "Description": "Supprime le dé le plus mauvais puis le meilleur lors des jets"
+      },
+      "Specialisations": {
+        "Name": "Spécialisations",
+        "Description": "Active les spécialisations, équivalentes aux traits"
+      },
+      "Confrontations": {
+        "Name": "Confrontations",
+        "Description": "Lancer 4d6 et les répartir entre réaliser l'action et jouer de prudence"
+      },
+      "Initiative": {
+        "Name": "Initiative",
+        "Description": "Utilisation de Pugilat pour déterminer l'initiative"
+      },
+      "OccultSciences": {
+        "Name": "Magie et sciences occultes",
+        "Description": "Gérées comme une Confrontation"
+      },
+      "Resources": {
+        "Name": "Ressources",
+        "Description": "Gérées comme une Confrontation"
+      },
+      "RiskTaking": {
+        "Name": "Prise de risque",
+        "Description": "Confrontation simplifiée - 3d6 au lieu de 4d6"
+      },
+      "Organizations": {
+        "Name": "Les organisations",
+        "Description": "Gérées comme un PNJ"
+      },
+      "MassCombat": {
+        "Name": "Combats de masse",
+        "Description": "Gérés comme un PNJ"
+      },
+      "Travels": {
+        "Name": "Voyages",
+        "Description": "Action longue/marge minimale adaptée"
+      },
+      "Plans": {
+        "Name": "Les plans",
+        "Description": "Action longue/marge minimale adaptée"
+      },
+      "Relations": {
+        "Name": "Relations et contacts",
+        "Description": "Sous forme de bonus"
+      },
+      "Vehicles": {
+        "Name": "Les véhicules",
+        "Description": "Gérés comme des bonus"
+      },
+      "ChangeDice": {
+        "Name": "Changer les dés",
+        "Description": "Utiliser d'autres types de dés pour le système"
+      },
+      "TypeDice": {
+        "Name": "Typer les dés",
+        "Description": "Différencier les dés pour colorer la description"
+      },
+      "TensionDie": {
+        "Name": "Le dé de tension",
+        "Description": "Menace croissante quand le dé est au-dessus de sa valeur"
+      },
+      "Attachments": {
+        "Name": "Attaches et destin",
+        "Description": "Élément permettant de faire remonter les jauges"
+      },
+      "Criticals": {
+        "Name": "Réussite et échec critiques",
+        "Description": "Sur un double 1 ou 6"
+      },
+      "Motivations": {
+        "Name": "Motivations et points de bonus",
+        "Description": "Modifie les jets de dés"
+      },
+      "Roles": {
+        "Name": "Les rôles",
+        "Description": "Règle simplifiée de PNJ"
+      },
+      "NegativeExperience": {
+        "Name": "L'expérience négative",
+        "Description": "1 point d'expérience négative par Compétence > 5"
+      },
+      "SharedExperience": {
+        "Name": "Partage d'expérience",
+        "Description": "Permet de partager l'expérience entre les personnages"
+      },
+      "Willpower": {
+        "Name": "Force de volonté",
+        "Description": "Jauge accordant des bonus"
+      }
+    },
+
+    "Notifications": {
+      "ModuleEnabled": "Module {module} activé",
+      "ModuleDisabled": "Module {module} désactivé"
+    },
+
+    "Univers": {
+      "Generique": "Générique",
+      "Steampunk": "Steampunk",
+      "Cyberpunk": "Cyberpunk",
+      "Fantasy": "Fantasy"
     }
   },
-  
+
   "TYPES": {
     "Actor": {
       "character": "Personnage",

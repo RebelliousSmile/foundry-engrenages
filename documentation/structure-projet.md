@@ -32,7 +32,7 @@ engrenages/
 │   ├── dice/                   # Système de dés
 │   │   └── roll.js             # Gestion des lancers de dés
 │   ├── optional/               # Modules de règles optionnelles
-│   │   ├── magic.js            # Système de magie
+│   │   ├── config.js           # Configuration du système
 │   │   ├── combat.js           # Règles de combat avancées
 │   │   └── crafting.js         # Système d'artisanat
 │   └── utils/                  # Utilitaires
@@ -124,7 +124,7 @@ engrenages/
 
 ## Types d'Acteurs et Limites de Valeurs
 
-Le système Engrenages comprend quatre types d'acteurs, chacun avec ses propres caractéristiques et limites :
+Le système Engrenages comprend quatre types d'acteurs, chacun avec ses propres champs et limites :
 
 ### 1. Personnages Joueurs (character)
 

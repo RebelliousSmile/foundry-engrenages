@@ -116,6 +116,32 @@
                     </div>
                 </div>
             </div>
+            
+            {{!-- Compétences Occultes --}}
+            <div class="competence-category">
+                <h2 class="category-title">
+                    <i class="fas fa-cog"></i> {{system.occulte.nom}}
+                </h2>
+                <div class="competence-list">
+                    {{!-- Valeur générique pour occulte --}}
+                    <div class="competence-item">
+                        <div class="competence-name">Valeur</div>
+                        <div class="competence-value">
+                            <input type="text" name="system.occulte.value" value="{{system.occulte.value}}" data-dtype="Number"/>
+                        </div>
+                    </div>
+                </div>
+                
+                {{!-- Jauge Occulte --}}
+                <div class="gauge-container">
+                    <div class="gauge-label">Jauge</div>
+                    <div class="gauge-box">
+                        <input type="number" name="system.gauges.occulte.value" value="{{system.gauges.occulte.value}}" min="0" max="{{system.gauges.occulte.max}}"/>
+                        <span class="gauge-separator">/</span>
+                        <input type="number" name="system.gauges.occulte.max" value="{{system.gauges.occulte.max}}" min="0"/>
+                    </div>
+                </div>
+            </div>
         </div>
         
         {{!-- Section Capacités --}}

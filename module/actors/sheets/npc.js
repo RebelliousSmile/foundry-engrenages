@@ -94,7 +94,7 @@ export class EngrenagesNpcSheet extends ActorSheet {
         const value = parseInt(this.actor.system[category].value) || 0;
         
         // Préparation des données pour le lancer
-        const label = CONFIG.engrenages.config.categories[category] || category;
+        const label = CONFIG.engrenages.config.fields[category] || category;
         
         // Lancer de dés
         await EngrenagesRoll.rollCompetence(this.actor, {

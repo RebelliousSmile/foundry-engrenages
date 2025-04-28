@@ -541,6 +541,56 @@ const CompetencesTemplate = {
                 default: 0
             }
         }
+    },
+    occulte: {
+        type: Object,
+        default: {},
+        nom: {
+            type: String,
+            default: "Occulte"
+        },
+        rituel: {
+            type: Object,
+            default: {},
+            trained: {
+                type: Boolean,
+                default: false
+            },
+            value: {
+                type: Number,
+                min: 0,
+                max: 10,
+                default: 0
+            }
+        },
+        mystere: {
+            type: Object,
+            default: {},
+            trained: {
+                type: Boolean,
+                default: false
+            },
+            value: {
+                type: Number,
+                min: 0,
+                max: 10,
+                default: 0
+            }
+        },
+        artefact: {
+            type: Object,
+            default: {},
+            trained: {
+                type: Boolean,
+                default: false
+            },
+            value: {
+                type: Number,
+                min: 0,
+                max: 10,
+                default: 0
+            }
+        }
     }
 };
 
@@ -582,6 +632,21 @@ const GaugesTemplate = {
             }
         },
         social: {
+            type: Object,
+            default: {},
+            value: {
+                type: Number,
+                min: 0,
+                max: 10,
+                default: 0
+            },
+            max: {
+                type: Number,
+                min: 0,
+                default: 10
+            }
+        },
+        occulte: {
             type: Object,
             default: {},
             value: {

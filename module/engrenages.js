@@ -80,16 +80,33 @@ Hooks.once("init", async function() {
         makeDefault: true,
         label: "ENGRENAGES.SheetNPC"
     });
-    Actors.registerSheet("engrenages", EngrenagesVehicleSheet, {
-        types: ["vehicle"],
-        makeDefault: true,
-        label: "ENGRENAGES.SheetVehicle"
-    });
-    Actors.registerSheet("engrenages", EngrenagesOrganizationSheet, {
-        types: ["organization"],
-        makeDefault: true,
-        label: "ENGRENAGES.SheetOrganization"
-    });
+    
+    // Enregistrement conditionnel des feuilles de véhicule et d'organisation
+    // Ces feuilles ne sont disponibles que si les options correspondantes sont activées
+    const registerConditionalSheets = () => {
+        // Vérifie si l'option 'vehicles' est activée
+        const vehiclesEnabled = game.settings.get("engrenages", "modules.vehicles");
+        if (vehiclesEnabled) {
+            Actors.registerSheet("engrenages", EngrenagesVehicleSheet, {
+                types: ["vehicle"],
+                makeDefault: true,
+                label: "ENGRENAGES.SheetVehicle"
+            });
+        }
+        
+        // Vérifie si l'option 'organizations' est activée
+        const organizationsEnabled = game.settings.get("engrenages", "modules.organizations");
+        if (organizationsEnabled) {
+            Actors.registerSheet("engrenages", EngrenagesOrganizationSheet, {
+                types: ["organization"],
+                makeDefault: true,
+                label: "ENGRENAGES.SheetOrganization"
+            });
+        }
+    };
+    
+    // On attend que les paramètres soient chargés avant d'enregistrer les feuilles conditionnelles
+    Hooks.once("ready", registerConditionalSheets);
     
     // Enregistrement des feuilles d'objets
     Items.unregisterSheet("core", ItemSheet);
@@ -117,6 +134,25 @@ Hooks.once("init", async function() {
     
     // Initialisation des hooks
     EngrenagesHooks.init();
+    
+    // Filtrage des types d'acteurs disponibles en fonction des options activées
+    Hooks.on("renderDialog", (dialog, html, data) => {
+        // Vérifie si c'est le dialogue de création d'acteur
+        if (dialog.data.title === game.i18n.localize("ACTOR.Create")) {
+            const vehiclesEnabled = game.settings.get("engrenages", "modules.vehicles");
+            const organizationsEnabled = game.settings.get("engrenages", "modules.organizations");
+            
+            // Si l'option 'vehicles' n'est pas activée, masquer le type 'vehicle'
+            if (!vehiclesEnabled) {
+                html.find('option[value="vehicle"]').remove();
+            }
+            
+            // Si l'option 'organizations' n'est pas activée, masquer le type 'organization'
+            if (!organizationsEnabled) {
+                html.find('option[value="organization"]').remove();
+            }
+        }
+    });
 });
 
 /**
