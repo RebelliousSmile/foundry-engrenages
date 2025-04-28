@@ -51,8 +51,13 @@ export class EngrenagesCharacterSheet extends ActorSheet {
         // Tout ce qui suit nécessite que la feuille ne soit pas en mode édition verrouillée
         if (!this.isEditable) return;
 
-        // Gestion des clics sur les compétences pour lancer les dés
-        html.find('.competence-value').click(this._onRollCompetence.bind(this));
+        // Gestion des clics sur les boutons et autres éléments interactifs
+        html.find('.affichage-niveau-competence').click(this._onCompetenceValueSelect.bind(this));
+        html.find('.option-valeur-competence').click(this._onCompetenceValueSelect.bind(this));
+        html.find('.element-competence').click(this._onRollCompetence.bind(this));
+        
+        // Appliquer les couleurs de fond à partir des attributs data-color
+        this._appliquerCouleursNiveauxCompetence(html);
         
         // Gestion des clics sur les jauges pour les modifier
         html.find('.gauge-box input').change(this._onGaugeChange.bind(this));
@@ -70,43 +75,64 @@ export class EngrenagesCharacterSheet extends ActorSheet {
     }
 
     /**
-     * Gère le lancer de dés pour une compétence
-     * @param {Event} event - L'événement de clic
+     * Applique les couleurs de fond aux éléments d'affichage des niveaux de compétence
+     * @param {JQuery} html - L'élément HTML de la feuille
      * @private
      */
-    async _onRollCompetence(event) {
-        event.preventDefault();
-        const element = event.currentTarget;
-        const dataset = element.dataset;
+    _appliquerCouleursNiveauxCompetence(html) {
+        const elementsNiveaux = html.find('.affichage-niveau-competence');
+        elementsNiveaux.each((_, element) => {
+            const couleur = element.dataset.color;
+            if (couleur) {
+                element.style.backgroundColor = couleur;
+            }
+        });
+    }
+
+    /**
+     * Gère le lancer de dés pour une compétence
+     * @param {Event} evenement - L'événement de clic
+     * @private
+     */
+    async _onRollCompetence(evenement) {
+        evenement.preventDefault();
+        const element = evenement.currentTarget;
+        
+        // Remonter jusqu'à trouver l'élément parent qui contient le champ input
+        const elementCompetence = element.closest('.element-competence');
+        if (!elementCompetence) return;
+        
+        const champInput = elementCompetence.querySelector('input[type="hidden"]');
+        if (!champInput) return;
         
         // Récupération du nom de la compétence à partir du nom du champ
-        const inputName = element.getAttribute('name');
-        if (!inputName) return;
+        const nomInput = champInput.getAttribute('name');
+        if (!nomInput) return;
         
-        // Format attendu: system.category.competence.value
-        const parts = inputName.split('.');
-        if (parts.length < 4) return;
+        // Format attendu: system.categorie.competence.value
+        const parties = nomInput.split('.');
+        if (parties.length < 4) return;
         
-        const category = parts[1]; // physique, mental, social
-        const competenceName = parts[2]; // nom de la compétence
+        const categorie = parties[1]; // physique, mental, social
+        const nomCompetence = parties[2]; // nom de la compétence
         
         // Récupération des données de la compétence
-        const competence = this.actor.system[category][competenceName];
+        const competence = this.actor.system[categorie][nomCompetence];
         if (!competence) return;
         
         // Préparation des données pour le lancer
-        const label = CONFIG.engrenages.config[`competences${category.charAt(0).toUpperCase() + category.slice(1)}s`][competenceName] || competenceName;
+        const etiquette = CONFIG.engrenages.config[`competences${categorie.charAt(0).toUpperCase() + categorie.slice(1)}s`][nomCompetence] || nomCompetence;
         
         // Détermination du bonus basé sur la formation
-        const trained = competence.trained ? 2 : 0;
-        const value = parseInt(competence.value) || 0;
-        const total = value + trained;
+        const formationBonus = competence.trained ? 2 : 0;
+        const valeur = parseInt(competence.value) || 0;
+        const total = valeur + formationBonus;
         
         // Lancer de dés
         await EngrenagesRoll.rollCompetence(this.actor, {
-            category,
-            competence: competenceName,
-            label,
+            category: categorie,
+            competence: nomCompetence,
+            label: etiquette,
             value: total
         });
     }
@@ -139,6 +165,53 @@ export class EngrenagesCharacterSheet extends ActorSheet {
     _onTrainedChange(event) {
         event.preventDefault();
         // Logique de mise à jour de l'état de formation si nécessaire
+    }
+    
+    /**
+     * Gère la sélection d'une valeur de compétence (pair/impair)
+     * @param {Event} evenement - L'événement de clic
+     * @private
+     */
+    async _onCompetenceValueSelect(evenement) {
+        evenement.preventDefault();
+        const element = evenement.currentTarget;
+        const valeur = Number(element.dataset.value);
+        
+        // Remonter jusqu'à trouver l'élément parent qui contient le champ input
+        const conteneurValeur = element.closest('.valeur-competence');
+        if (!conteneurValeur) return;
+        
+        const champInput = conteneurValeur.querySelector('input[type="hidden"]');
+        if (!champInput) return;
+        
+        // Mise à jour de la valeur dans le champ caché
+        champInput.value = valeur;
+        
+        // Mise à jour de l'affichage
+        const options = conteneurValeur.querySelectorAll('.option-valeur-competence');
+        options.forEach(option => {
+            if (Number(option.dataset.value) === valeur) {
+                option.classList.add('selected');
+            } else {
+                option.classList.remove('selected');
+            }
+        });
+        
+        // Mise à jour de l'affichage du niveau
+        const affichageNiveau = conteneurValeur.querySelector('.affichage-niveau-competence');
+        if (affichageNiveau) {
+            const couleur = CONFIG.engrenages.config.niveauxCompetence[valeur].color;
+            const nom = game.i18n.localize(CONFIG.engrenages.config.niveauxCompetence[valeur].name);
+            const description = game.i18n.localize(CONFIG.engrenages.config.niveauxCompetence[valeur].description);
+            
+            affichageNiveau.dataset.color = couleur;
+            affichageNiveau.style.backgroundColor = couleur;
+            affichageNiveau.querySelector('.nom-niveau-competence').textContent = nom;
+            affichageNiveau.querySelector('.description-niveau-competence').textContent = description;
+        }
+        
+        // Enregistrer la modification dans l'acteur
+        await this._onSubmit(evenement);
     }
     
     /**

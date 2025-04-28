@@ -35,59 +35,114 @@
                 <h2 class="category-title">
                     <i class="fas fa-cog"></i> Physique
                 </h2>
-                <div class="competence-list">
+                <div class="liste-competences">
                     {{!-- Athlétisme --}}
-                    <div class="competence-item">
-                        <div class="competence-name">Athlétisme</div>
-                        <div class="competence-trained">
+                    <div class="element-competence">
+                        <div class="nom-competence">Athlétisme</div>
+                        <div class="formation-competence">
                             <input type="checkbox" name="system.physique.athletisme.trained" {{checked system.physique.athletisme.trained}}/>
                         </div>
-                        <div class="competence-value">
-                            <input type="text" name="system.physique.athletisme.value" value="{{system.physique.athletisme.value}}" data-dtype="Number"/>
+                        <div class="valeur-competence selecteur-niveau-competence">
+                            <div class="affichage-niveau-competence" data-color="{{obtenirCouleurNiveauCompetence system.physique.athletisme.value}}">
+                                <span class="nom-niveau-competence">{{obtenirNomNiveauCompetence system.physique.athletisme.value}}</span>
+                                <span class="description-niveau-competence">{{obtenirDescriptionNiveauCompetence system.physique.athletisme.value}}</span>
+                            </div>
+                            <div class="controles-valeur-competence">
+                                {{#each (obtenirPaireValeursNiveauCompetence system.physique.athletisme.value) as |valeur index|}}
+                                    <div class="option-valeur-competence {{#if (eq ../system.physique.athletisme.value valeur)}}selected{{/if}}" data-value="{{valeur}}">
+                                        {{valeur}}
+                                    </div>
+                                {{/each}}
+                            </div>
+                            <input type="hidden" name="system.physique.athletisme.value" value="{{system.physique.athletisme.value}}" data-dtype="Number"/>
                         </div>
                     </div>
                     
                     {{!-- Conduite --}}
-                    <div class="competence-item">
-                        <div class="competence-name">Conduite</div>
-                        <div class="competence-trained">
+                    <div class="element-competence">
+                        <div class="nom-competence">Conduite</div>
+                        <div class="formation-competence">
                             <input type="checkbox" name="system.physique.conduite.trained" {{checked system.physique.conduite.trained}}/>
                         </div>
-                        <div class="competence-value">
-                            <input type="text" name="system.physique.conduite.value" value="{{system.physique.conduite.value}}" data-dtype="Number"/>
+                        <div class="valeur-competence selecteur-niveau-competence">
+                            <div class="affichage-niveau-competence" data-color="{{obtenirCouleurNiveauCompetence system.physique.conduite.value}}">
+                                <span class="nom-niveau-competence">{{obtenirNomNiveauCompetence system.physique.conduite.value}}</span>
+                                <span class="description-niveau-competence">{{obtenirDescriptionNiveauCompetence system.physique.conduite.value}}</span>
+                            </div>
+                            <div class="controles-valeur-competence">
+                                {{#each (obtenirPaireValeursNiveauCompetence system.physique.conduite.value) as |valeur index|}}
+                                    <div class="option-valeur-competence {{#if (eq ../system.physique.conduite.value valeur)}}selected{{/if}}" data-value="{{valeur}}">
+                                        {{valeur}}
+                                    </div>
+                                {{/each}}
+                            </div>
+                            <input type="hidden" name="system.physique.conduite.value" value="{{system.physique.conduite.value}}" data-dtype="Number"/>
                         </div>
                     </div>
                     
                     {{!-- Escrime --}}
-                    <div class="competence-item">
-                        <div class="competence-name">Escrime</div>
-                        <div class="competence-trained">
+                    <div class="element-competence">
+                        <div class="nom-competence">Escrime</div>
+                        <div class="formation-competence">
                             <input type="checkbox" name="system.physique.escrime.trained" {{checked system.physique.escrime.trained}}/>
                         </div>
-                        <div class="competence-value">
-                            <input type="text" name="system.physique.escrime.value" value="{{system.physique.escrime.value}}" data-dtype="Number"/>
+                        <div class="valeur-competence selecteur-niveau-competence">
+                            <div class="affichage-niveau-competence" data-color="{{obtenirCouleurNiveauCompetence system.physique.escrime.value}}">
+                                <span class="nom-niveau-competence">{{obtenirNomNiveauCompetence system.physique.escrime.value}}</span>
+                                <span class="description-niveau-competence">{{obtenirDescriptionNiveauCompetence system.physique.escrime.value}}</span>
+                            </div>
+                            <div class="controles-valeur-competence">
+                                {{#each (obtenirPaireValeursNiveauCompetence system.physique.escrime.value) as |valeur index|}}
+                                    <div class="option-valeur-competence {{#if (eq ../system.physique.escrime.value valeur)}}selected{{/if}}" data-value="{{valeur}}">
+                                        {{valeur}}
+                                    </div>
+                                {{/each}}
+                            </div>
+                            <input type="hidden" name="system.physique.escrime.value" value="{{system.physique.escrime.value}}" data-dtype="Number"/>
                         </div>
                     </div>
                     
                     {{!-- Pugilat --}}
-                    <div class="competence-item">
-                        <div class="competence-name">Pugilat</div>
-                        <div class="competence-trained">
+                    <div class="element-competence">
+                        <div class="nom-competence">Pugilat</div>
+                        <div class="formation-competence">
                             <input type="checkbox" name="system.physique.pugilat.trained" {{checked system.physique.pugilat.trained}}/>
                         </div>
-                        <div class="competence-value">
-                            <input type="text" name="system.physique.pugilat.value" value="{{system.physique.pugilat.value}}" data-dtype="Number"/>
+                        <div class="valeur-competence selecteur-niveau-competence">
+                            <div class="affichage-niveau-competence" data-color="{{obtenirCouleurNiveauCompetence system.physique.pugilat.value}}">
+                                <span class="nom-niveau-competence">{{obtenirNomNiveauCompetence system.physique.pugilat.value}}</span>
+                                <span class="description-niveau-competence">{{obtenirDescriptionNiveauCompetence system.physique.pugilat.value}}</span>
+                            </div>
+                            <div class="controles-valeur-competence">
+                                {{#each (obtenirPaireValeursNiveauCompetence system.physique.pugilat.value) as |valeur index|}}
+                                    <div class="option-valeur-competence {{#if (eq ../system.physique.pugilat.value valeur)}}selected{{/if}}" data-value="{{valeur}}">
+                                        {{valeur}}
+                                    </div>
+                                {{/each}}
+                            </div>
+                            <input type="hidden" name="system.physique.pugilat.value" value="{{system.physique.pugilat.value}}" data-dtype="Number"/>
                         </div>
                     </div>
                     
                     {{!-- Tir --}}
-                    <div class="competence-item">
-                        <div class="competence-name">Tir</div>
-                        <div class="competence-trained">
+                    <div class="element-competence">
+                        <div class="nom-competence">Tir</div>
+                        <div class="formation-competence">
                             <input type="checkbox" name="system.physique.tir.trained" {{checked system.physique.tir.trained}}/>
                         </div>
-                        <div class="competence-value">
-                            <input type="text" name="system.physique.tir.value" value="{{system.physique.tir.value}}" data-dtype="Number"/>
+                        <div class="valeur-competence selecteur-niveau-competence">
+                            <div class="affichage-niveau-competence" data-color="{{obtenirCouleurNiveauCompetence system.physique.tir.value}}">
+                                <span class="nom-niveau-competence">{{obtenirNomNiveauCompetence system.physique.tir.value}}</span>
+                                <span class="description-niveau-competence">{{obtenirDescriptionNiveauCompetence system.physique.tir.value}}</span>
+                            </div>
+                            <div class="controles-valeur-competence">
+                                {{#each (obtenirPaireValeursNiveauCompetence system.physique.tir.value) as |valeur index|}}
+                                    <div class="option-valeur-competence {{#if (eq ../system.physique.tir.value valeur)}}selected{{/if}}" data-value="{{valeur}}">
+                                        {{valeur}}
+                                    </div>
+                                {{/each}}
+                            </div>
+                            <input type="hidden" name="system.physique.tir.value" value="{{system.physique.tir.value}}" data-dtype="Number"/>
                         </div>
                     </div>
                 </div>
@@ -131,11 +186,11 @@
                 <h2 class="category-title">
                     <i class="fas fa-cog"></i> Mental
                 </h2>
-                <div class="competence-list">
+                <div class="liste-competences">
                     {{!-- Citadin --}}
-                    <div class="competence-item">
-                        <div class="competence-name">Citadin</div>
-                        <div class="competence-trained">
+                    <div class="element-competence">
+                        <div class="nom-competence">Citadin</div>
+                        <div class="formation-competence">
                             <input type="checkbox" name="system.mental.citadin.trained" {{checked system.mental.citadin.trained}}/>
                         </div>
                         <div class="competence-value">
@@ -144,9 +199,9 @@
                     </div>
                     
                     {{!-- Milieu rural --}}
-                    <div class="competence-item">
-                        <div class="competence-name">Milieu rural</div>
-                        <div class="competence-trained">
+                    <div class="element-competence">
+                        <div class="nom-competence">Milieu rural</div>
+                        <div class="formation-competence">
                             <input type="checkbox" name="system.mental.milieuRural.trained" {{checked system.mental.milieuRural.trained}}/>
                         </div>
                         <div class="competence-value">
@@ -155,9 +210,9 @@
                     </div>
                     
                     {{!-- Sciences --}}
-                    <div class="competence-item">
-                        <div class="competence-name">Sciences</div>
-                        <div class="competence-trained">
+                    <div class="element-competence">
+                        <div class="nom-competence">Sciences</div>
+                        <div class="formation-competence">
                             <input type="checkbox" name="system.mental.sciences.trained" {{checked system.mental.sciences.trained}}/>
                         </div>
                         <div class="competence-value">
@@ -166,9 +221,9 @@
                     </div>
                     
                     {{!-- Traumatologie --}}
-                    <div class="competence-item">
-                        <div class="competence-name">Traumatologie</div>
-                        <div class="competence-trained">
+                    <div class="element-competence">
+                        <div class="nom-competence">Traumatologie</div>
+                        <div class="formation-competence">
                             <input type="checkbox" name="system.mental.traumatologie.trained" {{checked system.mental.traumatologie.trained}}/>
                         </div>
                         <div class="competence-value">
@@ -178,10 +233,10 @@
                     
                     {{!-- Compétence personnalisée --}}
                     <div class="competence-item custom-competence">
-                        <div class="competence-name">
+                        <div class="nom-competence">
                             <input type="text" name="system.mental.custom.name" value="{{system.mental.custom.name}}" placeholder="Autre compétence"/>
                         </div>
-                        <div class="competence-trained">
+                        <div class="formation-competence">
                             <input type="checkbox" name="system.mental.custom.trained" {{checked system.mental.custom.trained}}/>
                         </div>
                         <div class="competence-value">
@@ -229,11 +284,11 @@
                 <h2 class="category-title">
                     <i class="fas fa-cog"></i> Social
                 </h2>
-                <div class="competence-list">
+                <div class="liste-competences">
                     {{!-- Argutie --}}
-                    <div class="competence-item">
-                        <div class="competence-name">Argutie</div>
-                        <div class="competence-trained">
+                    <div class="element-competence">
+                        <div class="nom-competence">Argutie</div>
+                        <div class="formation-competence">
                             <input type="checkbox" name="system.social.argutie.trained" {{checked system.social.argutie.trained}}/>
                         </div>
                         <div class="competence-value">
@@ -242,9 +297,9 @@
                     </div>
                     
                     {{!-- Créativité --}}
-                    <div class="competence-item">
-                        <div class="competence-name">Créativité</div>
-                        <div class="competence-trained">
+                    <div class="element-competence">
+                        <div class="nom-competence">Créativité</div>
+                        <div class="formation-competence">
                             <input type="checkbox" name="system.social.creativite.trained" {{checked system.social.creativite.trained}}/>
                         </div>
                         <div class="competence-value">
@@ -253,9 +308,9 @@
                     </div>
                     
                     {{!-- Faconde --}}
-                    <div class="competence-item">
-                        <div class="competence-name">Faconde</div>
-                        <div class="competence-trained">
+                    <div class="element-competence">
+                        <div class="nom-competence">Faconde</div>
+                        <div class="formation-competence">
                             <input type="checkbox" name="system.social.faconde.trained" {{checked system.social.faconde.trained}}/>
                         </div>
                         <div class="competence-value">
@@ -264,9 +319,9 @@
                     </div>
                     
                     {{!-- Maraude --}}
-                    <div class="competence-item">
-                        <div class="competence-name">Maraude</div>
-                        <div class="competence-trained">
+                    <div class="element-competence">
+                        <div class="nom-competence">Maraude</div>
+                        <div class="formation-competence">
                             <input type="checkbox" name="system.social.maraude.trained" {{checked system.social.maraude.trained}}/>
                         </div>
                         <div class="competence-value">
@@ -275,9 +330,9 @@
                     </div>
                     
                     {{!-- Représentation --}}
-                    <div class="competence-item">
-                        <div class="competence-name">Représentation</div>
-                        <div class="competence-trained">
+                    <div class="element-competence">
+                        <div class="nom-competence">Représentation</div>
+                        <div class="formation-competence">
                             <input type="checkbox" name="system.social.representation.trained" {{checked system.social.representation.trained}}/>
                         </div>
                         <div class="competence-value">
@@ -325,11 +380,11 @@
                 <h2 class="category-title">
                     <i class="fas fa-cog"></i> {{system.occulte.nom}}
                 </h2>
-                <div class="competence-list">
+                <div class="liste-competences">
                     {{!-- Rituel --}}
-                    <div class="competence-item">
-                        <div class="competence-name">Rituel</div>
-                        <div class="competence-trained">
+                    <div class="element-competence">
+                        <div class="nom-competence">Rituel</div>
+                        <div class="formation-competence">
                             <input type="checkbox" name="system.occulte.rituel.trained" {{checked system.occulte.rituel.trained}}/>
                         </div>
                         <div class="competence-value">
@@ -338,9 +393,9 @@
                     </div>
                     
                     {{!-- Mystère --}}
-                    <div class="competence-item">
-                        <div class="competence-name">Mystère</div>
-                        <div class="competence-trained">
+                    <div class="element-competence">
+                        <div class="nom-competence">Mystère</div>
+                        <div class="formation-competence">
                             <input type="checkbox" name="system.occulte.mystere.trained" {{checked system.occulte.mystere.trained}}/>
                         </div>
                         <div class="competence-value">
@@ -349,9 +404,9 @@
                     </div>
                     
                     {{!-- Artefact --}}
-                    <div class="competence-item">
-                        <div class="competence-name">Artefact</div>
-                        <div class="competence-trained">
+                    <div class="element-competence">
+                        <div class="nom-competence">Artefact</div>
+                        <div class="formation-competence">
                             <input type="checkbox" name="system.occulte.artefact.trained" {{checked system.occulte.artefact.trained}}/>
                         </div>
                         <div class="competence-value">

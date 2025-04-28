@@ -88,6 +88,76 @@ export const EngrenagesConfig = {
         }
     },
     
+    // Niveaux de compétences
+    niveauxCompetence: {
+        0: {
+            name: "ENGRENAGES.CompetenceLevel.Incompetent",
+            description: "ENGRENAGES.CompetenceDescription.Lamentable",
+            renown: "ENGRENAGES.CompetenceRenown.Unknown",
+            color: "#cccccc"
+        },
+        1: {
+            name: "ENGRENAGES.CompetenceLevel.Novice",
+            description: "ENGRENAGES.CompetenceDescription.Poor",
+            renown: "ENGRENAGES.CompetenceRenown.Unknown",
+            color: "#a3cfec"
+        },
+        2: {
+            name: "ENGRENAGES.CompetenceLevel.Novice",
+            description: "ENGRENAGES.CompetenceDescription.Poor",
+            renown: "ENGRENAGES.CompetenceRenown.Unknown",
+            color: "#a3cfec"
+        },
+        3: {
+            name: "ENGRENAGES.CompetenceLevel.Amateur",
+            description: "ENGRENAGES.CompetenceDescription.Average",
+            renown: "ENGRENAGES.CompetenceRenown.Rumors",
+            color: "#7fc97f"
+        },
+        4: {
+            name: "ENGRENAGES.CompetenceLevel.Amateur",
+            description: "ENGRENAGES.CompetenceDescription.Average",
+            renown: "ENGRENAGES.CompetenceRenown.Rumors",
+            color: "#7fc97f"
+        },
+        5: {
+            name: "ENGRENAGES.CompetenceLevel.Professional",
+            description: "ENGRENAGES.CompetenceDescription.Good",
+            renown: "ENGRENAGES.CompetenceRenown.Lodge",
+            color: "#fdc086"
+        },
+        6: {
+            name: "ENGRENAGES.CompetenceLevel.Professional",
+            description: "ENGRENAGES.CompetenceDescription.Good",
+            renown: "ENGRENAGES.CompetenceRenown.Lodge",
+            color: "#fdc086"
+        },
+        7: {
+            name: "ENGRENAGES.CompetenceLevel.Specialist",
+            description: "ENGRENAGES.CompetenceDescription.Remarkable",
+            renown: "ENGRENAGES.CompetenceRenown.City",
+            color: "#ffff99"
+        },
+        8: {
+            name: "ENGRENAGES.CompetenceLevel.Specialist",
+            description: "ENGRENAGES.CompetenceDescription.Remarkable",
+            renown: "ENGRENAGES.CompetenceRenown.City",
+            color: "#ffff99"
+        },
+        9: {
+            name: "ENGRENAGES.CompetenceLevel.Authority",
+            description: "ENGRENAGES.CompetenceDescription.Exceptional",
+            renown: "ENGRENAGES.CompetenceRenown.Beyond",
+            color: "#f0027f"
+        },
+        10: {
+            name: "ENGRENAGES.CompetenceLevel.Authority",
+            description: "ENGRENAGES.CompetenceDescription.Exceptional",
+            renown: "ENGRENAGES.CompetenceRenown.Beyond",
+            color: "#f0027f"
+        }
+    },
+    
     // Modules optionnels disponibles
     optionalModules: {
         univers: {

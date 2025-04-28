@@ -132,5 +132,48 @@ export class EngrenagesHelpers {
             if (total >= results.partial.min) return "partial";
             return "failure";
         });
+        
+        // Helpers pour les niveaux de compétences
+        
+        // Récupère la couleur associée au niveau de compétence
+        Handlebars.registerHelper("obtenirCouleurNiveauCompetence", function(valeur) {
+            const niveau = Math.max(0, Math.min(10, parseInt(valeur) || 0));
+            return EngrenagesConfig.niveauxCompetence[niveau].color;
+        });
+        
+        // Récupère le nom du niveau de compétence
+        Handlebars.registerHelper("obtenirNomNiveauCompetence", function(valeur) {
+            const niveau = Math.max(0, Math.min(10, parseInt(valeur) || 0));
+            return game.i18n.localize(EngrenagesConfig.niveauxCompetence[niveau].name);
+        });
+        
+        // Récupère la description du niveau de compétence
+        Handlebars.registerHelper("obtenirDescriptionNiveauCompetence", function(valeur) {
+            const niveau = Math.max(0, Math.min(10, parseInt(valeur) || 0));
+            return game.i18n.localize(EngrenagesConfig.niveauxCompetence[niveau].description);
+        });
+        
+        // Récupère la renommée associée au niveau de compétence
+        Handlebars.registerHelper("obtenirRenommeeNiveauCompetence", function(valeur) {
+            const niveau = Math.max(0, Math.min(10, parseInt(valeur) || 0));
+            return game.i18n.localize(EngrenagesConfig.niveauxCompetence[niveau].renown);
+        });
+        
+        // Récupère la paire de valeurs (pair/impair) pour un niveau de compétence
+        Handlebars.registerHelper("obtenirPaireValeursNiveauCompetence", function(valeur) {
+            const niveau = Math.max(0, Math.min(10, parseInt(valeur) || 0));
+            // Détermine si le niveau est pair ou impair
+            const estPair = niveau % 2 === 0;
+            
+            // Si le niveau est pair, renvoie [niveau, niveau+1]
+            // Si le niveau est impair, renvoie [niveau-1, niveau]
+            if (estPair) {
+                // Ne pas dépasser 10
+                return niveau === 10 ? [8, 10] : [niveau, niveau + 1];
+            } else {
+                // Ne pas descendre en dessous de 0
+                return niveau === 1 ? [0, 1] : [niveau - 1, niveau];
+            }
+        });
     }
 }

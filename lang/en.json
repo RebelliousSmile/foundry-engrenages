@@ -220,6 +220,32 @@
       "Steampunk": "Steampunk",
       "Cyberpunk": "Cyberpunk",
       "Fantasy": "Fantasy"
+    },
+    
+    "CompetenceLevel": {
+      "Incompetent": "Incompetent",
+      "Novice": "Novice",
+      "Amateur": "Amateur",
+      "Professional": "Professional",
+      "Specialist": "Specialist",
+      "Authority": "Authority"
+    },
+    
+    "CompetenceDescription": {
+      "Lamentable": "Lamentable",
+      "Poor": "Poor",
+      "Average": "Average",
+      "Good": "Good",
+      "Remarkable": "Remarkable",
+      "Exceptional": "Exceptional"
+    },
+    
+    "CompetenceRenown": {
+      "Unknown": "Illustrious unknown",
+      "Rumors": "Some hearsay",
+      "Lodge": "Lodge member or renegade",
+      "City": "Known in the city",
+      "Beyond": "Known beyond the city"
     }
   },
   

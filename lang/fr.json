@@ -198,6 +198,32 @@
       "Steampunk": "Steampunk",
       "Cyberpunk": "Cyberpunk",
       "Fantasy": "Fantasy"
+    },
+    
+    "CompetenceLevel": {
+      "Incompetent": "Incompétent",
+      "Novice": "Novice",
+      "Amateur": "Amateur",
+      "Professional": "Professionnel",
+      "Specialist": "Spécialiste",
+      "Authority": "Sommité"
+    },
+    
+    "CompetenceDescription": {
+      "Lamentable": "Lamentable",
+      "Poor": "Piètre",
+      "Average": "Moyen",
+      "Good": "Bon",
+      "Remarkable": "Remarquable",
+      "Exceptional": "Exceptionnel"
+    },
+    
+    "CompetenceRenown": {
+      "Unknown": "Illustre inconnu",
+      "Rumors": "Quelques ouï-dire",
+      "Lodge": "Membre de Loge ou renégat",
+      "City": "Connu dans la cité",
+      "Beyond": "Connu au-delà de la cité"
     }
   },
 
