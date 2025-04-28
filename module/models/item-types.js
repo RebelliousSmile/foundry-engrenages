@@ -35,35 +35,54 @@ const EquipmentModel = {
         choices: ["weapon", "armor", "shield", "tool", "consumable", "misc"]
     },
     
+    // Champ pour le nom de l'équipement
+    name: {
+        type: String,
+        required: true,
+        default: ""
+    },
+    
     // Propriétés physiques
     properties: {
         type: Object,
-        default: {},
-        weight: {
-            type: Number,
-            default: 1
-        },
-        price: {
-            type: Number,
-            default: 0
-        },
-        rarity: {
-            type: String,
-            default: "common",
-            choices: ["common", "uncommon", "rare", "legendary"]
-        },
-        durability: {
-            type: Object,
-            default: {},
-            value: {
-                type: Number,
-                default: 10
-            },
-            max: {
-                type: Number,
-                default: 10
-            }
-        }
+        default: {}
+    },
+    
+    // Poids de l'équipement
+    weight: {
+        type: Number,
+        default: 1
+    },
+    
+    // Prix de l'équipement
+    price: {
+        type: Number,
+        default: 0
+    },
+    
+    // Rareté de l'équipement
+    rarity: {
+        type: String,
+        default: "common",
+        choices: ["common", "uncommon", "rare", "legendary"]
+    },
+    
+    // Durabilité de l'équipement
+    durability: {
+        type: Object,
+        default: {}
+    },
+    
+    // Valeur actuelle de durabilité
+    durabilityValue: {
+        type: Number,
+        default: 10
+    },
+    
+    // Valeur maximale de durabilité
+    durabilityMax: {
+        type: Number,
+        default: 10
     },
     
     // Effets de l'équipement
@@ -75,39 +94,51 @@ const EquipmentModel = {
     // Pour les armes
     weapon: {
         type: Object,
-        default: {},
-        damage: {
-            type: String,
-            default: "1d6"
-        },
-        impact: {
-            type: Number,
-            min: 1,
-            max: 5,
-            default: 1
-        },
-        range: {
-            type: String,
-            default: "melee"
-        },
-        properties: {
-            type: Array,
-            default: []
-        }
+        default: {}
+    },
+    
+    // Dégâts de l'arme
+    weaponDamage: {
+        type: String,
+        default: "1d6"
+    },
+    
+    // Impact de l'arme
+    weaponImpact: {
+        type: Number,
+        min: 1,
+        max: 5,
+        default: 1
+    },
+    
+    // Portée de l'arme
+    weaponRange: {
+        type: String,
+        default: "melee"
+    },
+    
+    // Propriétés spéciales de l'arme
+    weaponProperties: {
+        type: Array,
+        default: []
     },
     
     // Pour les armures
     armor: {
         type: Object,
-        default: {},
-        protection: {
-            type: Number,
-            default: 0
-        },
-        penalty: {
-            type: Number,
-            default: 0
-        }
+        default: {}
+    },
+    
+    // Protection fournie par l'armure
+    armorProtection: {
+        type: Number,
+        default: 0
+    },
+    
+    // Pénalité de l'armure
+    armorPenalty: {
+        type: Number,
+        default: 0
     }
 };
 
@@ -117,11 +148,11 @@ const EquipmentModel = {
 const SkillModel = {
     templates: ["common"],
     
-    // Caractéristiques spécifiques aux compétences
-    attribute: {
+    // Champ auquel la compétence est liée
+    champ: {
         type: String,
-        default: "strength",
-        choices: ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]
+        default: "physique",
+        choices: ["physique", "mental", "social", "occulte"]
     },
     
     // Niveau de maîtrise
@@ -226,9 +257,22 @@ const CommonTemplate = {
  * Modèles de données pour les objets
  */
 export const ITEM_MODELS = {
-    equipment: EquipmentModel,
-    skill: SkillModel,
-    trait: TraitModel,
+    // Définir les modèles avec type et default pour éviter les erreurs de localisation
+    equipment: {
+        type: Object,
+        default: {},
+        ...EquipmentModel
+    },
+    skill: {
+        type: Object,
+        default: {},
+        ...SkillModel
+    },
+    trait: {
+        type: Object,
+        default: {},
+        ...TraitModel
+    },
     templates: {
         common: CommonTemplate
     }

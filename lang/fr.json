@@ -4,7 +4,8 @@
       "character": "Personnage",
       "npc": "PNJ",
       "vehicle": "Véhicule",
-      "organization": "Organisation"
+      "organization": "Organisation",
+      "group": "Groupe"
     },
     "Item": {
       "equipment": "Équipement",
