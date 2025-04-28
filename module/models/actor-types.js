@@ -8,9 +8,7 @@ import { EngrenagesConfig } from "../config.js";
 /**
  * Modèle de données commun à tous les types d'acteurs
  */
-const BaseActorModel = {
-    templates: ["common"],
-    
+const CommonTemplate = {
     // Attributs spécifiques à tous les acteurs
     biography: {
         type: String,
@@ -26,7 +24,7 @@ const BaseActorModel = {
  * Modèle de données pour les personnages joueurs
  */
 const CharacterModel = {
-    templates: ["common", "competences", "gauges", "specialisations", "traits"],
+    templates: ["base", "common", "competences", "gauges", "specialisations", "traits"],
     
     // Caractéristiques spécifiques aux personnages
     details: {
@@ -89,7 +87,7 @@ const CharacterModel = {
  * Modèle de données pour les PNJ
  */
 const NpcModel = {
-    templates: ["common", "competences", "gauges", "specialisations", "traits"],
+    templates: ["base", "common", "competences", "gauges", "specialisations", "traits"],
     
     // Caractéristiques spécifiques aux PNJ
     details: {
@@ -122,7 +120,7 @@ const NpcModel = {
  * Modèle de données pour les véhicules
  */
 const VehicleModel = {
-    templates: ["common"],
+    templates: ["base", "common"],
     
     // Détails du véhicule
     details: {
@@ -194,7 +192,7 @@ const VehicleModel = {
  * Modèle de données pour les organisations
  */
 const OrganizationModel = {
-    templates: ["common"],
+    templates: ["base", "common"],
     
     // Détails de l'organisation
     details: {
@@ -279,7 +277,7 @@ const OrganizationModel = {
  * Modèle de données pour les groupes
  */
 const GroupModel = {
-    templates: ["common"],
+    templates: ["base", "common"],
     
     // Membres du groupe
     members: {
@@ -295,9 +293,9 @@ const GroupModel = {
 };
 
 /**
- * Template commun à tous les acteurs
+ * Template pour les propriétés de base des documents
  */
-const CommonTemplate = {
+const BasePropertiesTemplate = {
     name: {
         type: String,
         required: true
@@ -696,6 +694,7 @@ const TraitsTemplate = {
 export const ACTOR_MODELS = {
     templates: {
         common: CommonTemplate,
+        base: BasePropertiesTemplate,
         competences: CompetencesTemplate,
         gauges: GaugesTemplate,
         specialisations: SpecialisationsTemplate,
@@ -704,6 +703,8 @@ export const ACTOR_MODELS = {
     Actor: {
         character: CharacterModel,
         npc: NpcModel,
+        vehicle: VehicleModel,
+        organization: OrganizationModel,
         group: GroupModel
     }
 };

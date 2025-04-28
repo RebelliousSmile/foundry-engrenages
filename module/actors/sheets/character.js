@@ -3,7 +3,7 @@
  * @extends {ActorSheet}
  */
 import { EngrenagesRoll } from "../../dice/roll.js";
-import { GestionnaireTraits } from "../../traits/traitManager.js";
+import { TraitManager } from "../../traits/traitManager.js";
 
 export class EngrenagesCharacterSheet extends ActorSheet {
     /** @override */
@@ -401,14 +401,14 @@ export class EngrenagesCharacterSheet extends ActorSheet {
     
     /**
      * Gère l'application d'un bonus de trait
-     * @param {Event} evenement - L'événement de clic
+     * @param {Event} event - L'événement de clic
      * @private
      */
-    async _onApplyTraitBonus(evenement) {
-        evenement.preventDefault();
+    async _onApplyTraitBonus(event) {
+        event.preventDefault();
         
         // Récupération de l'ID du trait
-        const elementTrait = evenement.currentTarget.closest(".element-trait");
+        const elementTrait = event.currentTarget.closest(".element-trait");
         const traitId = elementTrait.dataset.itemId;
         
         if (!traitId) return;
@@ -418,19 +418,19 @@ export class EngrenagesCharacterSheet extends ActorSheet {
         if (!trait) return;
         
         // Application du bonus
-        await GestionnaireTraits.appliquerTraitPourJet(this.actor, trait, true);
+        await TraitManager.applyTraitForRoll(this.actor, trait, true);
     }
     
     /**
      * Gère l'application d'un malus de trait
-     * @param {Event} evenement - L'événement de clic
+     * @param {Event} event - L'événement de clic
      * @private
      */
-    async _onApplyTraitMalus(evenement) {
-        evenement.preventDefault();
+    async _onApplyTraitMalus(event) {
+        event.preventDefault();
         
         // Récupération de l'ID du trait
-        const elementTrait = evenement.currentTarget.closest(".element-trait");
+        const elementTrait = event.currentTarget.closest(".element-trait");
         const traitId = elementTrait.dataset.itemId;
         
         if (!traitId) return;
@@ -440,6 +440,6 @@ export class EngrenagesCharacterSheet extends ActorSheet {
         if (!trait) return;
         
         // Application du malus
-        await GestionnaireTraits.appliquerTraitPourJet(this.actor, trait, false);
+        await TraitManager.applyTraitForRoll(this.actor, trait, false);
     }
 }

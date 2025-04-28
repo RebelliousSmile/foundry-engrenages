@@ -1,0 +1,134 @@
+{{!-- Compétences du personnage --}}
+<div class="competences-section">
+    {{#if (eq category "physique")}}
+    <div class="section-header">
+        <h2>{{localize "ENGRENAGES.Fields.Physique"}}</h2>
+    </div>
+    
+    <div class="liste-competences">
+        {{#each system.physique as |competence id|}}
+        {{#unless (eq id "custom")}}
+        <div class="element-competence" data-competence="{{id}}" data-category="physique">
+            <div class="nom-competence">{{localize (concat "ENGRENAGES.CompetencesPhysiques." id)}}</div>
+            <div class="formation-competence">
+                <input type="checkbox" name="system.physique.{{id}}.trained" {{checked competence.trained}}/>
+            </div>
+            <div class="valeur-competence selecteur-niveau-competence">
+                <div class="affichage-niveau-competence" data-color="{{obtenirCouleurNiveauCompetence competence.value}}">
+                    <span class="nom-niveau-competence">{{obtenirNomNiveauCompetence competence.value}}</span>
+                    <span class="description-niveau-competence">{{obtenirDescriptionNiveauCompetence competence.value}}</span>
+                </div>
+                <div class="controles-valeur-competence">
+                    {{#each (obtenirPaireValeursNiveauCompetence competence.value) as |valeur index|}}
+                        <div class="option-valeur-competence {{#if (eq ../competence.value valeur)}}selected{{/if}}" data-value="{{valeur}}">
+                            {{valeur}}
+                        </div>
+                    {{/each}}
+                </div>
+                <input type="hidden" name="system.physique.{{id}}.value" value="{{competence.value}}" data-dtype="Number"/>
+            </div>
+        </div>
+        {{/unless}}
+        {{/each}}
+    </div>
+    {{/if}}
+    
+    {{#if (eq category "mental")}}
+    <div class="section-header">
+        <h2>{{localize "ENGRENAGES.Fields.Mental"}}</h2>
+    </div>
+    
+    <div class="liste-competences">
+        {{#each system.mental as |competence id|}}
+        {{#unless (eq id "custom")}}
+        <div class="element-competence" data-competence="{{id}}" data-category="mental">
+            <div class="nom-competence">{{localize (concat "ENGRENAGES.CompetencesMentales." id)}}</div>
+            <div class="formation-competence">
+                <input type="checkbox" name="system.mental.{{id}}.trained" {{checked competence.trained}}/>
+            </div>
+            <div class="valeur-competence selecteur-niveau-competence">
+                <div class="affichage-niveau-competence" data-color="{{obtenirCouleurNiveauCompetence competence.value}}">
+                    <span class="nom-niveau-competence">{{obtenirNomNiveauCompetence competence.value}}</span>
+                    <span class="description-niveau-competence">{{obtenirDescriptionNiveauCompetence competence.value}}</span>
+                </div>
+                <div class="controles-valeur-competence">
+                    {{#each (obtenirPaireValeursNiveauCompetence competence.value) as |valeur index|}}
+                        <div class="option-valeur-competence {{#if (eq ../competence.value valeur)}}selected{{/if}}" data-value="{{valeur}}">
+                            {{valeur}}
+                        </div>
+                    {{/each}}
+                </div>
+                <input type="hidden" name="system.mental.{{id}}.value" value="{{competence.value}}" data-dtype="Number"/>
+            </div>
+        </div>
+        {{/unless}}
+        {{/each}}
+    </div>
+    {{/if}}
+    
+    {{#if (eq category "social")}}
+    <div class="section-header">
+        <h2>{{localize "ENGRENAGES.Fields.Social"}}</h2>
+    </div>
+    
+    <div class="liste-competences">
+        {{#each system.social as |competence id|}}
+        {{#unless (eq id "custom")}}
+        <div class="element-competence" data-competence="{{id}}" data-category="social">
+            <div class="nom-competence">{{localize (concat "ENGRENAGES.CompetencesSociales." id)}}</div>
+            <div class="formation-competence">
+                <input type="checkbox" name="system.social.{{id}}.trained" {{checked competence.trained}}/>
+            </div>
+            <div class="valeur-competence selecteur-niveau-competence">
+                <div class="affichage-niveau-competence" data-color="{{obtenirCouleurNiveauCompetence competence.value}}">
+                    <span class="nom-niveau-competence">{{obtenirNomNiveauCompetence competence.value}}</span>
+                    <span class="description-niveau-competence">{{obtenirDescriptionNiveauCompetence competence.value}}</span>
+                </div>
+                <div class="controles-valeur-competence">
+                    {{#each (obtenirPaireValeursNiveauCompetence competence.value) as |valeur index|}}
+                        <div class="option-valeur-competence {{#if (eq ../competence.value valeur)}}selected{{/if}}" data-value="{{valeur}}">
+                            {{valeur}}
+                        </div>
+                    {{/each}}
+                </div>
+                <input type="hidden" name="system.social.{{id}}.value" value="{{competence.value}}" data-dtype="Number"/>
+            </div>
+        </div>
+        {{/unless}}
+        {{/each}}
+    </div>
+    {{/if}}
+    
+    {{#if (eq category "occulte")}}
+    <div class="section-header">
+        <h2>{{localize "ENGRENAGES.Fields.Occulte"}}</h2>
+    </div>
+    
+    <div class="liste-competences">
+        {{#each system.occulte as |competence id|}}
+        {{#unless (eq id "nom")}}
+        <div class="element-competence" data-competence="{{id}}" data-category="occulte">
+            <div class="nom-competence">{{localize (concat "ENGRENAGES.CompetencesOccultes." id)}}</div>
+            <div class="formation-competence">
+                <input type="checkbox" name="system.occulte.{{id}}.trained" {{checked competence.trained}}/>
+            </div>
+            <div class="valeur-competence selecteur-niveau-competence">
+                <div class="affichage-niveau-competence" data-color="{{obtenirCouleurNiveauCompetence competence.value}}">
+                    <span class="nom-niveau-competence">{{obtenirNomNiveauCompetence competence.value}}</span>
+                    <span class="description-niveau-competence">{{obtenirDescriptionNiveauCompetence competence.value}}</span>
+                </div>
+                <div class="controles-valeur-competence">
+                    {{#each (obtenirPaireValeursNiveauCompetence competence.value) as |valeur index|}}
+                        <div class="option-valeur-competence {{#if (eq ../competence.value valeur)}}selected{{/if}}" data-value="{{valeur}}">
+                            {{valeur}}
+                        </div>
+                    {{/each}}
+                </div>
+                <input type="hidden" name="system.occulte.{{id}}.value" value="{{competence.value}}" data-dtype="Number"/>
+            </div>
+        </div>
+        {{/unless}}
+        {{/each}}
+    </div>
+    {{/if}}
+</div>

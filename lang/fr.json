@@ -1,10 +1,16 @@
 {
   "ENGRENAGES": {
     "Name": "Engrenages",
-    "SheetCharacter": "Feuille de Personnage Engrenages",
-    "SheetNPC": "Feuille de PNJ Engrenages",
-    "SheetVehicle": "Feuille de Véhicule Engrenages",
-    "SheetOrganization": "Feuille d'Organisation Engrenages",
+    "SheetCharacter": "Feuille de Personnage",
+    "SheetNPC": "Feuille de PNJ",
+    "SheetVehicle": "Feuille de Véhicule",
+    "SheetOrganization": "Feuille d'Organisation",
+    
+    "Tabs": {
+      "Competences": "Compétences",
+      "Traits": "Traits",
+      "Equipement": "Équipement"
+    },
 
     "Fields": {
       "Physique": "Physique",
@@ -45,11 +51,48 @@
 
     "Specialisations": {
       "Title": "Spécialisations",
-      "Add": "Ajouter une spécialisation",
+      "Add": "Ajouter",
+      "New": "Nouvelle spécialisation",
       "Delete": "Supprimer la spécialisation",
-      "DeleteConfirm": "Êtes-vous sûr de vouloir supprimer cette spécialisation ?",
+      "DeleteConfirm": "Voulez-vous vraiment supprimer cette spécialisation ?",
       "Name": "Nom",
       "Category": "Catégorie"
+    },
+    
+    "Trait": {
+      "New": "Nouveau trait",
+      "Value": "Valeur",
+      "ValueMinor": "Mineur",
+      "ValueModerate": "Modéré",
+      "ValueMajor": "Majeur",
+      "ValueHint": "La valeur détermine l'importance du trait et le bonus/malus qu'il peut apporter.",
+      "Effect": "Effet",
+      "EffectHint": "Description de l'effet mécanique du trait.",
+      "BonusExamples": "Exemples de bonus",
+      "BonusExamplesHint": "Situations où ce trait pourrait apporter un bonus.",
+      "MalusExamples": "Exemples de malus",
+      "MalusExamplesHint": "Situations où ce trait pourrait apporter un malus.",
+      "Notes": "Notes",
+      "Add": "Ajouter un trait",
+      "Delete": "Supprimer le trait",
+      "DeleteConfirm": "Voulez-vous vraiment supprimer ce trait ?",
+      "ApplyBonus": "Appliquer comme bonus",
+      "ApplyMalus": "Appliquer comme malus",
+      "ApplyBonusTitle": "Appliquer le bonus de {name} (+{value})",
+      "ApplyMalusTitle": "Appliquer le malus de {name} (-{value})",
+      "Modifier": "Modificateur",
+      "BonusApplied": "Bonus de trait",
+      "ApplicableTraits": "Traits applicables",
+      "BonusMalus": "Bonus/Malus",
+      "BonusMalusHint": "Bonus ou malus total appliqué par les traits sélectionnés.",
+      "Type": {
+        "Personality": "Personnalité",
+        "Background": "Historique",
+        "Physical": "Physique",
+        "Social": "Social",
+        "Flaw": "Défaut",
+        "Bond": "Lien"
+      }
     },
 
     "Gauges": {

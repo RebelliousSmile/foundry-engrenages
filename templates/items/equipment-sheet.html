@@ -1,0 +1,67 @@
+{{!-- Feuille d'équipement Engrenages --}}
+<form class="{{cssClass}} engrenages" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'ENGRENAGES.Equipment.Name'}}"/></h1>
+        </div>
+    </header>
+
+    {{!-- Onglets de navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="description">{{localize "ENGRENAGES.Tabs.Description"}}</a>
+        <a class="item" data-tab="attributes">{{localize "ENGRENAGES.Tabs.Attributes"}}</a>
+    </nav>
+
+    {{!-- Contenu des onglets --}}
+    <section class="sheet-body">
+        {{!-- Onglet Description --}}
+        <div class="tab" data-group="primary" data-tab="description">
+            {{editor system.description target="system.description" button=true owner=owner editable=editable}}
+        </div>
+
+        {{!-- Onglet Attributs --}}
+        <div class="tab" data-group="primary" data-tab="attributes">
+            <div class="form-group">
+                <label>{{localize "ENGRENAGES.Equipment.Type"}}</label>
+                <select name="system.equipmentType">
+                    {{#select system.equipmentType}}
+                    <option value="weapon">{{localize "ENGRENAGES.Equipment.Types.Weapon"}}</option>
+                    <option value="armor">{{localize "ENGRENAGES.Equipment.Types.Armor"}}</option>
+                    <option value="gear">{{localize "ENGRENAGES.Equipment.Types.Gear"}}</option>
+                    <option value="consumable">{{localize "ENGRENAGES.Equipment.Types.Consumable"}}</option>
+                    {{/select}}
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>{{localize "ENGRENAGES.Equipment.Value"}}</label>
+                <input type="number" name="system.value" value="{{system.value}}" data-dtype="Number"/>
+            </div>
+            
+            <div class="form-group">
+                <label>{{localize "ENGRENAGES.Equipment.Weight"}}</label>
+                <input type="number" name="system.weight" value="{{system.weight}}" data-dtype="Number"/>
+            </div>
+            
+            <div class="form-group">
+                <label>{{localize "ENGRENAGES.Equipment.Quantity"}}</label>
+                <input type="number" name="system.quantity" value="{{system.quantity}}" data-dtype="Number"/>
+            </div>
+            
+            {{#if (eq system.equipmentType "weapon")}}
+            <div class="form-group">
+                <label>{{localize "ENGRENAGES.Equipment.Damage"}}</label>
+                <input type="text" name="system.damage" value="{{system.damage}}"/>
+            </div>
+            {{/if}}
+            
+            {{#if (eq system.equipmentType "armor")}}
+            <div class="form-group">
+                <label>{{localize "ENGRENAGES.Equipment.Protection"}}</label>
+                <input type="number" name="system.protection" value="{{system.protection}}" data-dtype="Number"/>
+            </div>
+            {{/if}}
+        </div>
+    </section>
+</form>

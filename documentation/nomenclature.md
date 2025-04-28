@@ -4,9 +4,10 @@
 
 Pour maintenir la cohérence et la lisibilité du code dans le système Engrenages, nous adoptons les principes de nomenclature suivants :
 
-1. **Langue unique** : Tout le code (variables, fonctions, classes, commentaires) est écrit en français pour maintenir la cohérence avec le thème du jeu.
-2. **Conventions de nommage** : Nous suivons les conventions de nommage standard pour JavaScript/HTML/CSS, adaptées au français.
-3. **Cohérence** : Les noms utilisés doivent être cohérents entre les différentes parties du code (JavaScript, HTML, CSS).
+1. **Langue principale** : Le code spécifique au système Engrenages (variables, fonctions, classes, commentaires) est écrit en français pour maintenir la cohérence avec le thème du jeu.
+2. **Termes techniques de l'API** : Les termes techniques liés à l'API Foundry VTT doivent rester en anglais pour assurer la compatibilité et faciliter la maintenance.
+3. **Conventions de nommage** : Nous suivons les conventions de nommage standard pour JavaScript/HTML/CSS, adaptées au français ou à l'anglais selon le contexte.
+4. **Cohérence** : Les noms utilisés doivent être cohérents entre les différentes parties du code (JavaScript, HTML, CSS).
 
 ## Conventions spécifiques
 
@@ -117,12 +118,35 @@ Pour maintenir la cohérence et la lisibilité du code dans le système Engrenag
 - **Clés de traduction** : Utiliser le format hiérarchique avec des points
   - Exemple : `ENGRENAGES.CompetenceLevel.Novice`, `ENGRENAGES.CompetenceDescription.Average`
 
-## Exceptions
+## Exceptions et termes techniques
 
-- **API Foundry VTT** : Respecter la nomenclature originale de l'API Foundry VTT
-  - Exemple : `getData()`, `activateListeners()`, `_onSubmit()`
+### Termes de l'API Foundry VTT (toujours en anglais)
+
+- **Méthodes de l'API** : Toujours conserver les noms originaux en anglais
+  - Exemple : `getData()`, `activateListeners()`, `_onSubmit()`, `render()`, `close()`
+
+- **Hooks et événements** : Toujours utiliser les noms originaux en anglais
+  - Exemple : `Hooks.on("renderActorSheet", ...)`, `Hooks.once("ready", ...)`
+
+- **Propriétés des documents** : Conserver les noms originaux en anglais
+  - Exemple : `actor.items`, `item.type`, `token.actor`, `game.actors`
+
+- **Paramètres des méthodes de l'API** : Conserver les noms originaux en anglais
+  - Exemple : `function(html, data)`, `function(event, html)`
+
+### Termes mixtes (contexte spécifique)
+
+- **Méthodes d'événements internes** : Conserver le préfixe `_on` pour les méthodes d'événements
+  - Exemple : `_onRollCompetence()` (et non `_surLancerCompetence()`)
 
 - **Bibliothèques externes** : Respecter la nomenclature originale des bibliothèques utilisées
 
-- **Méthodes d'événements internes** : Conserver le préfixe `_on` pour les méthodes d'événements
-  - Exemple : `_onCompetenceValueSelect()`, `_onRollCompetence()`
+### Exemples concrets de termes à conserver en anglais
+
+| Catégorie | Exemples |
+|------------|----------|
+| Méthodes de l'API | `getData()`, `activateListeners()`, `_onSubmit()`, `render()` |
+| Hooks | `Hooks.on()`, `Hooks.once()`, `"renderActorSheet"`, `"ready"` |
+| Documents | `Actor`, `Item`, `Token`, `Scene`, `Combat` |
+| Propriétés | `actor.items`, `item.type`, `token.actor`, `game.actors` |
+| Événements | `"click"`, `"change"`, `"submit"`, `"dragstart"` |

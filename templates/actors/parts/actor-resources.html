@@ -1,0 +1,30 @@
+{{!-- Template de ressources pour les acteurs Engrenages --}}
+<div class="resources-container">
+    <h2 class="section-title">
+        <i class="fas fa-coins"></i> {{localize "ENGRENAGES.Resources.Title"}}
+    </h2>
+    
+    {{!-- Ressources du personnage --}}
+    <div class="resources-grid">
+        <div class="resource-item">
+            <label class="resource-label">{{localize "ENGRENAGES.Resources.Money"}}</label>
+            <input type="number" name="system.resources.money" value="{{system.resources.money}}" data-dtype="Number"/>
+        </div>
+        
+        <div class="resource-item">
+            <label class="resource-label">{{localize "ENGRENAGES.Resources.Reputation"}}</label>
+            <input type="number" name="system.resources.reputation" value="{{system.resources.reputation}}" data-dtype="Number"/>
+        </div>
+        
+        <div class="resource-item">
+            <label class="resource-label">{{localize "ENGRENAGES.Resources.Contacts"}}</label>
+            <input type="number" name="system.resources.contacts" value="{{system.resources.contacts}}" data-dtype="Number"/>
+        </div>
+    </div>
+    
+    {{!-- Notes sur les ressources --}}
+    <div class="resources-notes">
+        <label class="notes-label">{{localize "ENGRENAGES.Resources.Notes"}}</label>
+        <textarea name="system.resources.notes">{{system.resources.notes}}</textarea>
+    </div>
+</div>

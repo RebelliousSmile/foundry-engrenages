@@ -1,0 +1,24 @@
+{{!-- Attributs du personnage --}}
+<div class="attributs-section">
+    <div class="section-header">
+        <h2>{{localize "ENGRENAGES.Attributes"}}</h2>
+    </div>
+    
+    <div class="liste-attributs">
+        {{#each system.attributes as |attribut id|}}
+        <div class="element-attribut" data-attribut-id="{{id}}">
+            <div class="nom-attribut">{{attribut.label}}</div>
+            <div class="valeur-attribut">
+                <input type="number" name="system.attributes.{{id}}.value" value="{{attribut.value}}" data-dtype="Number"/>
+            </div>
+            <div class="modificateur-attribut">
+                {{#if attribut.mod}}
+                <span class="mod-attribut {{#if (gt attribut.mod 0)}}positif{{else}}negatif{{/if}}">
+                    {{#if (gt attribut.mod 0)}}+{{/if}}{{attribut.mod}}
+                </span>
+                {{/if}}
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

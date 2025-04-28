@@ -1,0 +1,22 @@
+{{!-- Effets communs pour les feuilles d'objets --}}
+<div class="item-effects">
+    <h2 class="section-title">{{localize "ENGRENAGES.Item.Effects"}}</h2>
+    <div class="effects-list">
+        {{#each effects as |effect id|}}
+        <div class="effect-item" data-effect-id="{{id}}">
+            <div class="effect-name">{{effect.name}}</div>
+            <div class="effect-controls">
+                <a class="effect-control effect-edit" title="{{localize 'ENGRENAGES.Item.EditEffect'}}">
+                    <i class="fas fa-edit"></i>
+                </a>
+                <a class="effect-control effect-delete" title="{{localize 'ENGRENAGES.Item.DeleteEffect'}}">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </div>
+        </div>
+        {{/each}}
+        <button type="button" class="add-effect">
+            <i class="fas fa-plus"></i> {{localize "ENGRENAGES.Item.AddEffect"}}
+        </button>
+    </div>
+</div>

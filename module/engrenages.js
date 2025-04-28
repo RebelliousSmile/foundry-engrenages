@@ -15,14 +15,12 @@ import { EngrenagesCharacterSheet } from "./actors/sheets/character.js";
 import { EngrenagesNpcSheet } from "./actors/sheets/npc.js";
 import { EngrenagesVehicleSheet } from "./actors/sheets/vehicle.js";
 import { EngrenagesOrganizationSheet } from "./actors/sheets/organization.js";
-import { EngrenagesEquipmentSheet } from "./items/sheets/equipment.js";
-import { EngrenagesSkillSheet } from "./items/sheets/skill.js";
 import { EngrenagesTraitSheet } from "./items/sheets/trait.js";
 import { preloadHandlebarsTemplates } from "./utils/templates.js";
 import { EngrenagesHelpers } from "./utils/helpers.js";
 import { EngrenagesHooks } from "./utils/hooks.js";
 import { EngrenagesRoll } from "./dice/roll.js";
-import { GestionnaireTraits } from "./traits/traitManager.js";
+import { TraitManager } from "./traits/traitManager.js";
 
 /* -------------------------------------------- */
 /*  Initialisation de Foundry VTT               */
@@ -69,6 +67,18 @@ Hooks.once("init", async function() {
     CONFIG.Actor.documentClass = EngrenagesActor;
     CONFIG.Item.documentClass = EngrenagesItem;
     
+    // Initialisation des types d'acteurs de base (personnage et PNJ)
+    // Les véhicules et organisations seront ajoutés conditionnellement dans le hook ready
+    const baseActorTypes = {
+        character: EngrenagesConfig.actorTypes.character,
+        npc: EngrenagesConfig.actorTypes.npc
+    };
+    
+    // Mettre à jour les types d'acteurs disponibles
+    CONFIG.Actor.types = Object.keys(baseActorTypes);
+    CONFIG.engrenages = CONFIG.engrenages || {};
+    CONFIG.engrenages.actorTypes = baseActorTypes;
+    
     // Enregistrement des feuilles de personnage
     Actors.unregisterSheet("core", ActorSheet);
     Actors.registerSheet("engrenages", EngrenagesCharacterSheet, {
@@ -111,16 +121,14 @@ Hooks.once("init", async function() {
     
     // Enregistrement des feuilles d'objets
     Items.unregisterSheet("core", ItemSheet);
-    Items.registerSheet("engrenages", EngrenagesEquipmentSheet, { 
-        types: ["equipment"], 
-        makeDefault: true 
-    });
-    Items.registerSheet("engrenages", EngrenagesSkillSheet, { 
-        types: ["skill"], 
-        makeDefault: true 
-    });
+    // Utiliser la feuille de trait pour tous les types d'objets pour l'instant
     Items.registerSheet("engrenages", EngrenagesTraitSheet, { 
         types: ["trait"], 
+        makeDefault: true 
+    });
+    // Utiliser la feuille par défaut pour les autres types
+    Items.registerSheet("engrenages", ItemSheet, { 
+        types: ["equipment", "skill", "gauge"],
         makeDefault: true 
     });
     
@@ -137,7 +145,7 @@ Hooks.once("init", async function() {
     EngrenagesHooks.init();
     
     // Initialisation du gestionnaire de traits
-    GestionnaireTraits.init();
+    TraitManager.init();
     
     // Filtrage des types d'acteurs disponibles en fonction des options activées
     Hooks.on("renderDialog", (dialog, html, data) => {
@@ -165,6 +173,42 @@ Hooks.once("init", async function() {
 Hooks.once("ready", async function() {
     // Vérification des migrations
     await EngrenajesMigration.checkMigration();
+    
+    // Vérifier les paramètres des modules optionnels
+    const vehiclesEnabled = game.settings.get("engrenages", "modules.vehicles");
+    const organizationsEnabled = game.settings.get("engrenages", "modules.organizations");
+    
+    // Mettre à jour les types d'acteurs disponibles si nécessaire
+    if (vehiclesEnabled || organizationsEnabled) {
+        // Créer une copie des types d'acteurs de base
+        const updatedActorTypes = { ...CONFIG.engrenages.actorTypes };
+        
+        // Ajouter les types d'acteurs activés
+        if (vehiclesEnabled) {
+            updatedActorTypes.vehicle = EngrenagesConfig.actorTypes.vehicle;
+            CONFIG.Actor.types.push("vehicle");
+        }
+        
+        if (organizationsEnabled) {
+            updatedActorTypes.organization = EngrenagesConfig.actorTypes.organization;
+            CONFIG.Actor.types.push("organization");
+        }
+        
+        // Mettre à jour la configuration
+        CONFIG.engrenages.actorTypes = updatedActorTypes;
+        
+        // Mettre à jour les étiquettes des types d'acteurs
+        game.i18n.translations.ACTOR.TypeCharacter = game.i18n.localize(EngrenagesConfig.actorTypes.character);
+        game.i18n.translations.ACTOR.TypeNpc = game.i18n.localize(EngrenagesConfig.actorTypes.npc);
+        
+        if (vehiclesEnabled) {
+            game.i18n.translations.ACTOR.TypeVehicle = game.i18n.localize(EngrenagesConfig.actorTypes.vehicle);
+        }
+        
+        if (organizationsEnabled) {
+            game.i18n.translations.ACTOR.TypeOrganization = game.i18n.localize(EngrenagesConfig.actorTypes.organization);
+        }
+    }
 });
 
 /**

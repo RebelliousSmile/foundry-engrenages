@@ -1,0 +1,64 @@
+{{!-- Feuille de compétence Engrenages --}}
+<form class="{{cssClass}} engrenages" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="{{localize 'ENGRENAGES.Skill.Name'}}"/></h1>
+        </div>
+    </header>
+
+    {{!-- Onglets de navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="description">{{localize "ENGRENAGES.Tabs.Description"}}</a>
+        <a class="item" data-tab="attributes">{{localize "ENGRENAGES.Tabs.Attributes"}}</a>
+    </nav>
+
+    {{!-- Contenu des onglets --}}
+    <section class="sheet-body">
+        {{!-- Onglet Description --}}
+        <div class="tab" data-group="primary" data-tab="description">
+            {{editor system.description target="system.description" button=true owner=owner editable=editable}}
+        </div>
+
+        {{!-- Onglet Attributs --}}
+        <div class="tab" data-group="primary" data-tab="attributes">
+            <div class="form-group">
+                <label>{{localize "ENGRENAGES.Skill.Category"}}</label>
+                <select name="system.category">
+                    {{#select system.category}}
+                    <option value="physique">{{localize "ENGRENAGES.Fields.Physique"}}</option>
+                    <option value="mental">{{localize "ENGRENAGES.Fields.Mental"}}</option>
+                    <option value="social">{{localize "ENGRENAGES.Fields.Social"}}</option>
+                    <option value="occulte">{{localize "ENGRENAGES.Fields.Occulte"}}</option>
+                    {{/select}}
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>{{localize "ENGRENAGES.Skill.Value"}}</label>
+                <input type="number" name="system.value" value="{{system.value}}" data-dtype="Number"/>
+            </div>
+            
+            <div class="form-group">
+                <label>{{localize "ENGRENAGES.Skill.Trained"}}</label>
+                <input type="checkbox" name="system.trained" {{checked system.trained}}/>
+            </div>
+            
+            <div class="form-group">
+                <label>{{localize "ENGRENAGES.Skill.Specializations"}}</label>
+                <div class="specializations-list">
+                    {{#each system.specializations as |specialization id|}}
+                    <div class="specialization-item" data-specialization-id="{{id}}">
+                        <input type="text" name="system.specializations.{{id}}.name" value="{{specialization.name}}"/>
+                        <input type="number" name="system.specializations.{{id}}.value" value="{{specialization.value}}" data-dtype="Number"/>
+                        <a class="specialization-delete"><i class="fas fa-trash"></i></a>
+                    </div>
+                    {{/each}}
+                    <button type="button" class="add-specialization">
+                        <i class="fas fa-plus"></i> {{localize "ENGRENAGES.Skill.AddSpecialization"}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>

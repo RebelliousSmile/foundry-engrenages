@@ -3,14 +3,14 @@
  * Permet d'appliquer les bonus et malus des traits lors des jets de dés
  */
 
-export class GestionnaireTraits {
+export class TraitManager {
     /**
      * Initialise le gestionnaire de traits
      */
     static init() {
         // Enregistrement des hooks
-        Hooks.on("renderDialog", GestionnaireTraits._onRenderDialog);
-        Hooks.on("preRollEngrenagesDice", GestionnaireTraits._onPreRollEngrenagesDice);
+        Hooks.on("renderDialog", TraitManager._onRenderDialog);
+        Hooks.on("preRollEngrenagesDice", TraitManager._onPreRollEngrenagesDice);
     }
 
     /**
@@ -100,8 +100,19 @@ export class GestionnaireTraits {
      * @param {Actor} actor - L'acteur concerné
      * @param {Item} trait - Le trait à appliquer
      * @param {boolean} isBonus - Indique s'il s'agit d'un bonus (true) ou d'un malus (false)
+     * @deprecated Utilisez applyTraitForRoll à la place
      */
     static async appliquerTraitPourJet(actor, trait, isBonus = true) {
+        return this.applyTraitForRoll(actor, trait, isBonus);
+    }
+    
+    /**
+     * Apply a trait bonus to an actor for a specific dice roll
+     * @param {Actor} actor - The actor concerned
+     * @param {Item} trait - The trait to apply
+     * @param {boolean} isBonus - Indicates if it's a bonus (true) or a malus (false)
+     */
+    static async applyTraitForRoll(actor, trait, isBonus = true) {
         if (!actor || !trait) return;
         
         // Créer un dialogue pour demander quel jet effectuer avec ce trait
